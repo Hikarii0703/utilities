@@ -1,0 +1,296 @@
+snippet pure
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int32_t main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    $0
+
+    return 0;
+}
+endsnippet
+
+snippet cool
+#include <bits/stdc++.h>
+
+int32_t main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(NULL);
+
+    $0
+
+    return 0;
+}
+endsnippet
+
+snippet dark
+// the one you thought was me,
+// has been in his eternal rest,
+// in heaven.
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int32_t main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    $0
+
+    return 0;
+}
+endsnippet
+
+snippet db "debugger"
+// tourist's debugger
+// so cool
+string to_string(string s) {
+    return '"' + s + '"';
+}
+
+string to_string(const char* s) {
+    return to_string((string) s);
+}
+
+string to_string(bool b) {
+    return (b ? "true" : "false");
+}
+
+template <typename A, typename B>
+string to_string(pair<A, B> p) {
+    return "(" + to_string(p.first) + ", " + to_string(p.second) + ")";
+}
+
+template <typename A>
+string to_string(A v) {
+    bool first = true;
+    string res = "{";
+    for (const auto &x : v) {
+        if (!first) res += ", ";
+        first = false;
+        res += to_string(x);
+    }
+    res += "}";
+    return res;
+}
+
+void debug_out() { cerr << endl; }
+
+template <typename Head, typename... Tail>
+void debug_out(Head H, Tail... T) {
+    cerr << " " << to_string(H);
+    debug_out(T...);
+}
+
+#ifdef LOCAL
+    #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#else
+    #define debug(...) 42
+#endif
+endsnippet
+
+snippet fast
+template <typename T>
+inline void write(T x) {
+    if(x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    char buf[20], *p = buf;
+    do {
+        *p++ = '0' + x % 10;
+        x /= 10;
+    } while(x);
+
+    do {
+        putchar(*--p);
+    } while(p > buf);
+}
+
+template <typename T>
+inline void read(T &x) {
+    char c;
+    while(c = getchar(), c <= ' ');
+    
+    bool sign = c == '-';
+    if(sign) c = getchar();
+
+    x = c - '0';
+    while(c = getchar(), c >= '0' && c <= '9') {
+        x = (x << 3) + (x << 1) + (c - '0');
+    }
+    if(sign) x = -x;
+}
+endsnippet
+
+snippet freopen
+// freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+// freopen("`!p snip.rv = snip.basename`.out", "r", stdin);
+endsnippet
+
+snippet binpow "binpow"
+int binpow(int a, int b) {
+    int ret = 1;
+    for(; b; a *= a, b >>= 1)
+    if(b & 1) ret *= a;
+    return ret;
+}
+endsnippet
+
+snippet modulo "modulo"
+const int MOD = 1e9 + 7;
+
+int add(int a, int b) {
+    int ret = a + b;
+    if(ret >= MOD) return ret - MOD;
+    else return ret;
+}
+
+int sub(int a, int b) {
+    int ret = a - b;
+    if(ret >= 0) return ret;
+    else return ret + MOD;
+}
+
+int mul(int a, int b) {
+    return (a * b) % MOD;
+}
+
+int powmod(int a, int b) {
+    int ret = 1;
+    for(; b; a = mul(a, a), b >>= 1)
+        if(b & 1) ret = mul(ret, a);
+    return ret;
+}
+
+int divide(int a, int b) {
+    return mul(a, powmod(b, MOD - 2));
+}
+
+int nCk(int n, int k) {
+    int ret = 1;
+    for(int i = 1; i <= k; i++)
+        ret = mul(ret, divide(sub(add(n, 1), i), i));
+    return ret;
+}
+endsnippet
+
+snippet code "full code"
+/* YAMI */
+// ===== TEMPLATE STARTS HERE ===== //
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+typedef pair<ll, ll> pll;
+typedef vector<ll> vll;
+#define umap unordered_map
+#define uset unordered_set
+#define FORa(i, a, b) for(ll i = (a); i <= (b); ++i)
+#define FORb(i, a, b, c) for(ll i = (a); i <= (b); i += (c))
+#define FORn(i, n) for(ll i = 0; i < (n); ++i)
+#define FORra(i, a, b) for(ll i = (a); i >= (b); --i)
+#define FORrb(i, a, b, c) for(ll i = (a); i >= (b); i -= (c))
+#define FORrn(i, n) for(ll i = ((n)-1); i >= 0; --i)
+#define NUMARGC(_1, _2, _3, _4, NAME, ...) NAME
+#define FOR(...) NUMARGC(__VA_ARGS__, FORb, FORa, FORn)(__VA_ARGS__)
+#define RFOR(...) NUMARGC(__VA_ARGS__, FORrb, FORra, FORrn)(__VA_ARGS__)
+#define XFOR(i, x) for(__typeof((x).begin()) i = (x).begin(); i != (x).end(); ++i)
+#define RXFOR(i, x) for(__typeof((x).rbegin()) i = (x).rbegin(); i != (x).rend(); ++i)
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define range(x, a, b) ((x).begin()+a), ((x).begin()+b)
+#define pb push_back
+#define eb emplace_back
+#define sqr(x) 1ll*(x)*(x)
+string to_string(string s) { return '"' + s + '"'; }
+string to_string(const char* s) { return to_string((string) s); }
+string to_string(bool b) { return (b ? "true" : "false"); }
+template <typename A, typename B>
+string to_string(pair<A, B> p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
+template <typename A>
+string to_string(A v) {
+    bool first = true;
+    string res = "{";
+    for(const auto &x : v) {
+        if (!first) res += ", ";
+        first = false;
+        res += to_string(x);
+    }
+    res += "}";
+    return res;
+}
+void debug_out() { cerr << endl; }
+template <typename Head, typename... Tail>
+void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
+#ifdef LOCAL
+    #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#else
+    #define debug(...) "07032000"
+#endif
+template <typename T>
+inline void write(T x) {
+    if(x < 0) { putchar('-'); x = -x; }
+    char buf[20], *p = buf;
+    do { *p++ = '0' + x % 10; x /= 10; } while(x);
+    do { putchar(*--p); } while(p > buf);
+}
+template <typename T>
+inline void read(T &x) {
+    char c;
+    while(c = getchar(), c <= ' ');
+    bool sign = c == '-';
+    if(sign) c = getchar();
+    x = c - '0';
+    while(c = getchar(), c >= '0' && c <= '9') { x = (x << 3) + (x << 1) + (c - '0'); }
+    if(sign) x = -x;
+}
+ll binpow(ll a, ll b) {
+    ll ret = 1;
+    for(; b; a *= a, b >>= 1)
+    if(b & 1) ret *= a;
+    return ret;
+}
+ll MOD = 1e9 + 7;
+ll add(ll a, ll b) {
+    ll ret = a + b;
+    if(ret >= MOD) return ret - MOD;
+    else return ret;
+}
+ll sub(ll a, ll b) {
+    ll ret = a - b;
+    if(ret >= 0) return ret;
+    else return ret + MOD;
+}
+ll mul(ll a, ll b) { return (a * b) % MOD; }
+ll powmod(ll a, ll b) {
+    ll ret = 1;
+    for(; b; a = mul(a, a), b >>= 1)
+        if(b & 1) ret = mul(ret, a);
+    return ret;
+}
+ll divide(ll a, ll b) { return mul(a, powmod(b, MOD - 2)); }
+ll nCk(ll n, ll k) {
+    ll ret = 1;
+    for(ll i = 1; i <= k; i++)
+        ret = mul(ret, divide(sub(add(n, 1), i), i));
+    return ret;
+}
+
+// ======= TEMPLATE ENDS HERE ======= //
+
+int main() {
+	// freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+	// freopen("`!p snip.rv = snip.basename`.out", "r", stdin);
+
+    $0
+
+    return 0;
+}
+endsnippet
+
+

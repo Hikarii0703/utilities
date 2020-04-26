@@ -6,11 +6,15 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
 "========== Colorcheme =========="
-let ayucolor="dark"
+let ayucolor="mirage"
 colorscheme ayu
 "colorscheme space-vim-dark
 "let g:lightline = {'colorscheme': 'deus'}
@@ -48,7 +52,6 @@ set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set directory=/tmp
 filetype plugin on
 set clipboard=unnamedplus
-imap jj <Esc>
 set autoindent
 set si
 set cindent
@@ -60,13 +63,23 @@ map <C-C> <leader>cb
 map <C-X> <leader>cu
 nmap ? :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen = 1
-nnoremap x "_x
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-vnoremap <leader>d ""d
+"nnoremap x "_x
+"nnoremap d "_d
+"nnoremap D "_D
+"vnoremap d "_d
+"nnoremap <leader>d ""d
+"nnoremap <leader>D ""D
+"vnoremap <leader>d ""d
+set encoding=utf-8
+set expandtab
+set softtabstop=4
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {{ {
+inoremap {} {}
 "========== CP config =========="
 map <F3> :%y+<CR>
 map <F4> :vert term<CR>
@@ -86,8 +99,8 @@ function AddTemplate(tmpl_file)
     8
 endfunction
 
-autocmd BufNewFile *.cpp call AddTemplate("~/template.cpp")
-autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/template.cpp")
+"autocmd BufNewFile *.cpp call AddTemplate("~/template.cpp")
+"autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/template.cpp")
 
 "========== EOF =========="
 
