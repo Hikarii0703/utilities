@@ -11,7 +11,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'SirVer/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
-Plug 'KeitaNakamura/tex-conceal.vim'
+Plug 'cohama/lexima.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -41,8 +42,8 @@ set splitright
 set showcmd
 set timeoutlen=1000 ttimeoutlen=0
 let NERDTreeShowHidden=1
-"autocmd StdinReadPre * let s:std_in=2
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=2
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 set autoread
 set autowrite
 set nobackup
@@ -65,6 +66,7 @@ map <C-C> <leader>cb
 map <C-X> <leader>cu
 nmap ? :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeWinPos = "left"
 "nnoremap x "_x
 "nnoremap d "_d
 "nnoremap D "_D
@@ -78,10 +80,10 @@ set softtabstop=4
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
+"inoremap { {}<Left>
+"inoremap {<CR> {<CR>}<Esc>O
+"inoremap {{ {
+"inoremap {} {}
 autocmd FileType vim let b:vcm_tab_complete = 'vim'
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -96,9 +98,10 @@ endfunction
 let g:tex_flavor = 'latex'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-hi Conceal ctermbg=none
+map C :tabp<CR>
+map V :tabn<CR>
+map X :tabclose<CR>
+"autocmd BufWinEnter * NERDTreeMirror
 "========== CP config =========="
 map <F3> :%y+<CR>
 map <F4> :vert term<CR>
@@ -118,8 +121,8 @@ function AddTemplate(tmpl_file)
     8
 endfunction
 
-"autocmd BufNewFile *.cpp call AddTemplate("~/template.cpp")
-"autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/template.cpp")
+autocmd BufNewFile *.cpp call AddTemplate("~/template.cpp")
+autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/template.cpp")
 
 "========== EOF =========="
 
