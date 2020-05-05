@@ -9,7 +9,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'SirVer/ultisnips'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
 Plug 'cohama/lexima.vim'
 Plug 'mattn/emmet-vim'
@@ -80,21 +79,6 @@ set softtabstop=4
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"inoremap { {}<Left>
-"inoremap {<CR> {<CR>}<Esc>O
-"inoremap {{ {
-"inoremap {} {}
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 let g:tex_flavor = 'latex'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_quickfix_mode=0
@@ -105,8 +89,8 @@ map X :tabclose<CR>
 "========== CP config =========="
 map <F3> :%y+<CR>
 map <F4> :vert term<CR>
-map <F8> :w <bar> !echo "===== [COMPILING IN C++98] =====" && g++ "%:p" -O2 -std=c++98 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector<CR>
-map <F9> :w <bar> !echo "===== [COMPILING IN C++17] =====" && g++ "%:p" -O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector<CR>
+map <F8> :w <bar> !echo "===== [COMPILING IN C++98] =====" && g++ "%:p" -O2 -std=c++98 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL<CR>
+map <F9> :w <bar> !echo "===== [COMPILING IN C++17] =====" && g++ "%:p" -O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL<CR>
 map <F10> :!echo "===== [RUNNING: "%:t:r"] =====" && ./a.out<CR>
 map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:t""/problem/""%:t:r" -f "%:t"<CR>
 map <F2> :w <bar> !acedit --run "%:p" -c "%:p:h:t" -p "%:t:r"<CR>
