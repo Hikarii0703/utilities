@@ -41,8 +41,8 @@ set splitright
 set showcmd
 set timeoutlen=1000 ttimeoutlen=0
 let NERDTreeShowHidden=1
-autocmd StdinReadPre * let s:std_in=2
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=2
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 set autoread
 set autowrite
 set nobackup
@@ -64,7 +64,7 @@ let g:NERDToggleCheckAllLines = 1
 map <C-C> <leader>cb
 map <C-X> <leader>cu
 nmap ? :NERDTreeToggle<CR>
-let g:NERDTreeQuitOnOpen = 1
+"let g:NERDTreeQuitOnOpen = 1 
 let g:NERDTreeWinPos = "left"
 "nnoremap x "_x
 "nnoremap d "_d
@@ -89,9 +89,9 @@ map X :tabclose<CR>
 "========== CP config =========="
 map <F3> :%y+<CR>
 map <F4> :vert term<CR>
-map <F8> :w <bar> !echo "===== [COMPILING IN C++98] =====" && g++ "%:p" -O2 -std=c++98 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL<CR>
-map <F9> :w <bar> !echo "===== [COMPILING IN C++17] =====" && g++ "%:p" -O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL<CR>
-map <F10> :!echo "===== [RUNNING: "%:t:r"] =====" && ./a.out<CR>
+map <F8> :w <bar> !clear && contest "%:t" 98<CR>
+map <F9> :w <bar> !clear && contest "%:t"<CR>
+map <F10> :!run_contest "%:t"<CR>
 map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:t""/problem/""%:t:r" -f "%:t"<CR>
 map <F2> :w <bar> !acedit --run "%:p" -c "%:p:h:t" -p "%:t:r"<CR>
 map <F6> :!cf sid<CR>

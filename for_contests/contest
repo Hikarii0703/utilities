@@ -22,7 +22,7 @@ filename = sys.argv[1]
 purefilename = ''
 
 if filename.endswith('.cpp'):
-    purefilename = filename[:-4].upper()
+    purefilename = filename[:-4]
 else:
     purefilename = filename.upper()
     filename = filename + '.cpp'
@@ -45,3 +45,4 @@ except:
     exit(0)
 
 print("%s[FINISHED]%s" % (colo.GREEN, colo.NC))
+
