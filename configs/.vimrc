@@ -1,48 +1,48 @@
 "========== Plugins =========="
 call plug#begin('~/.vim/plugged')
 
-Plug 'liuchengxu/space-vim-dark'
-Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-fugitive'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'SirVer/ultisnips'
-Plug 'lervag/vimtex'
+Plug 'cocopon/iceberg.vim'
 Plug 'cohama/lexima.vim'
-Plug 'mattn/emmet-vim'
 
 call plug#end()
 
 "========== Colorcheme =========="
-let ayucolor="mirage"
-colorscheme ayu
-"colorscheme space-vim-dark
-"let g:lightline = {'colorscheme': 'deus'}
+colorscheme iceberg
 
-"hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
+let g:lightline = {'colorscheme': 'deus'}
 
 if(has("termguicolors"))
   set termguicolors
 endif
-highlight MatchParen ctermbg=blue guibg=darkgreen
+
+set background=dark
+
 "========== Settings =========="
+" indentation
 set shiftwidth=4
 set autoindent
 set smartindent
+set cindent
 set tabstop=4
-set number
+set expandtab
+set softtabstop=4
+
+" misc vim config
 set laststatus=2
 set noshowmode
 set splitright
 set showcmd
 set timeoutlen=1000 ttimeoutlen=0
-let NERDTreeShowHidden=1
-"autocmd StdinReadPre * let s:std_in=2
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+set number
+set encoding=utf-8
+
+" don't clear clipboard on exit
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
+
+" no backups
 set autoread
 set autowrite
 set nobackup
@@ -52,50 +52,38 @@ set backupdir=~/tmp,/tmp
 set backupcopy=yes
 set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set directory=/tmp
-filetype plugin on
-set clipboard=unnamedplus
-set autoindent
-set si
-set cindent
-nnoremap <C-k> :bnext<CR>
+
+" nerd commenter
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
-map <C-C> <leader>cb
-map <C-X> <leader>cu
-nmap ? :NERDTreeToggle<CR>
-"let g:NERDTreeQuitOnOpen = 1 
-let g:NERDTreeWinPos = "left"
-"nnoremap x "_x
-"nnoremap d "_d
-"nnoremap D "_D
-"vnoremap d "_d
-"nnoremap <leader>d ""d
-"nnoremap <leader>D ""D
-"vnoremap <leader>d ""d
-set encoding=utf-8
-set expandtab
-set softtabstop=4
+map <C-c> <leader>cb
+map <C-x> <leader>cu
+
+" ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:tex_flavor = 'latex'
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_quickfix_mode=0
-map C :tabp<CR>
-map V :tabn<CR>
-map X :tabclose<CR>
-"autocmd BufWinEnter * NERDTreeMirror
+
 "========== CP config =========="
+" (some commands requre having necessary files)
+" F3: copy the whole file content to clipboard
+" F4: check code with example test cases on Codeforces
+" F5: submit code to Codeforces
+" F6: open the latest submission
+" F8: compile code with C++98
+" F9: compile code with C++17
+" F10: run compiled executable
+
 map <F3> :%y+<CR>
-map <F4> :vert term<CR>
+map <F4> :w <bar> !acedit --run "%:p" -c "%:p:h:t" -p "%:t:r"<CR>
+map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:t""/problem/""%:t:r" -f "%:t"<CR>
+map <F6> :!cf sid<CR>
 map <F8> :w <bar> !clear && contest "%:t" 98<CR>
 map <F9> :w <bar> !clear && contest "%:t"<CR>
 map <F10> :!run_contest "%:t"<CR>
-map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:t""/problem/""%:t:r" -f "%:t"<CR>
-map <F2> :w <bar> !acedit --run "%:p" -c "%:p:h:t" -p "%:t:r"<CR>
-map <F6> :!cf sid<CR>
 
+" add template to cpp file
 function AddTemplate(tmpl_file)
     exe "0read " . a:tmpl_file
     "let substDict = {}
@@ -105,8 +93,9 @@ function AddTemplate(tmpl_file)
     8
 endfunction
 
-autocmd BufNewFile *.cpp call AddTemplate("~/template.cpp")
-autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/template.cpp")
-
+let dir="~/template.cpp"
+autocmd BufNewFile *.cpp call AddTemplate(dir)
+autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate(dir)
 "========== EOF =========="
+
 

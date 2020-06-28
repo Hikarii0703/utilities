@@ -10,7 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/hikarii/.oh-my-zsh"
-
+export PATH="${PATH}:${HOME}/.local/bin/"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -165,3 +165,14 @@ cleanio() {
     find . -name "*.inp" -type f -delete
     find . -name "*.exe" -type f -delete
 }
+fm()
+{
+    local dst="$(command vifm --choose-dir - "$@")"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
+}
+
+
