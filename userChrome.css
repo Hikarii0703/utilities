@@ -1,0 +1,42 @@
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+tabbrowser tabpanels {
+    background-color: rgb(19,19,20) !important; 
+}
+
+browser {
+    background-color: #131314 !important;
+}
+
+#contentAreaContextMenu {
+    margin: 2px 0 0 2px;
+}
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+    #fullscreen-warning {
+        display: none !important;
+    }
+    #PopupAutoCompleteRichResult {
+        /* bindings.xml in the same folder as userChrome.css */
+        -moz-binding: url("bindings.xml#urlbar-popup") !important;
+    }
+    #navigator-toolbox {
+        display: contents !important;
+    }
+    #nav-bar {
+        -moz-box-ordinal-group: 2 !important;
+    }
+
+}
+
+/* Tab config */
+#TabsToolbar, .tabbrowser-tab {
+    max-height: 25px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+#nav-bar {
+    max-height: 35px !important;
+}
+
+/* .mozilla/firefox/profile/chrome */
