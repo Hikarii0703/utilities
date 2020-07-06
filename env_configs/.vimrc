@@ -40,6 +40,7 @@ set number
 set encoding=utf-8
 
 " don't clear clipboard on exit
+set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " no backups
@@ -65,6 +66,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" replace
 "========== CP config =========="
 " (some commands requre having necessary files)
 " F3: copy the whole file content to clipboard
@@ -90,12 +92,11 @@ function AddTemplate(tmpl_file)
     "let substDict["in"] = expand("%:t:r").".inp"
     "let substDict["out"] = expand("%:t:r").".out"
     "exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-    8
+    7
 endfunction
 
 let dir="~/template.cpp"
 autocmd BufNewFile *.cpp call AddTemplate(dir)
 autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate(dir)
 "========== EOF =========="
-
 
