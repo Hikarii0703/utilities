@@ -92,4 +92,4 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "");
 // // Mozilla Blocklist
 user_pref("extensions.blocklist.enabled", false); // Disable blocklist
 user_pref("extensions.blocklist.url", "");
-user_pref("services.settings.server", ""); // Disable contacting settings server
+// user_pref("services.settings.server", ""); // Disable contacting settings server

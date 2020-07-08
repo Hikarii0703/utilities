@@ -169,9 +169,9 @@ toolbarbutton#alltabs-button {
   fill: #81a1c1 !important;
 }
 
-.toolbarbutton-1[open] {
-  fill: #17ed00 !important;
-}
+/* .toolbarbutton-1[open] {    */
+/*   fill: #17ed00 !important; */
+/* }                           */
 
 .panel-arrow {
   fill: #3b4252 !important;
@@ -192,9 +192,9 @@ toolbarbutton#alltabs-button {
   max-width: 0px !important;
 }
 
-#identity-icon {
-  fill: #17ed00 !important;
-}
+/* #identity-icon {            */
+/*   fill: #17ed00 !important; */
+/* }                           */
 
 
 tabbrowser tabpanels {
