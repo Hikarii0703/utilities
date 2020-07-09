@@ -43,20 +43,20 @@ wrapping-scroll = false
 
 label-mode-padding = 1
 label-mode-foreground = #34343e
-label-mode-background = #81a2be
+label-mode-background = #81a1c1
 
 label-unfocused = %index%
-label-unfocused-background = #688486
-label-unfocused-foreground = #2f2f38
+label-unfocused-background = #4c566a
+label-unfocused-foreground = #81a1c1
 label-unfocused-padding = 1
 
 label-focused = %index%
-label-focused-background = #81a2be
+label-focused-background = #81a1c1
 label-focused-foreground = #2f2f38
 label-focused-padding = 1
 
 label-visible = %index%
-label-visible-background = #81a2be
+label-visible-background = #81a1c1
 label-visible-foreground = #2f2f38
 label-visible-padding = 1
 
@@ -71,7 +71,7 @@ interval = 3.0
 
 format-connected-padding = 2
 format-connected-foreground = #2f2f38
-format-connected-background = #81a2be
+format-connected-background = #81a1c1
 format-connected-prefix = " "
 format-connected-prefix-foreground = #2f2f38
 label-connected = %local_ip%
@@ -83,7 +83,7 @@ type = internal/cpu
 interval = 1
 format = <label>
 format-foreground = #2f2f38
-format-background = #81a2be
+format-background = #81a1c1
 format-padding = 2
 label =  %percentage%%
 
@@ -92,7 +92,7 @@ type = internal/memory
 interval = 1
 format = <label>
 format-foreground = #2f2f38
-format-background = #81a2be
+format-background = #81a1c1
 format-padding = 2
 label =  %gb_used%
 
@@ -106,7 +106,7 @@ time = " %H:%M:%S"
 
 format-prefix = 
 format-foreground = #2f2f38
-format-background = #81a2be
+format-background = #81a1c1
 format-padding = 2
 
 label = %time% %date%
@@ -119,11 +119,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = #81a2be
+label-open-foreground = #81a1c1
 label-close =  cancel
-label-close-foreground = #81a2be
+label-close-foreground = #81a1c1
 label-separator = |
-label-separator-foreground = #81a2be
+label-separator-foreground = #81a1c1
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -156,11 +156,11 @@ format-volume = <label-volume>
 format-muted = <label-muted>
 
 format-volume-foreground = #2f2f38
-format-volume-background = #81a2be
+format-volume-background = #81a1c1
 format-volume-padding = 2
 
 format-muted-foreground = #2f2f38
-format-muted-background = #81a2be
+format-muted-background = #81a1c1
 format-muted-padding = 2
 
 label-volume =  %percentage%%
@@ -172,3 +172,4 @@ screenchange-reload = true
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+
