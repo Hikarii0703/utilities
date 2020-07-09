@@ -37,6 +37,7 @@ set splitright
 set showcmd
 set timeoutlen=1000 ttimeoutlen=0
 set number
+set relativenumber
 set encoding=utf-8
 
 " don't clear clipboard on exit
