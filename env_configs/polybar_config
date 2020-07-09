@@ -28,7 +28,7 @@ modules-center =
 modules-right = memory cpu pulseaudio eth date
 
 tray-position = right
-;tray-padding =
+tray-background = #81a1c1
 wm-restack = i3
 override-redirect = false
 
