@@ -177,7 +177,7 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore;
+# exec --no-startup-id nitrogen --restore;
 exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -188,10 +188,10 @@ exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 # Theme colors
 client.focused #b0c4bb #2f2f38 #b0c4bb #5e81ac #5e81ac
-client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.unfocused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
-client.urgent #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.placeholder #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
+client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.background #2f2f38
 
 # Gaps
@@ -239,7 +239,7 @@ exec --no-startup-id mate-power-manager
 #bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
 # background
-# exec --no-startup-id feh --bg-fill /usr/share/wallpapers/Dance_of_the_Spirits/contents/images/2560x1440.jpg
+exec --no-startup-id feh --bg-fill /home/hikarii/nordwp.jpg
 
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
 exec --no-startup-id wmctrl -c Plasma
@@ -256,10 +256,7 @@ bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/pn
 bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 
 # Lockscreen lul
-# bindsym $mod+Shift+x exec --no-startup-id i3lock --color=6f7878
-
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+x exec --no-startup-id i3lock --color=3b4252
 
 # start polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh

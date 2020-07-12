@@ -60,7 +60,7 @@ user_pref("accessibility.force_disabled", 1);
 user_pref("extensions.pocket.enabled", false); // Disable pocket
 user_pref("extensions.screenshots.disabled", true); // Disable screenshots
 user_pref("extensions.webcompat-reporter.enabled", false); // Disable report this site
-user_pref("identity.fxaccounts.enabled", false); // Disable Fx accounts
+user_pref("identity.fxaccounts.enabled", true); // Disable Fx accounts
 user_pref("media.eme.enabled", false); // Disable EME for DRM content
 user_pref("media.gmp-gmpopenh264.enabled", false); // Disable OpenH264 for WebRTC
 user_pref("media.gmp-manager.url", "");
@@ -92,4 +92,8 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "");
 // // Mozilla Blocklist
 user_pref("extensions.blocklist.enabled", false); // Disable blocklist
 user_pref("extensions.blocklist.url", "");
-// user_pref("services.settings.server", ""); // Disable contacting settings server
+user_pref("services.settings.server", ""); // Disable contacting settings server
+
+// Custom
+user_pref("full-screen-api.ignore-widgets", true);
+
