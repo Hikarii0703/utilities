@@ -3,27 +3,30 @@ snippet pure
 
 using namespace std;
 
-void actual_main() {
-	$0
-}
-
 int32_t main() {
     cin.tie(NULL)->sync_with_stdio(false);
-    actual_main();
+$0
+
 	return 0;
 }
 endsnippet
 
 snippet db
 // ====================================================================
-string to_string(string s){return '"'+s+'"';}
+template<typename A,typename B>string to_string(pair<A,B> p); 
+template<typename A,typename B,typename C>string to_string(tuple<A,B,C> p);
+template<typename A,typename B,typename C,typename D>string to_string(tuple<A,B,C,D> p);
+string to_string(const string& s){return '"'+s+'"';}
 string to_string(const char* s){return to_string((string)s);}
 string to_string(bool b){return (b?"true":"false");}
-template<typename A,typename B>string to_string(pair<A,B> p){return '('+to_string(p.first)+", "+ to_string(p.second)+')';}
-template<typename A>string to_string(A v){bool first=1;string res="{";for(const auto &x:v){if(!first){res += ", ";}first=0;res+=to_string(x);}res += '}';return res;}
-void dbo(){cerr<<endl;} template<typename _H,typename... _T>void dbo(_H H,_T... T){cerr<<' '<<to_string(H);dbo(T...);}
+string to_string(vector<bool> v){bool f=1;string res="{";for(int i=0;i<int(v.size());i++){if(!f){res+=", ";}f=0;res+=to_string(v[i]);}res+='}';return res;}
+template<size_t N>string to_string(bitset<N> v){string res;for(int i=0;i<N;i++){res+=char('0'+v[i]);}return res;}
+template<typename A>string to_string(A v){bool f=1;string res="{";for(const auto &x:v){if(!f){res+=", ";}f=0;res+=to_string(x);}res+= "}";return res;}
+template<typename A,typename B>string to_string(pair<A,B> p) {return "("+to_string(p.first)+", "+to_string(p.second)+")";} 
+void debug_out(){cerr << endl;}
+template<typename _H,typename... _T>void debug_out(_H H,_T... T){cerr<<' '<<to_string(H);debug_out(T...);}
 #ifdef LOCAL
-#define debug(...) cerr<<'['<<#__VA_ARGS__<<"]:",dbo(__VA_ARGS__)
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define debug(...) "Hikarii"
 #endif
