@@ -6,6 +6,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'SirVer/ultisnips'
 Plug 'cocopon/iceberg.vim'
 Plug 'cohama/lexima.vim'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -37,7 +38,6 @@ set splitright
 set showcmd
 set timeoutlen=1000 ttimeoutlen=0
 set number
-set relativenumber
 set encoding=utf-8
 
 " don't clear clipboard on exit
@@ -67,21 +67,14 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" replace
 "========== CP config =========="
 " (some commands requre having necessary files)
 " F3: copy the whole file content to clipboard
-" F4: check code with example test cases on Codeforces
-" F5: submit code to Codeforces
-" F6: open the latest submission
 " F8: compile code with C++98
 " F9: compile code with C++17
 " F10: run compiled executable
 
 map <F3> :%y+<CR>
-map <F4> :w <bar> !acedit --run "%:p" -c "%:p:h:t" -p "%:t:r"<CR>
-map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:t""/problem/""%:t:r" -f "%:t"<CR>
-map <F6> :!cf sid<CR>
 map <F8> :w <bar> !clear && contest "%:t" 98<CR>
 map <F9> :w <bar> !clear && contest "%:t"<CR>
 map <F10> :!run_contest "%:t"<CR>
@@ -100,4 +93,3 @@ let dir="~/template.cpp"
 autocmd BufNewFile *.cpp call AddTemplate(dir)
 autocmd BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate(dir)
 "========== EOF =========="
-
