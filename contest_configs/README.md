@@ -12,7 +12,7 @@ These files are stored in <b>~/.local/bin/</b>
 These files are saved through <b>:UltiSnipsEdit</b> (Vim)
 * cpp.snippets: snippets for competitve programming in C++
 
-These files (inside <b>Subl</b>) are stored in <b>~/.config/sublime-text-3/Paackages/User</b>
+These files (inside <b>Subl</b>) are stored in <b>~/.config/sublime-text-3/Paackages/User [NOT UP TO DATE]</b>
 * bigint.sublime-snippet: big integer snippet, by <a href="https://codeforces.com/profile/I_love_Hoang_Yen">I_love_Hoang_Yen</a>, can be found inside his <a href="https://github.com/ngthanhtrung23/ACM_Notebook_new/blob/master/Math/bigint.h">repository</a>
 * custom_hash.sublime-snippet: uses splitmix64 to <a href="https://codeforces.com/blog/entry/62393">avoid hash collision</a>
 * debug.sublime-snippet: <a href="https://codeforces.com/profile/tourist">tourist</a>'s debugger but compressed
