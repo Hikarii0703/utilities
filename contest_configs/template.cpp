@@ -2,9 +2,10 @@
 
 using namespace std;
 
-int32_t main() {
-    cin.tie(NULL)->sync_with_stdio(false);
+signed main() {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
 
-    
+
+
     return 0;
 }

@@ -4,8 +4,8 @@ height = 20
 radius = 0
 fixed-center = false
 
-background = #4c566a
-foreground = #b0c4bb
+background = #EFF1F5
+foreground = #657b83
 
 line-size = 3
 line-color =
@@ -28,12 +28,13 @@ modules-center =
 modules-right = memory cpu pulseaudio eth date
 
 tray-position = right
-tray-background = #81a1c1
+tray-background = #FFFFFFFF
 wm-restack = i3
 override-redirect = false
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+# bottom = true
 
 [module/i3]
 type = internal/i3
@@ -42,22 +43,22 @@ index-sort = true
 wrapping-scroll = false
 
 label-mode-padding = 1
-label-mode-foreground = #34343e
-label-mode-background = #81a1c1
-
-label-unfocused = %index%
-label-unfocused-background = #4c566a
-label-unfocused-foreground = #81a1c1
-label-unfocused-padding = 1
+label-mode-foreground = #FFFFFFFF
+label-mode-background = #4E524F
 
 label-focused = %index%
-label-focused-background = #81a1c1
-label-focused-foreground = #2f2f38
+label-focused-background = #4E524F
+label-focused-foreground = #FFFFFFFF
 label-focused-padding = 1
 
+label-unfocused = %index%
+label-unfocused-background = #FFFFFFFF
+label-unfocused-foreground = #000000
+label-unfocused-padding = 1
+
 label-visible = %index%
-label-visible-background = #81a1c1
-label-visible-foreground = #2f2f38
+label-visible-background = #FFFFFFFF
+label-visible-foreground = #000000
 label-visible-padding = 1
 
 label-urgent = %index%
@@ -70,10 +71,10 @@ interface = enp2s0
 interval = 3.0
 
 format-connected-padding = 2
-format-connected-foreground = #2f2f38
-format-connected-background = #81a1c1
+format-connected-foreground = #000000
+format-connected-background = #FFFFFFFF
 format-connected-prefix = " "
-format-connected-prefix-foreground = #2f2f38
+format-connected-prefix-foreground = #000000
 label-connected = %local_ip%
 
 format-disconnected =
@@ -82,8 +83,8 @@ format-disconnected =
 type = internal/cpu
 interval = 1
 format = <label>
-format-foreground = #2f2f38
-format-background = #81a1c1
+format-foreground = #000000
+format-background = #FFFFFFFF
 format-padding = 2
 label =  %percentage%%
 
@@ -91,8 +92,8 @@ label =  %percentage%%
 type = internal/memory
 interval = 1
 format = <label>
-format-foreground = #2f2f38
-format-background = #81a1c1
+format-foreground = #000000
+format-background = #FFFFFFFF
 format-padding = 2
 label =  %gb_used%
 
@@ -100,16 +101,16 @@ label =  %gb_used%
 type = internal/date
 interval = 1   
 
-date = "%d/%m/%Y"
+date = " %a %d/%m/%Y"
 
-time = " %H:%M:%S"
+time = "%H:%M:%S"
 
 format-prefix = 
-format-foreground = #2f2f38
-format-background = #81a1c1
+format-foreground = #000000
+format-background = #FFFFFFFF
 format-padding = 2
 
-label = %time% %date%
+label = %date% %time%
 
 [module/powermenu]
 type = custom/menu
@@ -119,11 +120,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = #81a1c1
+label-open-foreground = #FFFFFFFF
 label-close =  cancel
-label-close-foreground = #81a1c1
+label-close-foreground = #FFFFFFFF
 label-separator = |
-label-separator-foreground = #81a1c1
+label-separator-foreground = #FFFFFFFF
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -155,12 +156,12 @@ use-ui-max = false
 format-volume = <label-volume>
 format-muted = <label-muted>
 
-format-volume-foreground = #2f2f38
-format-volume-background = #81a1c1
+format-volume-foreground = #000000
+format-volume-background = #FFFFFFFF
 format-volume-padding = 2
 
-format-muted-foreground = #2f2f38
-format-muted-background = #81a1c1
+format-muted-foreground = #000000
+format-muted-background = #FFFFFFFF
 format-muted-padding = 2
 
 label-volume =  %percentage%%
@@ -172,4 +173,3 @@ screenchange-reload = true
 [global/wm]
 margin-top = 0
 margin-bottom = 0
-

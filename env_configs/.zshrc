@@ -158,12 +158,14 @@ clean() {
     find . -name "in" -type f -delete
     find . -name "out" -type f -delete
     find . -name "*.exe" -type f -delete
+    find . -name "*:tests" -type f -delete
 }
 
 cleanio() {
     find . -name "*.out" -type f -delete
     find . -name "*.inp" -type f -delete
     find . -name "*.exe" -type f -delete
+    find . -name "*:tests" -type f -delete
 }
 fm()
 {
@@ -174,5 +176,10 @@ fm()
     fi
     cd "$dst"
 }
-
-
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+# Dành cho những phần mềm dựa trên qt4
+export QT4_IM_MODULE=ibus
+# Dành cho những phần mềm dùng thư viện đồ họa clutter
+export CLUTTER_IM_MODULE=ibus

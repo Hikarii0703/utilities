@@ -23,15 +23,15 @@ user_pref("dom.battery.enabled", false); // Disable battery status
 user_pref("dom.gamepad.enabled", false); // Disable USB devices
 user_pref("dom.push.enabled", false); // Disable push notifications
 user_pref("dom.serviceWorkers.enabled", false); // Disable service workers
-user_pref("dom.webnotifications.enabled", false); // Disable desktop notifications
 user_pref("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"); // Useragent [Masks Ubuntu User-Agent; redundant with RFP; remove if on Windows]
+user_pref("dom.webnotifications.enabled", false); // Disable desktop notifications
 user_pref("geo.enabled", false); // Disable geolocation
 user_pref("geo.provider.network.url", "");
 user_pref("geo.provider-country.network.url", "");
-user_pref("media.navigator.enabled", false); // Disable mic and camera
-user_pref("media.peerconnection.enabled", false); // Disable WebRTC
+user_pref("media.navigator.enabled", true); // Disable mic and camera
+user_pref("media.peerconnection.enabled", true); // Disable WebRTC
 user_pref("media.webspeech.synth.enabled", false); // Disable speech synthesis
-user_pref("privacy.donottrackheader.enabled", true); // Send DNT header
+//user_pref("privacy.donottrackheader.enabled", true); // Send DNT header
 user_pref("privacy.firstparty.isolate", true); // Restrict data to domain level
 user_pref("privacy.resistFingerprinting", false); // RFP [Enable RFP with "true"]
 user_pref("webgl.disabled", true); // Disable WebGL
@@ -62,7 +62,7 @@ user_pref("extensions.screenshots.disabled", true); // Disable screenshots
 user_pref("extensions.webcompat-reporter.enabled", false); // Disable report this site
 user_pref("identity.fxaccounts.enabled", true); // Disable Fx accounts
 user_pref("media.eme.enabled", false); // Disable EME for DRM content
-user_pref("media.gmp-gmpopenh264.enabled", false); // Disable OpenH264 for WebRTC
+user_pref("media.gmp-gmpopenh264.enabled", true); // Disable OpenH264 for WebRTC
 user_pref("media.gmp-manager.url", "");
 user_pref("media.gmp-provider.enabled", false);
 user_pref("media.gmp-widevinecdm.enabled", false); // Disable Widevine CDM
@@ -96,4 +96,5 @@ user_pref("services.settings.server", ""); // Disable contacting settings server
 
 // Custom
 user_pref("full-screen-api.ignore-widgets", true);
+user_pref("permissions.default.shortcuts", 0);
 
