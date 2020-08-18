@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+// ====================================================================
+void read() {return;} void writesp() {return;} void writeln() {return;}
+template<typename T>void write(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
+template<typename T>void _wiln_(T x) {write(x); putchar('\n');}
+template<typename T>void _wisp_(T x) {write(x); putchar(' ');}
+template<typename _H, typename... _T>void writesp(_H H, _T... T) {_wisp_(H); writesp(T...);}
+template<typename _H, typename... _T>void writeln(_H H, _T... T) {_wiln_(H); writeln(T...);}
+template<typename T>void _ri_(T &x) {char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') {x = (x << 3) + (x << 1) + (c - '0');} if (sign)x = -x;}
+template<typename _H, typename... _T>void read(_H& H, _T&... T) {_ri_(H); read(T...);}
+// ====================================================================
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>fast</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>
