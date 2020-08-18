@@ -4,4 +4,4 @@ This is where I save some general config files.
 * i3_config: i3wm configuration (stored in <b>~/.config/i3/config</b>)
 * polybar_config: polybar configuration (stored in <b>~/.config/polybar/config</b>)
 * compton.comf: compton configuration (stored in <b>~/.config/compton.conf</b>)
-* i3wmthemer_bar_launch.sh: launches polybar (stored in <b>~/.config/polybar/i3wmthemer_bar_launch</b)
+* i3wmthemer_bar_launch.sh: launches polybar (stored in <b>~/.config/polybar/i3wmthemer_bar_launch</b>)
