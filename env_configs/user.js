@@ -97,4 +97,3 @@ user_pref("services.settings.server", ""); // Disable contacting settings server
 // Custom
 user_pref("full-screen-api.ignore-widgets", true);
 user_pref("permissions.default.shortcuts", 0);
-

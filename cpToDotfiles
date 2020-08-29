@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+from os import system
+
+def Run(command):
+    system(command)
+    try:
+        print(">>>", command)
+    except(e):
+        print("Failed.")
+        print(e)
+        exit(0)
+
+HOME = '~'
+GIT = HOME + '/Documents/utilities'
+SUBLIME = HOME + '/.config/sublime-text-3/Packages/User'
+FIREFOX_ID = 'z68cknfg.default-release-1594229572044'
+FIREFOX = HOME + '/.mozilla/firefox/' + FIREFOX_ID
+
+## contest_configs
+# Subl
+Run('cp ' + SUBLIME + '/Default (Linux).sublime-keymap' + ' ' + GIT + '/contest_configs/Subl/Default (Linux).sublime-keymap')
+Run('cp ' + SUBLIME + '/FastOlympicCoding.sublime-settings' + ' ' + GIT + '/contest_configs/Subl/FastOlympicCoding.sublime-settings')
+Run('cp ' + SUBLIME + '/bigint.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/bigint.sublime-snippet')
+Run('cp ' + SUBLIME + '/custom_hash.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/custom_hash.sublime-snippet')
+Run('cp ' + SUBLIME + '/debug.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/debug.sublime-snippet')
+Run('cp ' + SUBLIME + '/fast.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/fast.sublime-snippet')
+Run('cp ' + SUBLIME + '/freopen.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/freopen.sublime-snippet')
+Run('cp ' + SUBLIME + '/mod.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/mod.sublime-snippet')
+Run('cp ' + SUBLIME + '/modint.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/modint.sublime-snippet')
+Run('cp ' + SUBLIME + '/pragmas.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/pragmas.sublime-snippet')
+Run('cp ' + SUBLIME + '/pure.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/pure.sublime-snippet')
+
+Run('cp ' + HOME + '/.vim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_configs/cpp.snippets')
+
+# template
+Run('cp ' + HOME + '/template.cpp'  + ' ' + GIT + '/contest_configs/template.cpp')
+
+## env_configs
+Run('cp ' + HOME + '/.vimrc'  + ' ' + GIT + '/env_configs/.vimrc')
+Run('cp ' + HOME + '/.zshrc'  + ' ' + GIT + '/env_configs/.zshrc')
+Run('cp ' + HOME + '/.config/vifm/colors/Default.vifm'  + ' ' + GIT + '/env_configs/Default.vifm')
+Run('cp ' + HOME + '/.config/i3/config'  + ' ' + GIT + '/env_configs/i3_config')
+Run('cp ' + HOME + '/.config/polybar/config'  + ' ' + GIT + '/env_configs/polybar_config')
+Run('cp ' + HOME + '/.config/vifm/vifmrc'  + ' ' + GIT + '/env_configs/vifmrc')
+
+# Firefox has to be installed manually
+Run('cp ' + FIREFOX + '/user.js'  + ' ' + GIT + '/env_configs/user.js')
+Run('cp ' + FIREFOX + '/chrome/userChrome.css'  + ' ' + GIT + '/env_configs/userChrome.css')

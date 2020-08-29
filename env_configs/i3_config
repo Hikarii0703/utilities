@@ -209,9 +209,10 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock --color=#FFFFFF
 
 # enable ibus
 exec ibus-daemon -drx
+exec redshift-gtk
+exec flameshot
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-

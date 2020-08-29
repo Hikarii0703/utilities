@@ -2,7 +2,8 @@ snippet pure
 #include <bits/stdc++.h>
 
 signed main() {
-    std::ios_base::sync_with_stdio(false); std::cin.tie(NULL);
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
 
 $0
 
@@ -18,6 +19,10 @@ void __print(unsigned long x) {std::cerr << x;} void __print(unsigned long long 
 void __print(double x) {std::cerr << x;} void __print(long double x) {std::cerr << x;} void __print(char x) {std::cerr << '\'' << x << '\'';}
 void __print(const char *x) {std::cerr << '\"' << x << '\"';} void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
 template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
+template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
+template <typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
+template <typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
+template <typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
 template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
 template <typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
 #define debug(x...) std::cerr << "[" << #x << "] = ["; _print(x)
@@ -36,8 +41,8 @@ endsnippet
 
 snippet freopen
 #ifndef LOCAL
-freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
-freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+	freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 endsnippet
 
@@ -67,38 +72,80 @@ endsnippet
 
 snippet modint
 // ====================================================================
-template<int MOD>
-struct mint {
-    int val;
-    mint() { val = 0; }
-    mint(const long long& v) {
-        val = (-MOD <= v && v < MOD) ? v : v % MOD;
-        if (val < 0) val += MOD;
-    }
+template <int MOD_> struct modnum {
+	static constexpr int MOD = MOD_;
+	static_assert(MOD_ > 0, "MOD must be positive"); 
+private:
+	using ll = long long;
+	int v;
+	static int minv(int a, int m) {
+		a %= m;
+		assert(a);
+		return a == 1 ? 1 : int(m - ll(minv(m, a)) * ll(m) / a);
+	}
 
-    friend std::ostream& operator<<(std::ostream& os, const mint& a) { return os << a.val; }
-    friend bool operator==(const mint& a, const mint& b) { return a.val == b.val; }
-    friend bool operator!=(const mint& a, const mint& b) { return !(a == b); }
-    friend bool operator<(const mint& a, const mint& b) { return a.val < b.val; }
+public:
+	modnum() : v(0) {}
+	modnum(ll v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+	explicit operator int() const { return v; }
+	friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
+	friend std::istream& operator >> (std::istream& in, modnum& n) { ll v_; in >> v_; n = modnum(v_); return in; }
+	friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
+	friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; } 
+	modnum inv() const {
+		modnum res;
+		res.v = minv(v, MOD);
+		return res;
+	}
+	friend modnum inv(const modnum& m) { return m.inv(); }
+	modnum neg() const {
+		modnum res;
+		res.v = v ? MOD-v : 0;
+		return res;
+	}
+	friend modnum neg(const modnum& m) { return m.neg(); }
+	modnum operator- () const {
+		return neg();
+	}
+	modnum operator+ () const {
+		return modnum(*this);
+	}
+	modnum& operator ++ () {
+		v ++;
+		if (v == MOD) v = 0;
+		return *this;
+	}
+	modnum& operator -- () {
+		if (v == 0) v = MOD;
+		v --;
+		return *this;
+	}
+	modnum& operator += (const modnum& o) {
+		v += o.v;
+		if (v >= MOD) v -= MOD;
+		return *this;
+	}
+	modnum& operator -= (const modnum& o) {
+		v -= o.v;
+		if (v < 0) v += MOD;
+		return *this;
+	}
+	modnum& operator *= (const modnum& o) {
+		v = int(ll(v) * ll(o.v) % MOD);
+		return *this;
+	}
+	modnum& operator /= (const modnum& o) {
+		return *this *= o.inv();
+	}
 
-    mint operator-() const { return mint(-val); }
-    mint& operator+=(const mint& m) { if ((val += m.val) >= MOD) val -= MOD; return *this; }
-    mint& operator-=(const mint& m) { if ((val -= m.val) < 0) val += MOD; return *this; }
-    mint& operator*=(const mint& m) { val = (long long)val*m.val%MOD; return *this; }
-    friend mint ipow(mint a, long long p) {
-        mint ans = 1; for (; p; p /= 2, a *= a) if (p&1) ans *= a;
-        return ans;
-    }
-    friend mint inv(const mint& a) { assert(a.val); return ipow(a, MOD - 2); }
-    mint& operator/=(const mint& m) { return (*this) *= inv(m); }
-
-    friend mint operator+(mint a, const mint& b) { return a += b; }
-    friend mint operator-(mint a, const mint& b) { return a -= b; }
-    friend mint operator*(mint a, const mint& b) { return a *= b; }
-    friend mint operator/(mint a, const mint& b) { return a /= b; }
-    operator int64_t() const {return val; }
+	friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
+	friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
+	friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
+	friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
+	friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
+	friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
-using modint = mint<1000000007>;
+using Mint = modnum<1000000007>;
 // ====================================================================
 endsnippet
 
@@ -167,5 +214,4 @@ struct BigInt {
 };
 // ====================================================================
 endsnippet
-
 

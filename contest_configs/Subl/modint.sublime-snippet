@@ -1,38 +1,80 @@
 <snippet>
     <content><![CDATA[
 // ====================================================================
-template<int MOD>
-struct mint {
-    int val;
-    mint() { val = 0; }
-    mint(const long long& v) {
-        val = (-MOD <= v && v < MOD) ? v : v % MOD;
-        if (val < 0) val += MOD;
+template <int MOD_> struct modnum {
+    static constexpr int MOD = MOD_;
+    static_assert(MOD_ > 0, "MOD must be positive"); 
+private:
+    using ll = long long;
+    int v;
+    static int minv(int a, int m) {
+        a %= m;
+        assert(a);
+        return a == 1 ? 1 : int(m - ll(minv(m, a)) * ll(m) / a);
     }
 
-    friend ostream& operator<<(ostream& os, const mint& a) { return os << a.val; }
-    friend bool operator==(const mint& a, const mint& b) { return a.val == b.val; }
-    friend bool operator!=(const mint& a, const mint& b) { return !(a == b); }
-    friend bool operator<(const mint& a, const mint& b) { return a.val < b.val; }
-
-    mint operator-() const { return mint(-val); }
-    mint& operator+=(const mint& m) { if ((val += m.val) >= MOD) val -= MOD; return *this; }
-    mint& operator-=(const mint& m) { if ((val -= m.val) < 0) val += MOD; return *this; }
-    mint& operator*=(const mint& m) { val = (long long)val * m.val % MOD; return *this; }
-    friend mint ipow(mint a, long long p) {
-        mint ans = 1; for (; p; p /= 2, a *= a) if (p & 1) ans *= a;
-        return ans;
+public:
+    modnum() : v(0) {}
+    modnum(ll v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+    explicit operator int() const { return v; }
+    friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
+    friend std::istream& operator >> (std::istream& in, modnum& n) { ll v_; in >> v_; n = modnum(v_); return in; }
+    friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
+    friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; } 
+    modnum inv() const {
+        modnum res;
+        res.v = minv(v, MOD);
+        return res;
     }
-    friend mint inv(const mint& a) { assert(a.val); return ipow(a, MOD - 2); }
-    mint& operator/=(const mint& m) { return (*this) *= inv(m); }
+    friend modnum inv(const modnum& m) { return m.inv(); }
+    modnum neg() const {
+        modnum res;
+        res.v = v ? MOD-v : 0;
+        return res;
+    }
+    friend modnum neg(const modnum& m) { return m.neg(); }
+    modnum operator- () const {
+        return neg();
+    }
+    modnum operator+ () const {
+        return modnum(*this);
+    }
+    modnum& operator ++ () {
+        v ++;
+        if (v == MOD) v = 0;
+        return *this;
+    }
+    modnum& operator -- () {
+        if (v == 0) v = MOD;
+        v --;
+        return *this;
+    }
+    modnum& operator += (const modnum& o) {
+        v += o.v;
+        if (v >= MOD) v -= MOD;
+        return *this;
+    }
+    modnum& operator -= (const modnum& o) {
+        v -= o.v;
+        if (v < 0) v += MOD;
+        return *this;
+    }
+    modnum& operator *= (const modnum& o) {
+        v = int(ll(v) * ll(o.v) % MOD);
+        return *this;
+    }
+    modnum& operator /= (const modnum& o) {
+        return *this *= o.inv();
+    }
 
-    friend mint operator+(mint a, const mint& b) { return a += b; }
-    friend mint operator-(mint a, const mint& b) { return a -= b; }
-    friend mint operator*(mint a, const mint& b) { return a *= b; }
-    friend mint operator/(mint a, const mint& b) { return a /= b; }
-    operator int64_t() const {return val; }
+    friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
+    friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
+    friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
+    friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
+    friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
+    friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
-#define modint mint<1000000007>
+using Mint = modnum<1000000007>;
 // ====================================================================
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

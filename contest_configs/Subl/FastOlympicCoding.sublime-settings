@@ -5,7 +5,7 @@
 		{
 			"name": "C++",
 			"extensions": ["cpp"],
-			"compile_cmd": "g++ '{source_file}' -std=c++17 -o {file_name}.exe -O2 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL",
+			"compile_cmd": "g++ '{source_file}' -std=c++17 -o {file_name}.exe -O2 -Wall -Wextra -Wshadow -Werror -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL",
 			"run_cmd": "./\"{file_name}.exe\" {args} -debug",
 
 			"lint_compile_cmd": "g++ -std=c++17 '{source_file}' -I '{source_file_dir}'"

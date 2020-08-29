@@ -167,8 +167,7 @@ cleanio() {
     find . -name "*.exe" -type f -delete
     find . -name "*:tests" -type f -delete
 }
-fm()
-{
+fm() {
     local dst="$(command vifm --choose-dir - "$@")"
     if [ -z "$dst" ]; then
         echo 'Directory picking cancelled/failed'
