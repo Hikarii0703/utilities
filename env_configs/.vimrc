@@ -58,6 +58,7 @@ map <F3> :%y+<CR>
 map <F5> :w <bar> !CFSubmit "%:t"<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
 map <F10> :!run_contest "%:t"<CR>
+map <F8> :!run_contest "%:t" in<CR>
 
 " add template to cpp file
 function AddTemplate(tmpl_file)
