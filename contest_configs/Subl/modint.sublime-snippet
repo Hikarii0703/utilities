@@ -1,80 +1,62 @@
 <snippet>
     <content><![CDATA[
 // ====================================================================
-template <int MOD_> struct modnum {
-    static constexpr int MOD = MOD_;
-    static_assert(MOD_ > 0, "MOD must be positive"); 
-private:
-    using ll = long long;
-    int v;
-    static int minv(int a, int m) {
-        a %= m;
-        assert(a);
-        return a == 1 ? 1 : int(m - ll(minv(m, a)) * ll(m) / a);
+template <unsigned int MOD>
+struct ModInt {
+    using uint = unsigned int;
+    using ull = unsigned long long;
+    using M = ModInt;
+
+    uint v;
+
+    ModInt(int64_t _v = 0) { set_norm(_v % MOD + MOD); }
+    M& set_norm(uint _v) {
+        v = (_v < MOD) ? _v : _v - MOD;
+        return *this;
     }
 
-public:
-    modnum() : v(0) {}
-    modnum(ll v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
-    explicit operator int() const { return v; }
-    friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
-    friend std::istream& operator >> (std::istream& in, modnum& n) { ll v_; in >> v_; n = modnum(v_); return in; }
-    friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
-    friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; } 
-    modnum inv() const {
-        modnum res;
-        res.v = minv(v, MOD);
+    explicit operator bool() const { return v != 0; }
+    M operator+(const M& a) const { return M().set_norm(v + a.v); }
+    M operator-(const M& a) const { return M().set_norm(v + MOD - a.v); }
+    M operator*(const M& a) const { return M().set_norm(ull(v) * a.v % MOD); }
+    M operator/(const M& a) const { return *this * a.inv(); }
+    M& operator+=(const M& a) { return *this = *this + a; }
+    M& operator-=(const M& a) { return *this = *this - a; }
+    M& operator*=(const M& a) { return *this = *this * a; }
+    M& operator/=(const M& a) { return *this = *this / a; }
+    M operator-() const { return M() - *this; }
+    M& operator++(int) { return *this = *this + 1; }
+    M& operator--(int) { return *this = *this - 1; }
+
+    M pow(int64_t n) const {
+        if (n < 0) return inv().pow(-n);
+        M x = *this, res = 1;
+        while (n) {
+            if (n & 1) res *= x;
+            x *= x;
+            n >>= 1;
+        }
         return res;
-    }
-    friend modnum inv(const modnum& m) { return m.inv(); }
-    modnum neg() const {
-        modnum res;
-        res.v = v ? MOD-v : 0;
-        return res;
-    }
-    friend modnum neg(const modnum& m) { return m.neg(); }
-    modnum operator- () const {
-        return neg();
-    }
-    modnum operator+ () const {
-        return modnum(*this);
-    }
-    modnum& operator ++ () {
-        v ++;
-        if (v == MOD) v = 0;
-        return *this;
-    }
-    modnum& operator -- () {
-        if (v == 0) v = MOD;
-        v --;
-        return *this;
-    }
-    modnum& operator += (const modnum& o) {
-        v += o.v;
-        if (v >= MOD) v -= MOD;
-        return *this;
-    }
-    modnum& operator -= (const modnum& o) {
-        v -= o.v;
-        if (v < 0) v += MOD;
-        return *this;
-    }
-    modnum& operator *= (const modnum& o) {
-        v = int(ll(v) * ll(o.v) % MOD);
-        return *this;
-    }
-    modnum& operator /= (const modnum& o) {
-        return *this *= o.inv();
     }
 
-    friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
-    friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
-    friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
-    friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
-    friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
-    friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
+    M inv() const {
+        int64_t a = v, b = MOD, p = 1, q = 0, t;
+        while (b != 0) {
+            t = a / b;
+            std::swap(a -= t * b, b);
+            std::swap(p -= t * q, q);
+        }
+        return M(p);
+    }
+
+    bool operator==(const M& a) const { return v == a.v; }
+    bool operator!=(const M& a) const { return v != a.v; }
+    friend std::ostream& operator<<(std::ostream& os, const M& a) { return os << a.v; }
+    friend std::istream& operator>>(std::istream& in, M& a) { int64_t v_; in >> v_; a = M(v_); return in; }
+    static uint get_mod() { return MOD; }
 };
-using Mint = modnum<1000000007>;
+
+using Mint = ModInt<1000000007>;
 // ====================================================================
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

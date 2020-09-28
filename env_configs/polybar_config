@@ -67,6 +67,7 @@ label-urgent-padding = 1
 
 [module/eth]
 type = internal/network
+# interface = wlxc83a35c07ae6
 interface = enp2s0
 interval = 3.0
 
@@ -102,7 +103,6 @@ type = internal/date
 interval = 1   
 
 date = " %a %d/%m/%Y"
-
 time = "%H:%M:%S"
 
 format-prefix = 

@@ -11,6 +11,29 @@ $0
 }
 endsnippet
 
+snippet tests
+#include <bits/stdc++.h>
+
+void solve() {
+$0
+}
+
+signed main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+
+	int t;
+	std::cin >> t;
+
+	while (t--) {
+		solve();
+	}
+
+    return 0;
+}
+endsnippet
+
+
 snippet db
 // ====================================================================
 #ifdef LOCAL
@@ -48,12 +71,12 @@ endsnippet
 
 snippet usaco
 #ifndef LOCAL
-freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
-freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+	freopen("`!p snip.rv = snip.basename`.in", "r", stdin);
+	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 endsnippet
 
-snippet custom_hash
+snippet ch
 // ====================================================================
 struct custom_hash {static uint64_t splitmix64(uint64_t x) {x += 0x9e3779b97f4a7c15; x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9; x = (x ^ (x >> 27)) * 0x94d049bb133111eb; return x ^ (x >> 31);} size_t operator()(uint64_t x) const {static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM);}};
 // ====================================================================
