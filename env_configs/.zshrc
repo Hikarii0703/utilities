@@ -175,6 +175,9 @@ fm() {
     fi
     cd "$dst"
 }
+getinput() {
+    download_prob.py samples
+}
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus

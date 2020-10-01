@@ -41,12 +41,12 @@ void __print(int x) {std::cerr << x;} void __print(long x) {std::cerr << x;} voi
 void __print(unsigned long x) {std::cerr << x;} void __print(unsigned long long x) {std::cerr << x;} void __print(float x) {std::cerr << x;}
 void __print(double x) {std::cerr << x;} void __print(long double x) {std::cerr << x;} void __print(char x) {std::cerr << '\'' << x << '\'';}
 void __print(const char *x) {std::cerr << '\"' << x << '\"';} void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
-template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
-template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
+template <typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
+template <size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
 template <typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
 template <typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
 template <typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
-template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
+template <typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
 template <typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
 #define debug(x...) std::cerr << "[" << #x << "] = ["; _print(x)
 #else
@@ -57,8 +57,8 @@ endsnippet
 
 snippet fast
 // ====================================================================
-template<typename T>void write(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
-template<typename T>void read(T &x) {char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') {x = (x << 3) + (x << 1) + (c - '0');} if (sign)x = -x;}
+template <typename T>void write(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
+template <typename T>void read(T &x) {char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') {x = (x << 3) + (x << 1) + (c - '0');} if (sign)x = -x;}
 // ====================================================================
 endsnippet
 
@@ -205,9 +205,9 @@ struct BigInt {
     BigInt operator -= (const BigInt& v) { if (sign == v.sign) { if (__compare_abs(*this, v) >= 0) { __internal_sub(v); } else { BigInt vv = v; std::swap(*this, vv); __internal_sub(vv); this->sign = -this->sign; } } else {__internal_add(v); } return *this; }
     // Optimize operators + and - according to
     // https://stackoverflow.com/questions/13166079/move-semantics-and-pass-by-rvalue-reference-in-overloaded-arithmetic
-    template<typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value && std::is_lvalue_reference < R&& >::value, BigInt>::type friend operator + (L&& l, R&& r) { BigInt result(std::forward<L>(l)); result += r; return result; }
-    template<typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value && std::is_rvalue_reference < R&& >::value, BigInt>::type friend operator + (L&& l, R&& r) { BigInt result(std::move(r)); result += l; return result; }
-    template<typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value, BigInt>::type friend operator - (L&& l, R&& r) { BigInt result(std::forward<L>(l)); result -= r; return result; }
+    template <typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value && std::is_lvalue_reference < R&& >::value, BigInt>::type friend operator + (L&& l, R&& r) { BigInt result(std::forward<L>(l)); result += r; return result; }
+    template <typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value && std::is_rvalue_reference < R&& >::value, BigInt>::type friend operator + (L&& l, R&& r) { BigInt result(std::move(r)); result += l; return result; }
+    template <typename L, typename R> typename std::enable_if<std::is_convertible<L, BigInt>::value && std::is_convertible<R, BigInt>::value, BigInt>::type friend operator - (L&& l, R&& r) { BigInt result(std::forward<L>(l)); result -= r; return result; }
     
     friend std::pair<BigInt, BigInt> divmod(const BigInt& a1, const BigInt& b1) { assert(b1 > 0); long long norm = BASE / (b1.a.back() + 1); BigInt a = a1.abs() * norm; BigInt b = b1.abs() * norm; BigInt q = 0, r = 0; q.a.resize(a.a.size()); for (int i = a.a.size() - 1; i >= 0; i--) { r *= BASE; r += a.a[i]; long long s1 = r.a.size() <= b.a.size() ? 0 : r.a[b.a.size()]; long long s2 = r.a.size() <= b.a.size() - 1 ? 0 : r.a[b.a.size() - 1]; long long d = ((long long) BASE * s1 + s2) / b.a.back(); r -= b * d; while (r < 0) { r += b, --d; } q.a[i] = d; } q.sign = a1.sign * b1.sign; r.sign = a1.sign; q.trim(); r.trim(); auto res = std::make_pair(q, r / norm); if (res.second < 0) res.second += b1; return res; }
     BigInt operator/(const BigInt &v) const { return divmod(*this, v).first; }
