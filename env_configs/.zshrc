@@ -185,3 +185,5 @@ export XMODIFIERS=@im=ibus
 export QT4_IM_MODULE=ibus
 # Dành cho những phần mềm dùng thư viện đồ họa clutter
 export CLUTTER_IM_MODULE=ibus
+
+export PATH=/home/hikarii/spicetify-cli/:$PATH

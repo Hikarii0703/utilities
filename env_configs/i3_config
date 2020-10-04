@@ -5,22 +5,16 @@ new_float normal
 
 hide_edge_borders none
 
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
-
 font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
 bindsym $mod+Return exec i3-sensible-terminal
-# bindsym $mod+Return exec alacritty
 
 # Window kill command
 bindsym $mod+Shift+q kill
 
 # start program launcher
-# bindsym $mod+d exec "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons"
 bindsym $mod+space exec "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons"
 
 # change focus
@@ -51,38 +45,14 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# workspace back and forth (with/without active container)
-# workspace_auto_back_and_forth yes
-# bindsym $mod+b workspace back_and_forth
-# bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
-
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-# navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
 
 set $ws1 "1"
 set $ws2 "2"
@@ -128,9 +98,6 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exit
-
 # Create Log out, Reboot, Poweroff bindings
 mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
         bindsym $mod+r exec systemctl reboot
@@ -145,7 +112,6 @@ mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 
 # Autostart applications
-# exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Theme colors
@@ -208,7 +174,7 @@ bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/pn
 bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 
 # Lockscreen lul
-bindsym $mod+Shift+x exec --no-startup-id i3lock --color=#FFFFFF
+bindsym $mod+x exec --no-startup-id i3lock --color=#FFFFFF
 
 # Pulse Audio controls
 # Use pactl list sinks to check for sink id
