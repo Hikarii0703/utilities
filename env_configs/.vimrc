@@ -5,13 +5,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'SirVer/ultisnips'
 Plug 'cohama/lexima.vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 call plug#end()
 "========== Colorcheme =========="
 set termguicolors background=light
-colorscheme solarized8
-let g:lightline={'colorscheme': 'solarized'}
+let g:lightline={'colorscheme': 'ayu_light'}
+colorscheme onehalflight
 "========== Settings =========="
 " indentation
 filetype plugin indent on
