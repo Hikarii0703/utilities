@@ -115,9 +115,9 @@ bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Theme colors
-client.focused #b0c4bb #2f2f38 #b0c4bb #5e81ac #5e81ac
-client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
-client.unfocused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
+client.focused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
+client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFFFF #FFFFFF
+client.unfocused #b0c4bb #2f2f38 #b0c4bb #f6f6f6 #f6f6f6
 client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.background #2f2f38

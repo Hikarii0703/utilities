@@ -101,7 +101,10 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 ; Separator in between workspaces
-; label-separator = |
+label-separator = |
+
+enable-click = false
+enable-scroll = false
 
 [module/cpu]
 type = internal/cpu
