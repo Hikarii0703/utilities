@@ -239,11 +239,12 @@ animation-discharging-framerate = 750
 
 [module/spotify]
 type = custom/script
-interval = 1
-format-prefix = "  "
+tail = true
+;format-prefix = "  "
 format = <label>
-exec = python ~/.config/polybar/spotify_status.py -f '{artist}/{song}'
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 format-underline = #1db954
+label = "  %output% "
 
 [settings]
 screenchange-reload = true

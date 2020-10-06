@@ -46,8 +46,7 @@ map <leader>fm :%!astyle --mode=c --style=google -xV -H -y -j -xf<CR>
 set shell=/usr/bin/zsh\ -i
 map <F3> :%y+<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
-map <F10> :!run_contest "%:t"<CR>
-map <F8> :!run_contest "%:t" in<CR>
+map <F10> :!run_test "%:t"<CR>
 
 " add template to cpp file
 function AddTemplate(tmpl_file)

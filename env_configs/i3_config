@@ -174,7 +174,7 @@ bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/pn
 bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 
 # Lockscreen lul
-bindsym $mod+x exec --no-startup-id i3lock --color=#FFFFFF
+bindsym $mod+x exec --no-startup-id i3lock -i /home/hikarii/whiteout-scaled.png
 
 # Pulse Audio controls
 # Use pactl list sinks to check for sink id
