@@ -16,6 +16,31 @@ colorscheme onehalflight
 " move to displayed line, not file line
 nnoremap j gj
 nnoremap k gk
+
+" Move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+" Enable Highlight Search
+
+set hlsearch" Highlight while search
+set incsearch" Case Insensitivity Pattern Matching
+set ignorecase" Overrides ignorecase if pattern contains upcase
+set smartcase" Keep search results at the center of screen
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Press <leader> Enter to remove search highlights
+noremap <silent> <leader><cr> :noh<cr>
+
+" Shift to the next round tab stop. 
+set shiftround  
+" Set auto indent spacing.
+set shiftwidth=4
+
 " indentation
 filetype plugin indent on
 set shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
