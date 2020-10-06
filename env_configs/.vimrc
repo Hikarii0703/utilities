@@ -13,6 +13,9 @@ set termguicolors background=light
 let g:lightline={'colorscheme': 'ayu_light'}
 colorscheme onehalflight
 "========== Settings =========="
+" move to displayed line, not file line
+nnoremap j gj
+nnoremap k gk
 " indentation
 filetype plugin indent on
 set shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
