@@ -17,15 +17,12 @@ colorscheme onehalflight
 nnoremap j gj
 nnoremap k gk
 
-" Move to beginning/end of line
-nnoremap B ^
-nnoremap E $
 " Enable Highlight Search
 
-set hlsearch" Highlight while search
-set incsearch" Case Insensitivity Pattern Matching
-set ignorecase" Overrides ignorecase if pattern contains upcase
-set smartcase" Keep search results at the center of screen
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
@@ -75,6 +72,7 @@ set shell=/usr/bin/zsh\ -i
 map <F3> :%y+<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
 map <F10> :!run_test "%:t"<CR>
+map <F8> :!run_contest "%:t"<CR>
 
 " add template to cpp file
 function AddTemplate(tmpl_file)
