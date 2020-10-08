@@ -9,7 +9,7 @@ Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 "========== Colorcheme =========="
-set termguicolors background=light t_Co=256 cursorline
+set termguicolors background=light t_Co=256 
 syntax on
 let g:lightline={'colorscheme': 'solarized'}
 colorscheme solarized8
