@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'SirVer/ultisnips'
-Plug 'cohama/lexima.vim'
 Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
@@ -29,18 +28,15 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
-" Press <leader> Enter to remove search highlights
 noremap <silent> <leader><cr> :noh<cr>
-
-" Shift to the next round tab stop. 
-set shiftround  
-" Set auto indent spacing.
-set shiftwidth=4
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {{ {
+inoremap {} {}
 
 " indentation
 filetype plugin indent on
-set shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
+set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
 set autoindent smartindent cindent
 
 " misc vim config
