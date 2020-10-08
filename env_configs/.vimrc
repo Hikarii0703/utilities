@@ -5,20 +5,20 @@ Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'SirVer/ultisnips'
 Plug 'cohama/lexima.vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 "========== Colorcheme =========="
-set termguicolors background=light
-let g:lightline={'colorscheme': 'ayu_light'}
-colorscheme onehalflight
+set termguicolors background=light t_Co=256 cursorline
+syntax on
+let g:lightline={'colorscheme': 'solarized'}
+colorscheme solarized8
 "========== Settings =========="
 " move to displayed line, not file line
 nnoremap j gj
 nnoremap k gk
 
 " Enable Highlight Search
-
 set hlsearch
 set incsearch
 set ignorecase
