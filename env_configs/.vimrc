@@ -16,10 +16,7 @@ colorscheme solarized8
 nnoremap j gj
 nnoremap k gk
 
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+set hlsearch incsearch ignorecase smartcase
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
@@ -27,15 +24,11 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 noremap <silent> <leader><cr> :noh<cr>
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
 
 filetype plugin indent on
 set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
 set autoindent smartindent cindent
-
+set foldmethod=syntax nofoldenable foldlevel=99 
 set laststatus=2 noshowmode number encoding=utf-8 showcmd
 
 augroup numbertoggle
