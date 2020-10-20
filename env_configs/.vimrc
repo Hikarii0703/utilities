@@ -28,8 +28,10 @@ noremap <silent> <leader><cr> :noh<cr>
 filetype plugin indent on
 set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
 set autoindent smartindent cindent
+set cino=j1,(0,ws,Ws
 set foldmethod=syntax nofoldenable foldlevel=99 
 set laststatus=2 noshowmode number encoding=utf-8 showcmd
+set ttimeout ttimeoutlen=0
 
 augroup numbertoggle
     autocmd!

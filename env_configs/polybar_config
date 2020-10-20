@@ -55,7 +55,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=9;2"
 font-2 = "Font Awesome 5 Brands:size=9;2"
 font-3 = "Noto Sans Mono CJK JP:size=9;2"
 
-modules-left = i3 spotify
+modules-left = i3 spotify-artist spotify-song
 modules-center = date
 modules-right = pulseaudio cpu memory eth
 
@@ -237,14 +237,23 @@ animation-discharging-0 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
-[module/spotify]
+[module/spotify-artist]
 type = custom/script
 tail = true
 ;format-prefix = "  "
 format = <label>
-exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+exec = ~/.config/polybar/scripts/scroll_spotify_status-artist.sh
 format-underline = #1db954
 label = "  %output% "
+
+[module/spotify-song]
+type = custom/script
+tail = true
+;format-prefix = "  "
+format = <label>
+exec = ~/.config/polybar/scripts/scroll_spotify_status-song.sh
+format-underline = #1db954
+label = " %output% "
 
 [settings]
 screenchange-reload = true
