@@ -29,7 +29,7 @@ set foldmethod=syntax nofoldenable foldlevel=99
 set ttimeout ttimeoutlen=0
 set laststatus=2 noshowmode encoding=utf-8 showcmd
 
-set nu
+set nu rnu
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
