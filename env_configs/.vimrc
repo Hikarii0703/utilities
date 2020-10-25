@@ -19,20 +19,17 @@ nnoremap k gk
 set hlsearch incsearch ignorecase smartcase
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
 noremap <silent> <leader><cr> :noh<cr>
 
-filetype plugin indent on
-set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4 cinoptions+=L0
-set autoindent smartindent cindent
-set cino=j1,(0,ws,Ws
+set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+set autoindent smartindent
+set cino=j1,(0,ws,Ws,L0
 set foldmethod=syntax nofoldenable foldlevel=99 
-set laststatus=2 noshowmode number encoding=utf-8 showcmd
 set ttimeout ttimeoutlen=0
+set laststatus=2 noshowmode encoding=utf-8 showcmd
 
+set nu
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
