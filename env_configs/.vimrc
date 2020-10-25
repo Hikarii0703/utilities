@@ -30,7 +30,7 @@ autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 autocmd FileType cpp setlocal commentstring=//\ %s
 
-map <leader>fm :%!astyle --mode=c --style=google -xV -H -y -j -xf<CR>
+map <leader>fm :%!astyle --mode=c --style=google -xV -H -y -j -xf -p -xg -U -W3<CR>
 
 map <F3> :%y+<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
