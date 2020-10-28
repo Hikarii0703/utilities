@@ -120,6 +120,7 @@ BOLD='\033[1;37m';
 YELLOW='\033[1;33m';
 
 mkcdir() {
+    exist "$1";
     mkdir -p -- "$1";
     cd -P -- "$1"
 }
@@ -158,14 +159,12 @@ clean() {
     find . -name "in" -type f -delete
     find . -name "out" -type f -delete
     find . -name "*.exe" -type f -delete
-    find . -name "*:tests" -type f -delete
 }
 
 cleanio() {
     find . -name "*.out" -type f -delete
     find . -name "*.inp" -type f -delete
     find . -name "*.exe" -type f -delete
-    find . -name "*:tests" -type f -delete
 }
 fm() {
     local dst="$(command vifm --choose-dir - "$@")"
@@ -175,7 +174,7 @@ fm() {
     fi
     cd "$dst"
 }
-getinput() {
+getin() {
     download_prob.py samples
 }
 export GTK_IM_MODULE=ibus

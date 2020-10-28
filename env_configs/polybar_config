@@ -56,10 +56,10 @@ font-2 = "Font Awesome 5 Brands:size=9;2"
 font-3 = "Noto Sans Mono CJK JP:size=9;2"
 
 modules-left = i3 spotify-artist spotify-song
-modules-center = date
-modules-right = pulseaudio cpu memory eth
+modules-center =
+modules-right = pulseaudio cpu memory eth date
 
-tray-position = right
+;tray-position = right
 ;tray-padding = 2
 ;tray-background = #0063ff
 
@@ -165,15 +165,15 @@ type = internal/date
 interval = 1
 
 ;date-alt = " %a, %d %b %Y"
-;time = " %H:%M:%S"
+time-alt = " %H:%M:%S"
 
 date = " %a, %d %b %Y"
-;time = "%l:%M:%S"
+;time-alt = "%l:%M:%S"
 
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #000000
+format-underline = #000000
 
-label = " %date% %time% "
+label = " %date%%time% "
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -263,4 +263,5 @@ margin-top = 0
 margin-bottom = 0
 
 ; vim:ft=dosini
+
 

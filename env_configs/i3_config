@@ -3,8 +3,6 @@ set $mod Mod4
 new_window pixel 1
 new_float normal
 
-hide_edge_borders none
-
 font xft:URWGothic-Book 11
 
 floating_modifier $mod
@@ -111,9 +109,6 @@ mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 
-# Autostart applications
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # Theme colors
 client.focused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
 client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFFFF #FFFFFF
@@ -124,30 +119,20 @@ client.background #2f2f38
 
 # Gaps
 gaps inner 4
-gaps outer 0
 
-# smart_gaps on
 for_window [class="^.*"] border pixel 3
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -156,16 +141,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # background
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale /home/hikarii/whiteout.png
 exec --no-startup-id compton --backend glx --experimental-backends -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id redshift-gtk
-exec --no-startup-id flameshot
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
-
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
 # focus follows mouse off
 focus_follows_mouse no
