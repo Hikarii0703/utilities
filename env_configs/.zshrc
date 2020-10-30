@@ -168,11 +168,12 @@ cleanio() {
 }
 fm() {
     local dst="$(command vifm --choose-dir - "$@")"
-    if [ -z "$dst" ]; then
-        echo 'Directory picking cancelled/failed'
-        return 1
-    fi
-    cd "$dst"
+    echo $dst
+    # if [ -z "$dst" ]; then
+    #     echo 'Directory picking cancelled/failed'
+    #     return 1
+    # fi
+    # cd "$dst"
 }
 getin() {
     download_prob.py samples
@@ -186,3 +187,4 @@ export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 
 export PATH=/home/hikarii/spicetify-cli/:$PATH
+export PATH=/home/hikarii/.cargo/bin:$PATH
