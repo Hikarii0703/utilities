@@ -1,14 +1,15 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
-Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-commentary'
+Plug 'rakr/vim-one'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
 syntax on
-let g:lightline={'colorscheme': 'solarized'}
-colorscheme solarized8
+let g:lightline={'colorscheme': 'one'}
+let g:one_allow_italics = 1
+colorscheme one
 
 nnoremap j gj
 nnoremap k gk

@@ -148,12 +148,12 @@ exec --no-startup-id compton --backend glx --experimental-backends -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id redshift-gtk
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
+bindsym Print exec flameshot gui
 
 # focus follows mouse off
 focus_follows_mouse no
 
 # screenshot
-bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 
 # Lockscreen lul
