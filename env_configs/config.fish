@@ -15,3 +15,5 @@ function mkcdir
     mkdir -p -- "$argv"
     cd "$argv"
 end
+
+alias l "ls -l"
