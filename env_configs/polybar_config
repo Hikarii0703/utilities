@@ -56,7 +56,7 @@ font-2 = "Font Awesome 5 Brands:size=9;2"
 font-3 = "Noto Sans Mono CJK JP:size=9;2"
 
 modules-left = i3 spotify-artist spotify-song
-modules-center =
+modules-center = title
 modules-right = pulseaudio cpu memory eth date
 
 ;tray-position = right
@@ -254,6 +254,13 @@ format = <label>
 exec = ~/.config/polybar/scripts/scroll_spotify_status-song.sh
 format-underline = #1db954
 label = " %output% "
+
+[module/title]
+type = internal/xwindow
+format = <label>
+format-padding = 4
+label = %title%
+label-maxlen = 64
 
 [settings]
 screenchange-reload = true
