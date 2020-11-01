@@ -16,4 +16,4 @@ function mkcdir
     cd "$argv"
 end
 
-alias l "ls -l"
+alias l "ls -l -a"
