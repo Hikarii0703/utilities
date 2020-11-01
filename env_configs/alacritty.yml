@@ -7,35 +7,30 @@ font:
     size: 9
     normal:
         family: "MesloLGS NF"
-# Colors (Nord) 
+
+# Colors (Pencil Light)
 colors:
-  # Default colors
+  # Default Colors
   primary:
-    background: '#E3EAF5'
-    foreground: '#3B4252'
-
-  cursor:
-    text: '#E3EAF5'
-    cursor: '#899ba6'
-
+    background: '0xf1f1f1'
+    foreground: '0x424242'
   # Normal colors
   normal:
-    black: '#3B4252'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#88C0D0'
-    white: '#ECEFF4'
-
+    black:   '0x212121'
+    red:     '0xc30771'
+    green:   '0x10a778'
+    yellow:  '0xa89c14'
+    blue:    '0x008ec4'
+    magenta: '0x523c79'
+    cyan:    '0x20a5ba'
+    white:   '0xe0e0e0'
   # Bright colors
   bright:
-    black: '#899BA6'
-    red: '#F2C38F'
-    green: '#4F894C'
-    yellow: '#DADA93'
-    blue: '#83AFE5'
-    magenta: '#D18EC2'
-    cyan: '#7FC1CA'
-    white: '#E6EEF3'
+    black:   '0x212121'
+    red:     '0xfb007a'
+    green:   '0x5fd7af'
+    yellow:  '0xf3e430'
+    blue:    '0x20bbfc'
+    magenta: '0x6855de'
+    cyan:    '0x4fb8cc'
+    white:   '0xf1f1f1'
