@@ -101,7 +101,7 @@ use-ui-max = false
 
 format-volume = <label-volume>
 format-volume-prefix = 
-format-volume-prefix-foreground = ${color.MAGENTA}
+format-volume-prefix-foreground = ${color.GREEN}
 label-volume = " %percentage%%"
 
 format-muted = <label-muted>
