@@ -143,7 +143,7 @@ bindsym $mod+r mode "resize"
 
 # background
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id feh --bg-scale /home/hikarii/whiteout.png
+exec --no-startup-id feh --bg-scale /home/hikarii/bg.png
 exec --no-startup-id compton --backend glx --experimental-backends -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id redshift-gtk
@@ -157,7 +157,7 @@ focus_follows_mouse no
 bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 
 # Lockscreen lul
-bindsym $mod+x exec --no-startup-id i3lock -i /home/hikarii/whiteout-scaled.png
+bindsym $mod+x exec --no-startup-id i3lock -i /home/hikarii/lock.png
 
 # Pulse Audio controls
 # Use pactl list sinks to check for sink id

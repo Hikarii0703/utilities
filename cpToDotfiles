@@ -18,12 +18,13 @@ FIREFOX = HOME + '/.mozilla/firefox/' + FIREFOX_ID
 
 ## contest_configs
 # Subl
-Run('cp ' + SUBLIME + '/Default (Linux).sublime-keymap' + ' ' + GIT + '/contest_configs/Subl/Default (Linux).sublime-keymap')
+Run('cp ' + SUBLIME + '/\"Default (Linux).sublime-keymap\"' + ' ' + GIT + '/contest_configs/Subl/\"Default (Linux).sublime-keymap\"')
 Run('cp ' + SUBLIME + '/FastOlympicCoding.sublime-settings' + ' ' + GIT + '/contest_configs/Subl/FastOlympicCoding.sublime-settings')
 Run('cp ' + SUBLIME + '/bigint.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/bigint.sublime-snippet')
 Run('cp ' + SUBLIME + '/custom_hash.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/custom_hash.sublime-snippet')
 Run('cp ' + SUBLIME + '/debug.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/debug.sublime-snippet')
 Run('cp ' + SUBLIME + '/fast.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/fast.sublime-snippet')
+Run('cp ' + SUBLIME + '/tests.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/tests.sublime-snippet')
 Run('cp ' + SUBLIME + '/freopen.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/freopen.sublime-snippet')
 Run('cp ' + SUBLIME + '/mod.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/mod.sublime-snippet')
 Run('cp ' + SUBLIME + '/modint.sublime-snippet' + ' ' + GIT + '/contest_configs/Subl/modint.sublime-snippet')
@@ -38,10 +39,23 @@ Run('cp ' + HOME + '/template.cpp'  + ' ' + GIT + '/contest_configs/template.cpp
 ## env_configs
 Run('cp ' + HOME + '/.vimrc'  + ' ' + GIT + '/env_configs/.vimrc')
 Run('cp ' + HOME + '/.zshrc'  + ' ' + GIT + '/env_configs/.zshrc')
+Run('cp ' + HOME + '/.bashrc'  + ' ' + GIT + '/env_configs/.bashrc')
 Run('cp ' + HOME + '/.config/vifm/colors/Default.vifm'  + ' ' + GIT + '/env_configs/Default.vifm')
 Run('cp ' + HOME + '/.config/i3/config'  + ' ' + GIT + '/env_configs/i3_config')
 Run('cp ' + HOME + '/.config/polybar/config'  + ' ' + GIT + '/env_configs/polybar_config')
+Run('cp ' + HOME + '/.config/polybar/colors'  + ' ' + GIT + '/env_configs/polybar_colors')
 Run('cp ' + HOME + '/.config/vifm/vifmrc'  + ' ' + GIT + '/env_configs/vifmrc')
+Run('cp ' + HOME + '/.config/fish/config.fish'  + ' ' + GIT + '/env_configs/config.fish')
+Run('cp ' + HOME + '/.config/alacritty/alacritty.yml'  + ' ' + GIT + '/env_configs/alacritty.yml')
+Run('cp ' + HOME + '/.config/rofi/config.rasi'  + ' ' + GIT + '/env_configs/config.rasi')
+Run('cp ' + HOME + '/.config/rofi/light.rasi'  + ' ' + GIT + '/env_configs/light.rasi')
+Run('cp ' + HOME + '/.config/ranger/rc.conf'  + ' ' + GIT + '/env_configs/rc.conf')
+Run('cp ' + HOME + '/.config/zathura/zathurarc'  + ' ' + GIT + '/env_configs/zathurarc')
+
+Run('cp ' + HOME + '/bg.png'  + ' ' + GIT + '/bg.png')
+Run('cp ' + HOME + '/lock.png'  + ' ' + GIT + '/lock.png')
+
+Run('cp ' + HOME + '/.local/bin/cpToDotfiles'  + ' ' + GIT + '/cpToDotfiles')
 
 # Firefox has to be installed manually
 Run('cp ' + FIREFOX + '/user.js'  + ' ' + GIT + '/env_configs/user.js')
