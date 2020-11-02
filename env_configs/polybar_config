@@ -1,4 +1,17 @@
 ; vim:ft=dosini
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;
+;;	    ____        __      __              
+;;	   / __ \____  / /_  __/ /_  ____ ______
+;;	  / /_/ / __ \/ / / / / __ \/ __ `/ ___/
+;;	 / ____/ /_/ / / /_/ / /_/ / /_/ / /    
+;;	/_/    \____/_/\__, /_.___/\__,_/_/     
+;;	              /____/                    
+;;
+;; Created By Aditya Shakya @adi1090x
+;;
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 
 [global/wm]
 margin-bottom = 0
@@ -7,14 +20,16 @@ margin-top = 0
 include-file = ~/.config/polybar/colors
 
 [bar/topbar]
+monitor = 
 monitor-strict = false
 override-redirect = false
+
 
 bottom = false
 fixed-center = true
 
 width = 100%
-height = 18
+height = 20
 
 background = ${color.BACKGROUND}
 foreground = ${color.FOREGROUND}
@@ -33,7 +48,7 @@ font-3 = "Noto Sans Mono CJK JP:size=9;2"
 
 modules-left = i3 spotify
 modules-center = title
-modules-right = battery volume cpu memory network-wlan network-eth date
+modules-right = volume cpu memory network date
 
 enable-ipc = true
 
@@ -123,10 +138,10 @@ ramp-foreground = ${color.MAGENTA}
 [module/battery]
 type = internal/battery
 
-full-at = 100
+full-at = 99
 
-battery = BAT1
-adapter = ACAD
+battery = BAT0
+adapter = AC
 
 poll-interval = 2
 time-format = %H:%M:%S
@@ -207,9 +222,9 @@ label = %date%%time%
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/network-wlan]
+[module/network]
 type = internal/network
-interface = wlp2s0
+interface = enp1s0
 
 interval = 1.0
 
@@ -232,23 +247,6 @@ ramp-signal-4 = 直
 ramp-signal-font = 2
 ramp-signal-foreground = ${color.CYAN}
 
-[module/network-eth]
-type = internal/network
-interface = enp1s0
-
-interval = 1.0
-
-format-connected = <label-connected>
-
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = "睊 "
-format-disconnected-prefix-font = 2
-format-disconnected-prefix-foreground = ${color.RED}
-
-format-connected-prefix = 
-label-connected = " %downspeed:8%"
-label-disconnected =
-
 [module/title]
 type = internal/xwindow
 format = <label>
@@ -264,4 +262,13 @@ format-prefix = 
 format-prefix-foreground = ${color.GREEN}
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 label = " %output%"
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;	    __________  ______
+;;	   / ____/ __ \/ ____/
+;;	  / __/ / / / / /_    
+;;	 / /___/ /_/ / __/    
+;;	/_____/\____/_/       
+;;
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
