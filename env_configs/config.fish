@@ -17,3 +17,15 @@ function mkcdir
 end
 
 alias l "ls -l -a"
+
+function fish_user_key_bindings
+    for mode in insert default visual
+        bind -M $mode \cf forward-char
+    end
+end
+
+function quick_git_push
+    git add .
+    git commit -am.
+    git push origin master
+end

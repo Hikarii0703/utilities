@@ -1,16 +1,13 @@
 set $mod Mod4
 
-new_window pixel 1
-new_float normal
-
-font xft:URWGothic-Book 11
+# font pango:IPAexGothic Regular 9
+# for_window [class=".*"] title_format "  %title"
+for_window [class="^.*"] border pixel 3
 
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
-
 bindsym $mod+Shift+q kill
-
 bindsym $mod+space exec "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons"
 
 bindsym $mod+h focus left
@@ -38,6 +35,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+s sticky toggle
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
 
 set $ws1 "1"
 set $ws2 "2"
@@ -87,6 +86,13 @@ mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 
+# client.focused #d8dee9 #d8dee9 #000000 #d8dee9 #d8dee9
+# client.focused_inactive #BFC2C9 #BFC2C9 #000000 #BFC2C9 #BFC2C9
+# client.unfocused #BFC2C9 #BFC2C9 #000000 #BFC2C9 #BFC2C9
+# client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
+# client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
+# client.background #2f2f38
+
 client.focused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
 client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFFFF #FFFFFF
 client.unfocused #b0c4bb #2f2f38 #b0c4bb #f6f6f6 #f6f6f6
@@ -94,8 +100,6 @@ client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 client.background #2f2f38
 
-smart_gaps on
-for_window [class="^.*"] border pixel 2
 
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -121,10 +125,9 @@ exec --no-startup-id compton --backend glx --experimental-backends -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
 bindsym Print exec flameshot gui
+bindsym $mod+x exec --no-startup-id i3lock -i /home/hikarii/lock.png
 
 focus_follows_mouse no
-
-bindsym $mod+x exec --no-startup-id i3lock -i /home/hikarii/lock.png
 
 # Use "pactl list sinks" to check for sink id
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +2% #increase sound volume
@@ -134,3 +137,4 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+

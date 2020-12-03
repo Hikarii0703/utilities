@@ -29,7 +29,7 @@ bottom = false
 fixed-center = true
 
 width = 100%
-height = 20
+height = 18
 
 background = ${color.BACKGROUND}
 foreground = ${color.FOREGROUND}
@@ -91,7 +91,7 @@ format-prefix = 
 format-prefix-font = 2
 format-prefix-foreground = ${color.BLUE}
 
-label = " %mb_used%"
+label = " %gb_used%"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -210,15 +210,15 @@ type = internal/date
 
 interval = 1.0
 
-date = "%a, %d %b %Y"
-time-alt = %H:%M:%S
+date = "%a %D"
+time = %H:%M:%S
 
 format = <label>
 format-prefix = " "
 format-prefix-font = 2
 format-prefix-foreground = ${color.RED}
 
-label = %date%%time%
+label = "%date% %time%"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -250,9 +250,8 @@ ramp-signal-foreground = ${color.CYAN}
 [module/title]
 type = internal/xwindow
 format = <label>
-format-padding = 4
 label = %title%
-label-maxlen = 64
+label-maxlen = 50
 
 [module/spotify]
 type = custom/script
