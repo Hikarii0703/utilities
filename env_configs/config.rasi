@@ -8,3 +8,4 @@ configuration {
 	theme: "~/.config/rofi/light.rasi";
 	display-drun: "App";
 }
+

@@ -200,3 +200,4 @@ export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 
 source ~/.bash_profile
+

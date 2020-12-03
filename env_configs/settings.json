@@ -33,16 +33,32 @@
     "emmet.excludeLanguages": [
         "markdown"
     ],
-    "latex-workshop.view.pdf.viewer": "tab",
-    "workbench.colorTheme": "Quiet Light",
     "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
     "cph.general.defaultLanguage": "cpp",
     "cph.general.menuChoices": "cpp",
     "cph.language.cpp.Args": "-O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL",
-    "acmx.execution.showRunIconInEditorTitleMenu": true,
+    "code-runner.enableAppInsights": false,
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "block",
     "editor.lineNumbers": "relative",
-    "editor.autoClosingBrackets": "never",
-    "cph.general.useShortCodeForcesName": true
+    "cph.general.useShortCodeForcesName": true,
+    "editor.renderLineHighlight": "none",
+    "workbench.colorTheme": "Night Owl Light (No Italics)",
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && contest $fileName",
+        "python": "python -u",
+        "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt"
+    },
+    "code-runner.fileDirectoryAsCwd": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.terminalRoot": "/usr/bin/fish",
+    "code-runner.languageIdToFileExtensionMap": {
+        "bat": ".bat",
+        "powershell": ".ps1",
+        "typescript": ".ts"
+    },
+    "code-runner.customCommand": "run_contest $fileName"
 }
+
+

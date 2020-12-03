@@ -4,53 +4,9 @@ shell:
     args:
         - --login
 font:
-    size: 9
+    size: 8
     normal:
         family: "MesloLGS NF"
-
-# Colors (One Light)
-# colors:
-#   primary:
-#     background: '#fafafa'
-#     foreground: '#383a42'
-#   normal:
-#     black:      '#696c77' # mono-2
-#     red:        '#e45649' # red 1
-#     green:      '#50a14f'
-#     yellow:     '#c18401' # orange 2
-#     blue:       '#4078f2'
-#     magenta:    '#a626a4'
-#     cyan:       '#0184bc'
-#     white:      '#fafafa' # mono-3
-
-# Colors (Solarized Light)
-# colors:
-#   # Default colors
-#   primary:
-#     background: '0xfdf6e3'
-#     foreground: '0x586e75'
-
-#   # Normal colors
-#   normal:
-#     black:   '0x073642'
-#     red:     '0xdc322f'
-#     green:   '0x859900'
-#     yellow:  '0xb58900'
-#     blue:    '0x268bd2'
-#     magenta: '0xd33682'
-#     cyan:    '0x2aa198'
-#     white:   '0xeee8d5'
-
-#   # Bright colors
-#   bright:
-#     black:   '0x002b36'
-#     red:     '0xcb4b16'
-#     green:   '0x586e75'
-#     yellow:  '0x657b83'
-#     blue:    '0x839496'
-#     magenta: '0x6c71c4'
-#     cyan:    '0x93a1a1'
-#     white:   '0xfdf6e3'
 
 # Colors (Iceberg Light)
 colors:
@@ -72,6 +28,7 @@ colors:
 
   # Bright colors
   bright:
+<<<<<<< HEAD
     black:   '0x8389a3'
     red:     '0xcc3768'
     green:   '0x598030'
@@ -80,3 +37,14 @@ colors:
     magenta: '0x6845ad'
     cyan:    '0x327698'
     white:   '0x262a3f'
+=======
+    black:   '0x212121'
+    red:     '0xfb007a'
+    green:   '0x5fd7af'
+    yellow:  '0xf3e430'
+    blue:    '0x20bbfc'
+    magenta: '0x6855de'
+    cyan:    '0x4fb8cc'
+    white:   '0xf1f1f1'
+
+>>>>>>> 87e0a4be08532da571d26846fd53fcacc5fbcdbb

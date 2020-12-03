@@ -35,5 +35,9 @@ map <F3> :%y+<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
 map <F10> :!run_test "%:t"<CR>
 map <F8> :!run_contest "%:t"<CR>
+<<<<<<< HEAD
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+=======
+
+>>>>>>> 87e0a4be08532da571d26846fd53fcacc5fbcdbb
