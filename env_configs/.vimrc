@@ -36,3 +36,4 @@ map <F3> :%y+<CR>
 map <F9> :w <bar> !contest "%:t"<CR>
 map <F10> :!run_test "%:t"<CR>
 map <F8> :!run_contest "%:t"<CR>
+

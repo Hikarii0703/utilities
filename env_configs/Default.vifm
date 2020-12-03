@@ -73,3 +73,4 @@ highlight   CmdLine      cterm=none                ctermfg=255   ctermbg=24
 highlight   ErrorMsg     cterm=bold                ctermfg=16    ctermbg=166
 highlight   Border       cterm=none                ctermfg=255   ctermbg=255 
 
+

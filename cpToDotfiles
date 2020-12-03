@@ -13,7 +13,7 @@ def Run(command):
 HOME = '~'
 GIT = HOME + '/Documents/utilities'
 SUBLIME = HOME + '/.config/sublime-text-3/Packages/User'
-FIREFOX_ID = 'z68cknfg.default-release-1594229572044'
+FIREFOX_ID = '37xtgqjz.default-release-1591073138896'
 FIREFOX = HOME + '/.mozilla/firefox/' + FIREFOX_ID
 
 ## contest_configs
