@@ -19,7 +19,6 @@ end
 
 alias l "ls -l -a"
 
-<<<<<<< HEAD
 function fish_user_key_bindings
     for mode in insert default visual
         bind -M $mode \cf forward-char
@@ -31,5 +30,3 @@ function quick_git_push
     git commit -am.
     git push origin master
 end
-=======
->>>>>>> 87e0a4be08532da571d26846fd53fcacc5fbcdbb
