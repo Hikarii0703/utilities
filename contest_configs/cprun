@@ -30,7 +30,13 @@ else:
 print("%s[RUNNING: %s]%s" % (colo.CYAN, purefilename, colo.NC))
 
 try:
-    os.system("./%s.exe" % purefilename)
+    if len(sys.argv) == 3:
+        if sys.argv[2] == 'in':
+            os.system("./%s.exe < in" % purefilename)
+        elif sys.argv[2] == 'inout':
+            os.system("./%s.exe < in > out" % purefilename)
+    else:
+        os.system("./%s.exe" % purefilename)
 except:
     print("%[FAILED]%s" % (colo.RED, colo.NC))
     exit(0)

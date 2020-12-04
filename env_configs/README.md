@@ -1,12 +1,27 @@
 This is where I save some general config files.
-* .vimrc: Vim configuration (requires <b>vim-plug</b>, stored in <b>~</b>)
-* .zshrc: zsh configuration (requires <b>Powerlevel10k</b> and <b>MesloLGS NerdFont</b>, stored in <b>~</b>)
-* Default.vifm: colorscheme for vifm (stored in <b>~/.config/vifm/colors</b>)
-* compton.comf: compton configuration (stored in <b>~/.config/compton.conf</b>)
-* i3_config: i3wm configuration (stored in <b>~/.config/i3/config</b>)
-* i3wmthemer_bar_launch.sh: launches polybar (stored in <b>~/.config/polybar</b>)
-* polybar_config: polybar configuration (stored in <b>~/.config/polybar/config</b>)
-* polybar_config_laptop: polybar configuration but for laptops with extra features (stored in <b>~/.config/polybar/config</b>)
-* user.js: custom about:config for Firefox (stored in <b>~/.mozilla/firefox/[release-folder]</b>)
-* userChrome.css: custom CSS for Firefox (stored in <b>~/.mozilla/firefox/[release-folder]</b>)
-* vifmrc: vifm configuration (stored in <b>~/.config/vifm</b>)
+(Yes, I use light themes, they are superior).
+* Alacritty (~/.config/alacritty/)
+    * **alacritty.yml**
+* Compton: (~/.config/)
+    * **compton.conf**
+* fish: (~/.config/fish/)
+    * **config.fish**
+* Rofi: (~/.config/rofi/)
+    * **config.rasi** (configuration)
+    * **light.rasi** (theme)
+* i3wm: (~/.config/i3/)
+    * **i3\_config** [stored as ~/.config/i3/config]
+* Polybar: (~/.config/polybar/)
+    * **polybar\_colors** (theme) [stored as ~/.config/polybar/colors]
+    * **polybar\_config** (configuration) [stored as ~/.config/polybar/config]
+* Ranger: (~/.config/ranger/)
+    * **rc.conf**
+    * install **Ueberzug** to preview images in Ranger
+* Firefox: (~/.mozilla/firefox/[release-folder]/)
+    * **user.js**
+    * **userChrome.css** [stored as ~/.mozilla/firefox/[release-folder]/chrome/userChrome.css]
+* Vim: (~)
+    * **.vimrc**
+    * install **vim-plug** to install other plugins
+* Zathura: (~/.config/zathura/)
+    * **zathurarc**

@@ -59,4 +59,3 @@ vbox:hover ~ #nav-bar, toolbox:focus-within > #nav-bar, #nav-bar:hover, #mainPop
   transform: none;
   pointer-events: all;
 }
-

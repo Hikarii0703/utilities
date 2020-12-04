@@ -32,9 +32,16 @@ print("%s[ENTER TEST ID]:%s" % (colo.CYAN, colo.NC), end=' ')
 inp = input()
 
 try:
-    os.system("cat in%s" % inp)
+    os.system("echo \">>> input\"; cat in%s" % inp)
     print()
-    os.system("./%s.exe < in%s" % (purefilename, inp))
+    os.system("echo \">>> output\"; ./{0}.exe < in{1} | tee out{1}".format(purefilename, inp))
+    print()
+    os.system("echo \">>> answer\"; cat ans%s" % inp)
+    print()
+    print()
+    # os.system("echo diff; diff out{0} ans{0}".format(inp))
+    os.system("echo \">>> diff\"; icdiff out{0} ans{0}".format(inp))
+    # os.system("echo diff; diff -rqEeB out{0} ans{0} 2> /dev/null".format(inp))
 except:
     print("%[FAILED]%s" % (colo.RED, colo.NC))
     exit(0)

@@ -1,3 +1,4 @@
+
 user_pref("browser.cache.disk.enable", false); // Disable disk cache
 user_pref("browser.cache.offline.enable", false); // Disable offline cache
  
