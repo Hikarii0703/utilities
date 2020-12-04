@@ -1,6 +1,6 @@
 This is where I save some general config files.
 (Yes, I use light themes, they are superior).
-* Alacritty (~/.config/alacritty/)
+* Alacritty: (~/.config/alacritty/)
     * **alacritty.yml**
 * Compton: (~/.config/)
     * **compton.conf**
