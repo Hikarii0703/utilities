@@ -6,7 +6,7 @@ These files are stored in <b>~/.local/bin/</b>
 * cprun: runs compiled file, input/output are <b>stdin/stdout</b>
 * cprun_test: runs compiled file, compare <b>ansX</b> ans <b>outX</b> using <a href="https://github.com/jeffkaufman/icdiff"><b>icdiff</b></a>, input/output are <b>inX/outX</b>
 * VOJLoad: loads a problem from <a href="https://vnoi.info/problems/list/">VOJ</a> (Codeforces) in default browser
-* VOJSubmit: submits a solution to <a href="https://vnoi.info/problems/list/">VOJ</a> (Codeforces)
+* VOJData: stores data of problems from <a href="https://vnoi.info/problems/list/">VOJ</a> (Codeforces)
 
 These files are saved through <b>:UltiSnipsEdit</b> (Vim)
 * cpp.snippets: snippets for competitve programming in C++
