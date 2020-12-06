@@ -1,10 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'cocopon/iceberg.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
@@ -39,8 +37,3 @@ map <F10> :!cprun_test "%:t"<CR>
 map <F8> :!cprun "%:t"<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
-
-let g:coc_disable_startup_warning = 1
-imap <C-l> <Plug>(coc-snippets-expand)
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"

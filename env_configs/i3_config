@@ -1,7 +1,5 @@
 set $mod Mod4
 
-# font pango:IPAexGothic Regular 9
-# for_window [class=".*"] title_format "  %title"
 for_window [class="^.*"] border pixel 3
 
 floating_modifier $mod
