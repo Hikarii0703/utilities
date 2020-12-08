@@ -15,7 +15,6 @@ nnoremap k gk
 nnoremap n nzz
 nnoremap N Nzz
 set hlsearch incsearch ignorecase smartcase
-noremap <silent> <leader><cr> :noh<cr>
 
 set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -30,10 +29,11 @@ autocmd VimLeave * call system("xsel -ib", getreg('+'))
 autocmd FileType cpp setlocal commentstring=//\ %s
 
 map <leader>fm :%!astyle --mode=c --style=google -xV -H -y -j -xf -p -xg -U -W3<CR>
-
 map <F3> :%y+<CR>
 map <F9> :w <bar> !cpcompile "%:t"<CR>
 map <F10> :!cprun_test "%:t"<CR>
 map <F8> :!cprun "%:t"<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+noremap <silent> <leader><cr> :noh<cr>

@@ -5,6 +5,7 @@ for_window [class="^.*"] border pixel 3
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
+bindsym $mod+shift+Return exec tdrop -am -w 50% -y 30% -x 23% alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+space exec "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons"
 
