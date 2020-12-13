@@ -39,14 +39,14 @@ snippet db
 #ifdef LOCAL
 void __print(int x) {std::cerr << x;} void __print(int64_t x) {std::cerr << x;} void __print(uint32_t x) {std::cerr << x;} void __print(uint64_t x) {std::cerr << x;}
 void __print(float x) {std::cerr << x;} void __print(double x) {std::cerr << x;} void __print(long double x) {std::cerr << x;} void __print(char x) {std::cerr << '\'' << x << '\'';}
-void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
-template <typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
-template <size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
-template <typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
-template <typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
-template <typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
-template <typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
-template <typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
+void __print(const char *x) {std::cerr << '\"' << x << '\"';} void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
+template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
+template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
+template<typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
+template<typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
+template<typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
+template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
+template<typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
 #define debug(x...) std::cerr << "[" << #x << "] = ["; _print(x)
 #else
 #define debug(x...) "?"
@@ -56,8 +56,8 @@ endsnippet
 
 snippet fast
 // ====================================================================
-template <typename T> void fswrite(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
-template <typename T> void fsread(T &x) {char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') {x = (x << 3) + (x << 1) + (c - '0');} if (sign)x = -x;}
+template<typename T> void fswrite(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
+template<typename T> void fsread(T &x) {char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') {x = (x << 3) + (x << 1) + (c - '0');} if (sign)x = -x;}
 // ====================================================================
 endsnippet
 
@@ -117,14 +117,5 @@ template<const int &MOD> struct _m_int {
 
 extern const int MOD = 1e9 + 7;
 using Mint = _m_int<MOD>;
-// ====================================================================
-endsnippet
-
-snippet vario
-// ====================================================================
-void write() { return; } void read() { return; }
-template <typename T, typename... A> void write(const T &x, const A&... y) { std::cout << x; write(y...); }
-template <typename T, typename... A> void writeln(const T &x, const A&... y) { std::cout << x; write(y...); std::cout << '\n'; }
-template <typename T, typename... A> void read(T &x, A& ... y) { std::cin >> x; read(y...); }
 // ====================================================================
 endsnippet
