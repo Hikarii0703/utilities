@@ -85,13 +85,6 @@ mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 
-# client.focused #d8dee9 #d8dee9 #000000 #d8dee9 #d8dee9
-# client.focused_inactive #BFC2C9 #BFC2C9 #000000 #BFC2C9 #BFC2C9
-# client.unfocused #BFC2C9 #BFC2C9 #000000 #BFC2C9 #BFC2C9
-# client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
-# client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
-# client.background #2f2f38
-
 # <colorclass> <border> <background> <text> <indicator> <child_border>
 # 555 = not important
 
@@ -121,7 +114,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id feh --bg-scale /home/hikarii/bg.png
+exec --no-startup-id feh --bg-scale /home/hikarii/bg.jpg
 exec --no-startup-id compton --backend glx --experimental-backends -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier

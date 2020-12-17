@@ -76,7 +76,8 @@ endsnippet
 
 snippet modint
 // ====================================================================
-template<const int &MOD> struct _m_int {
+template<const int &MOD>
+struct _m_int {
     int val;
     _m_int(int64_t v = 0) { if (v < 0) v = v % MOD + MOD; if (v >= MOD) v %= MOD; val = int(v); }
     _m_int(uint64_t v) { if (v >= MOD) v %= MOD; val = int(v); }

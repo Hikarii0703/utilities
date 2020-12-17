@@ -2,8 +2,8 @@
 from os import system
 
 def Run(command):
-    system(command)
     try:
+        system(command)
         print(">>>", command.split('/')[-1])
     except(e):
         print("Failed.")
@@ -37,7 +37,7 @@ Run('cp ' + HOME + '/.config/rofi/colors.rasi'  + ' ' + GIT + '/env_configs/colo
 Run('cp ' + HOME + '/.config/ranger/rc.conf'  + ' ' + GIT + '/env_configs/rc.conf')
 Run('cp ' + HOME + '/.config/zathura/zathurarc'  + ' ' + GIT + '/env_configs/zathurarc')
 
-Run('cp ' + HOME + '/bg.png'  + ' ' + GIT + '/bg.png')
+Run('cp ' + HOME + '/bg.jpg'  + ' ' + GIT + '/bg.jpg')
 Run('cp ' + HOME + '/lock.png'  + ' ' + GIT + '/lock.png')
 
 Run('cp ' + HOME + '/.local/bin/cpToDotfiles'  + ' ' + GIT + '/cpToDotfiles')
