@@ -45,7 +45,7 @@ template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t
 template<typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
 template<typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
 template<typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
-template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]\n";}
+template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]" << std::endl;}
 template<typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
 #define debug(x...) std::cerr << "[" << #x << "] = ["; _print(x)
 #else
@@ -109,7 +109,7 @@ template<const int &MOD> struct _m_int {
     friend bool operator>(const _m_int &a, const _m_int &b) { return a.val > b.val; }
     friend bool operator<=(const _m_int &a, const _m_int &b) { return a.val <= b.val; }
     friend bool operator>=(const _m_int &a, const _m_int &b) { return a.val >= b.val; }
-    _m_int inv() const { return inv_mod(val) }
+    _m_int inv() const { return inv_mod(val); }
     _m_int pow(int64_t p) const { if (p < 0) return inv().pow(-p); _m_int a = *this, result = 1; while (p > 0) { if (p & 1) result *= a; p >>= 1; if (p > 0) a *= a; } return result; }
     friend std::ostream& operator<<(std::ostream &os, const _m_int &m) { return os << m.val; }
 	friend void __print(const _m_int &m) { std::cerr << m; }

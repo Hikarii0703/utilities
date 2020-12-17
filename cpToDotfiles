@@ -33,7 +33,7 @@ Run('cp ' + HOME + '/.config/polybar/colors'  + ' ' + GIT + '/env_configs/polyba
 Run('cp ' + HOME + '/.config/fish/config.fish'  + ' ' + GIT + '/env_configs/config.fish')
 Run('cp ' + HOME + '/.config/alacritty/alacritty.yml'  + ' ' + GIT + '/env_configs/alacritty.yml')
 Run('cp ' + HOME + '/.config/rofi/config.rasi'  + ' ' + GIT + '/env_configs/config.rasi')
-Run('cp ' + HOME + '/.config/rofi/light.rasi'  + ' ' + GIT + '/env_configs/light.rasi')
+Run('cp ' + HOME + '/.config/rofi/colors.rasi'  + ' ' + GIT + '/env_configs/colors.rasi')
 Run('cp ' + HOME + '/.config/ranger/rc.conf'  + ' ' + GIT + '/env_configs/rc.conf')
 Run('cp ' + HOME + '/.config/zathura/zathurarc'  + ' ' + GIT + '/env_configs/zathurarc')
 

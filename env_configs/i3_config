@@ -1,6 +1,6 @@
 set $mod Mod4
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 floating_modifier $mod
 
@@ -75,12 +75,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 mode "Exit (L)ogout, (R)eboot, Power(o)ff" {
-        bindsym $mod+r exec systemctl reboot
-        bindsym $mod+l exit
-        bindsym $mod+o exec systemctl poweroff
+    bindsym $mod+r exec systemctl reboot
+    bindsym $mod+l exit
+    bindsym $mod+o exec systemctl poweroff
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
@@ -92,28 +92,30 @@ bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 # client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
 # client.background #2f2f38
 
-client.focused #b0c4bb #2f2f38 #b0c4bb #d8dee9 #d8dee9
-client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #FFFFFFFF #FFFFFF
-client.unfocused #b0c4bb #2f2f38 #b0c4bb #f6f6f6 #f6f6f6
-client.urgent #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
-client.placeholder #b0c4bb #2f2f38 #b0c4bb #FFFFFF #FFFFFF
-client.background #2f2f38
+# <colorclass> <border> <background> <text> <indicator> <child_border>
+# 555 = not important
 
+client.focused #555 #555 #555 #555 #e6b450
+client.focused_inactive #555 #555 #555 #555 #00000000
+client.unfocused #555 #555 #555 #555 #00000000
+client.urgent #555 #555 #555 #555 #e6b450
+client.placeholder #555 #555 #555 #555 #e6b450
+client.background #e6b450
 
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"

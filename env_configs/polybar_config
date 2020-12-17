@@ -190,7 +190,7 @@ label-mode-foreground = ${color.BACKGROUND}
 label-mode-background = ${color.BLUE}
 
 label-unfocused = %index%
-label-unfocused-foreground = ${color.BLACK}
+label-unfocused-foreground = ${color.FOREGROUND}
 label-unfocused-padding = 1
 
 label-focused = %index%
