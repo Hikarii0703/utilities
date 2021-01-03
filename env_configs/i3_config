@@ -116,7 +116,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale /home/hikarii/bg.jpg
-exec --no-startup-id compton --backend glx --experimental-backends -b
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
 bindsym Print exec flameshot gui

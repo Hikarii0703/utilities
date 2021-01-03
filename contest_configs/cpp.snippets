@@ -3,7 +3,7 @@ snippet pure
 
 signed main() {
     std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
+    std::cin.tie(nullptr);
 
 $0
 
@@ -14,25 +14,22 @@ endsnippet
 snippet tests
 #include <bits/stdc++.h>
 
-void solve() {
-$0
-}
-
 signed main() {
     std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
+    std::cin.tie(nullptr);
 
-	int T;
-	std::cin >> T;
+    int T;
+    std::cin >> T;
 
-	while (T--) {
-		solve();
-	}
+    while (T--) {
+		[&]() {
+$0
+		}();
+    }
 
     return 0;
 }
 endsnippet
-
 
 snippet db
 // ====================================================================
@@ -54,6 +51,7 @@ template<typename T, typename... V> void _print(T t, V... v) {__print(t); if (si
 // ====================================================================
 endsnippet
 
+
 snippet fast
 // ====================================================================
 template<typename T> void fswrite(T x) {if (x < 0) {putchar('-'); x = -x;} char buf[20], *p = buf; do {*p++ = '0' + x % 10; x /= 10;} while (x); do {putchar(*--p);} while (p > buf);}
@@ -63,8 +61,8 @@ endsnippet
 
 snippet freopen
 #ifndef LOCAL
-	freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
-	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 endsnippet
 
@@ -113,10 +111,32 @@ struct _m_int {
     _m_int inv() const { return inv_mod(val); }
     _m_int pow(int64_t p) const { if (p < 0) return inv().pow(-p); _m_int a = *this, result = 1; while (p > 0) { if (p & 1) result *= a; p >>= 1; if (p > 0) a *= a; } return result; }
     friend std::ostream& operator<<(std::ostream &os, const _m_int &m) { return os << m.val; }
-	friend void __print(const _m_int &m) { std::cerr << m; }
+    friend void __print(const _m_int &m) { std::cerr << m; }
 };
 
 extern const int MOD = 1e9 + 7;
 using Mint = _m_int<MOD>;
+// ====================================================================
+endsnippet
+
+snippet yc
+// ====================================================================
+namespace std {
+template<class Fun>
+class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T>
+    explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+
+    template<class ...Args>
+    decltype(auto) operator()(Args &&...args) {
+        return fun_(std::ref(*this), std::forward<Args>(args)...);
+    }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) {
+    return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun));
+}
+} // namespace std
 // ====================================================================
 endsnippet
