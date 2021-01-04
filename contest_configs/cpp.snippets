@@ -1,5 +1,8 @@
 snippet pure
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <numeric>
 
 signed main() {
     std::ios_base::sync_with_stdio(false);
@@ -12,7 +15,14 @@ $0
 endsnippet
 
 snippet tests
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <numeric>
+
+void solve_case() {
+$0
+}
 
 signed main() {
     std::ios_base::sync_with_stdio(false);
@@ -22,9 +32,7 @@ signed main() {
     std::cin >> T;
 
     while (T--) {
-		[&]() {
-$0
-		}();
+		solve_case();
     }
 
     return 0;
@@ -38,7 +46,7 @@ void __print(int x) {std::cerr << x;} void __print(int64_t x) {std::cerr << x;} 
 void __print(float x) {std::cerr << x;} void __print(double x) {std::cerr << x;} void __print(long double x) {std::cerr << x;} void __print(char x) {std::cerr << '\'' << x << '\'';}
 void __print(const char *x) {std::cerr << '\"' << x << '\"';} void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
 template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
-template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
+// template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
 template<typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ", " << std::to_string(std::get<3>(p)) << ')';}
 template<typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ", " << std::to_string(std::get<2>(p)) << ')';}
 template<typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::to_string(std::get<0>(p)) << ", " << std::to_string(std::get<1>(p)) << ')';}
@@ -121,6 +129,9 @@ endsnippet
 
 snippet yc
 // ====================================================================
+#include <functional>
+#include <utility>
+
 namespace std {
 template<class Fun>
 class y_combinator_result {
