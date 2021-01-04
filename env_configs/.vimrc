@@ -17,7 +17,8 @@ nnoremap n nzz
 nnoremap N Nzz
 set hlsearch incsearch ignorecase smartcase
 
-set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
+" set to 2 on smaller screens
+set shiftround shiftwidth=4 tabstop=4 noexpandtab softtabstop=4
 set autoindent smartindent cino=j1,(0,ws,Ws,L0
 set foldmethod=syntax nofoldenable foldlevel=99 
 set laststatus=2 noshowmode encoding=utf-8 showcmd nu rnu nobackup noswapfile nowrap
