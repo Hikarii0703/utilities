@@ -16,7 +16,7 @@ snippet tests
 #include <iostream>
 #include <vector>
 
-void solve_case() {
+void solveCase() {
 $0
 }
 
@@ -28,7 +28,7 @@ signed main() {
     std::cin >> T;
 
     while (T--) {
-		solve_case();
+		solveCase();
     }
 
     return 0;
@@ -45,13 +45,13 @@ template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::ce
 
 #ifdef _GLIBCXX_BITSET
 template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
-#endif
+#endif // _GLIBCXX_BITSET
 
 #ifdef _GLIBCXX_TUPLE
 template<typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')';}
 template<typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')';}
 template<typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')';}
-#endif
+#endif // _GLIBCXX_TUPLE
 
 template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]" << std::endl;}
 template<typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
