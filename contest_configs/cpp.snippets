@@ -16,7 +16,7 @@ snippet tests
 #include <iostream>
 #include <vector>
 
-void solve_case() {
+void solveCase() {
 $0
 }
 
@@ -25,10 +25,10 @@ signed main() {
     std::cin.tie(nullptr);
 
     int T;
-    std::cin >> T;
+	std::cin >> T;
 
     while (T--) {
-		solve_case();
+		solveCase();
     }
 
     return 0;
@@ -38,32 +38,30 @@ endsnippet
 snippet db
 // ====================================================================
 #ifdef LOCAL
-void __print(int x) { std::cerr << x; } void __print(int64_t x) { std::cerr << x; } void __print(uint64_t x) { std::cerr << x; }
-void __print(double x) {std::cerr << x;} void __print(long double x) {std::cerr << x;} void __print(char x) {std::cerr << '\'' << x << '\'';}
-void __print(const char *x) {std::cerr << '\"' << x << '\"';} void __print(const std::string &x) {std::cerr << '\"' << x << '\"';} void __print(bool x) {std::cerr << (x ? "true" : "false");}
-template<typename T, typename V> void __print(const std::pair<T, V> &x) {std::cerr << '{'; __print(x.first); std::cerr << ", "; __print(x.second); std::cerr << '}';}
+void __pr(int x) { std::cerr << x; } void __pr(int64_t x) { std::cerr << x; } void __pr(uint64_t x) { std::cerr << x; }
+void __pr(double x) { std::cerr << x; } void __pr(long double x) { std::cerr << x; } void __pr(bool x) { std::cerr << (x ? "true" : "false"); }
+void __pr(char x) { std::cerr << '\'' << x << '\''; } void __pr(const char *x) { std::cerr << '\"' << x << '\"'; } void __pr(const std::string &x) { std::cerr << '\"' << x << '\"'; }
+template<typename T, typename V> void __pr(const std::pair<T, V> &x) { std::cerr << '{'; __pr(x.first); std::cerr << ", "; __pr(x.second); std::cerr << '}'; }
 
 #ifdef _GLIBCXX_BITSET
-template<size_t N> void __print(std::bitset<N> v) {std::cerr << '{'; for (size_t i = 0; i < N; i++) {std::cerr << v[i];} std::cerr << '}';}
-#endif
+template<size_t N> void __pr(std::bitset<N> v) { std::cerr << '{'; for (size_t i = 0; i < N; i++) { std::cerr << v[i]; } std::cerr << '}'; }
+#endif // _GLIBCXX_BITSET
 
 #ifdef _GLIBCXX_TUPLE
-template<typename A, typename B, typename C, typename D> void __print(std::tuple<A, B, C, D> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')';}
-template<typename A, typename B, typename C> void __print(std::tuple<A, B, C> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')';}
-template<typename A, typename B> void __print(std::tuple<A, B> p) {std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')';}
-#endif
+template<typename A, typename B, typename C, typename D> void __pr(std::tuple<A, B, C, D> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')'; }
+template<typename A, typename B, typename C> void __pr(std::tuple<A, B, C> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')'; }
+template<typename A, typename B> void __pr(std::tuple<A, B> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')'; }
+#endif // _GLIBCXX_TUPLE
 
-template<typename T> void __print(const T &x) {int f = 0; std::cerr << '{'; for (auto &i: x) std::cerr << (f++ ? ", " : ""), __print(i); std::cerr << "}";} void _print() {std::cerr << "]" << std::endl;}
-template<typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) std::cerr << ", "; _print(v...);}
+template<typename T> void __pr(const T &x) { int f = 0; std::cerr << '{'; for (auto &i : x) { std::cerr << (f++ ? ", " : ""), __pr(i); } std::cerr << "}"; } void _pr() { std::cerr << "]" << std::endl; }
+template<typename T, typename... V> void _pr(T t, V... v) { __pr(t); if (sizeof...(v)) { std::cerr << ", "; } _pr(v...); }
 
-#define debug(x...) std::cerr << "[" << #x << "] = ["; _print(x)
-
+#define debug(x...) std::cerr << "[" << #x << "] = ["; _pr(x)
 #else
 #define debug(x...) "just a little spark of light."
 #endif
 // ====================================================================
 endsnippet
-
 
 snippet fast
 // ====================================================================
@@ -141,5 +139,14 @@ public:
 };
 template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
 } // namespace std
+// ====================================================================
+endsnippet
+
+snippet vario
+// ====================================================================
+void read() { return; } void write() { return; }
+template<typename T, typename... A> void read(T &x, A&... Args) { std::cin >> x; read(Args...); }
+template<typename T, typename... A> void write(const T &x, const A&... Args) { std::cout << x; write(Args...); }
+template<typename... A> void writeln(const A&... Args) { write(Args...); std::cout << '\n'; }
 // ====================================================================
 endsnippet

@@ -15,7 +15,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap n nzz
 nnoremap N Nzz
-set hlsearch incsearch ignorecase smartcase
+set hlsearch incsearch smartcase
 
 set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
 set autoindent smartindent cino=j1,(0,ws,Ws,L0
