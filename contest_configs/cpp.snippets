@@ -1,0 +1,152 @@
+snippet pure
+#include <iostream>
+#include <vector>
+
+signed main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+$0
+
+    return 0;
+}
+endsnippet
+
+snippet tests
+#include <iostream>
+#include <vector>
+
+void solveCase() {
+$0
+}
+
+signed main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    int T;
+	std::cin >> T;
+
+    while (T--) {
+		solveCase();
+    }
+
+    return 0;
+}
+endsnippet
+
+snippet db
+// ====================================================================
+#ifdef LOCAL
+void __pr(int x) { std::cerr << x; } void __pr(int64_t x) { std::cerr << x; } void __pr(uint64_t x) { std::cerr << x; }
+void __pr(double x) { std::cerr << x; } void __pr(long double x) { std::cerr << x; } void __pr(bool x) { std::cerr << (x ? "true" : "false"); }
+void __pr(char x) { std::cerr << '\'' << x << '\''; } void __pr(const char *x) { std::cerr << '\"' << x << '\"'; } void __pr(const std::string &x) { std::cerr << '\"' << x << '\"'; }
+template<typename T, typename V> void __pr(const std::pair<T, V> &x) { std::cerr << '{'; __pr(x.first); std::cerr << ", "; __pr(x.second); std::cerr << '}'; }
+
+#ifdef _GLIBCXX_BITSET
+template<size_t N> void __pr(std::bitset<N> v) { std::cerr << '{'; for (size_t i = 0; i < N; i++) { std::cerr << v[i]; } std::cerr << '}'; }
+#endif // _GLIBCXX_BITSET
+
+#ifdef _GLIBCXX_TUPLE
+template<typename A, typename B, typename C, typename D> void __pr(std::tuple<A, B, C, D> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')'; }
+template<typename A, typename B, typename C> void __pr(std::tuple<A, B, C> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')'; }
+template<typename A, typename B> void __pr(std::tuple<A, B> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')'; }
+#endif // _GLIBCXX_TUPLE
+
+template<typename T> void __pr(const T &x) { int f = 0; std::cerr << '{'; for (auto &i : x) { std::cerr << (f++ ? ", " : ""), __pr(i); } std::cerr << "}"; } void _pr() { std::cerr << "]" << std::endl; }
+template<typename T, typename... V> void _pr(T t, V... v) { __pr(t); if (sizeof...(v)) { std::cerr << ", "; } _pr(v...); }
+
+#define debug(x...) std::cerr << "[" << #x << "] = ["; _pr(x)
+#else
+#define debug(x...) "just a little spark of light."
+#endif
+// ====================================================================
+endsnippet
+
+snippet fast
+// ====================================================================
+template<typename T> void write(T x) { if (x < 0) { putchar('-'); x = -x; } char buf[20], *p = buf; do { *p++ = '0' + x % 10; x /= 10; } while (x); do { putchar(*--p); } while (p > buf); }
+template<typename T> void read(T &x) { char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') { x = (x << 3) + (x << 1) + (c - '0'); } if (sign)x = -x; }
+// ====================================================================
+endsnippet
+
+snippet freopen
+#ifndef LOCAL
+    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+#endif
+endsnippet
+
+snippet modint
+// ====================================================================
+template <int MOD_> struct modnum {
+    static constexpr int MOD = MOD_;
+    static_assert(MOD_ > 0, "MOD must be positive");
+
+private:
+    using i64 = int64_t;
+    int v;
+    static int minv(int a, int m) { a %= m; assert(a); return a == 1 ? 1 : int(m - i64(minv(m, a)) * i64(m) / a); }
+
+public:
+    modnum() : v(0) {}
+    modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+    explicit operator int() const { return v; }
+    friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
+    friend std::istream& operator >> (std::istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
+ 
+    friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
+    friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; }
+ 
+    modnum inv() const { modnum res; res.v = minv(v, MOD); return res; }
+    friend modnum inv(const modnum& m) { return m.inv(); }
+    modnum neg() const { modnum res; res.v = v ? MOD-v : 0; return res; }
+    friend modnum neg(const modnum& m) { return m.neg(); }
+ 
+    modnum operator- () const { return neg(); }
+    modnum operator+ () const { return modnum(*this); }
+ 
+    modnum& operator ++ () { v ++; if (v == MOD) v = 0; return *this; }
+    modnum& operator -- () { if (v == 0) v = MOD; v --; return *this; }
+    modnum& operator += (const modnum& o) { v -= MOD-o.v; v = (v < 0) ? v + MOD : v; return *this; }
+    modnum& operator -= (const modnum& o) { v -= o.v; v = (v < 0) ? v + MOD : v; return *this; }
+    modnum& operator *= (const modnum& o) { v = int(i64(v) * i64(o.v) % MOD); return *this; }
+    modnum& operator /= (const modnum& o) { return *this *= o.inv(); }
+ 
+    friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
+    friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
+    friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
+    friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
+    friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
+    friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
+};
+template <typename T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
+using Mint = modnum<int(1e9) + 7>
+// ====================================================================
+endsnippet
+
+snippet yc
+// ====================================================================
+#include <functional>
+
+namespace std {
+template<class Fun>
+class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+} // namespace std
+// ====================================================================
+endsnippet
+
+snippet vario
+// ====================================================================
+void read() { return; } void write() { return; }
+template<typename T, typename... A> void read(T &x, A&... Args) { std::cin >> x; read(Args...); }
+template<typename T, typename... A> void write(const T &x, const A&... Args) { std::cout << x; write(Args...); }
+template<typename... A> void writeln(const A&... Args) { write(Args...); std::cout << '\n'; }
+// ====================================================================
+endsnippet
