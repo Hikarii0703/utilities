@@ -31,9 +31,12 @@ autocmd FileType cpp setlocal commentstring=//\ %s
 map <leader>fm :%!astyle --mode=c -A14 -xV -H -y -j -xf -p -xg -U -W3<CR>
 map <F3> :%y+<CR>
 map <F9> :w <bar> !cpcompile "%:t"<CR>
-map <F10> :!cprun_test "%:t"<CR>
+map <F10> :!cf test<CR>
+map <F11> :w <bar> !cpcompile "%:t" 11<CR>
+map <F12> :w <bar> !cpcompile "%:t" 14<CR>
 map <F8> :!cprun "%:t"<CR>
+map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:h:t""/problem/""%:t:r" -f "%:t"<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+" nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 noremap <silent> <leader><cr> :noh<cr>

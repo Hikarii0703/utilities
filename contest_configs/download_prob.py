@@ -72,9 +72,9 @@ def save_samples(data, probDir):
         #  json.dump(data, f)
 
     for i, t in enumerate(data['tests'], start=1):
-        with open(probDir / f'in{i}', 'w') as f:
+        with open(probDir / f'in{i}.txt', 'w') as f:
             f.write(t['input'])
-        with open(probDir / f'ans{i}', 'w') as f:
+        with open(probDir / f'ans{i}.txt', 'w') as f:
             f.write(t['output'])
 
 def make_prob(data, name):
