@@ -36,7 +36,7 @@ map <F11> :w <bar> !cpcompile "%:t" 11<CR>
 map <F12> :w <bar> !cpcompile "%:t" 14<CR>
 map <F8> :!cprun "%:t"<CR>
 map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:h:t""/problem/""%:t:r" -f "%:t"<CR>
+map <F7> :!cf sid
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
-" nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 noremap <silent> <leader><cr> :noh<cr>

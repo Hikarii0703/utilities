@@ -79,6 +79,7 @@ endsnippet
 
 snippet modint
 // ====================================================================
+#include <cassert>
 template <int MOD_> struct modnum {
     static constexpr int MOD = MOD_;
     static_assert(MOD_ > 0, "MOD must be positive");
@@ -121,14 +122,13 @@ public:
     friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
 template <typename T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
-using Mint = modnum<int(1e9) + 7>
+using Num = modnum<int(1e9) + 7>;
 // ====================================================================
 endsnippet
 
 snippet yc
 // ====================================================================
 #include <functional>
-
 namespace std {
 template<class Fun>
 class y_combinator_result {
