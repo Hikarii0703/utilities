@@ -36,6 +36,7 @@ Run('cp ' + HOME + '/.config/rofi/config.rasi'  + ' ' + GIT + '/env_configs/conf
 Run('cp ' + HOME + '/.config/rofi/colors.rasi'  + ' ' + GIT + '/env_configs/colors.rasi')
 Run('cp ' + HOME + '/.config/ranger/rc.conf'  + ' ' + GIT + '/env_configs/rc.conf')
 Run('cp ' + HOME + '/.config/zathura/zathurarc'  + ' ' + GIT + '/env_configs/zathurarc')
+Run('cp ' + HOME + '/.config/betterlockscreenrc'  + ' ' + GIT + '/env_configs/betterlockscreenrc')
 
 Run('cp ' + HOME + '/bg.png'  + ' ' + GIT + '/bg.png')
 

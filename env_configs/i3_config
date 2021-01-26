@@ -6,7 +6,7 @@ smart_gaps on
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+Mod1+Return exec tdrop -am -w 50% -y 30% -x 23% alacritty
+bindsym $mod+Shift+Return exec tdrop -am -w 50% -y 30% -x 23% alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+space exec "rofi -modi run,drun -show drun -line-padding 4 -columns 1 -width 40 -padding 30 -hide-scrollbar -show-icons"
 
@@ -120,7 +120,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
 bindsym Print exec flameshot gui
-bindsym $mod+x exec --no-startup-id betterlockscreen -l
+bindsym $mod+x exec --no-startup-id betterlockscreen -l dim
 
 focus_follows_mouse no
 

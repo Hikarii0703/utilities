@@ -32,13 +32,13 @@ print("%s[TASK: %s]%s" % (colo.CYAN, filename, colo.NC))
 try:
     if len(sys.argv) == 2:
         print("%s[COMPILING IN %sC++17%s]%s" % (colo.RED, colo.YELLOW, colo.RED, colo.NC))
-        os.system('g++ -o %s.exe %s -O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL'
+        os.system('g++ -o %s.exe %s -O2 -std=c++17 -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DHKR0703'
                 % (purefilename, filename)
         )
     else:
         version = sys.argv[2]
         print("%s[COMPILING IN %sC++%s%s]%s" % (colo.RED, colo.YELLOW, version, colo.RED, colo.NC))
-        os.system('g++ -o %s.exe %s -O2 -std=c++%s -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DLOCAL'
+        os.system('g++ -o %s.exe %s -O2 -std=c++%s -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector -DHKR0703'
                 % (purefilename, filename, version)
         )
 except:
