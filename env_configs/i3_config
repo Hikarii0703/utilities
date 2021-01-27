@@ -1,7 +1,7 @@
 set $mod Mod4
 
 for_window [class="^.*"] border pixel 2
-smart_gaps on
+# smart_gaps on
 
 floating_modifier $mod
 
@@ -89,12 +89,19 @@ bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, Power(o)ff"
 # <colorclass> <border> <background> <text> <indicator> <child_border>
 # 555 = not important
 
-client.focused #555 #555 #555 #e6b450 #e6b450
-client.focused_inactive #555 #555 #555 #555 #00000000
-client.unfocused #555 #555 #555 #555 #00000000
-client.urgent #555 #555 #555 #e6b450 #e6b450
-client.placeholder #555 #555 #555 #555 #e6b450 #e6b450
-client.background #e6b450
+# client.focused #555 #555 #555 #e6b450 #e6b450
+# client.focused_inactive #555 #555 #555 #555 #00000000
+# client.unfocused #555 #555 #555 #555 #00000000
+# client.urgent #555 #555 #555 #e6b450 #e6b450
+# client.placeholder #555 #555 #555 #555 #e6b450 #e6b450
+# client.background #e6b450
+
+client.focused #555 #555 #555 #d8dee9 #d8dee9
+client.focused_inactive #555 #555 #555 #555 #FFFFFF
+client.unfocused #555 #555 #555 #555 #FFFFFF
+client.urgent #555 #555 #555 #FFFFFF #FFFFFF
+client.placeholder #555 #555 #555 #555 #FFFFFF #FFFFFF
+client.background #2f2f38
 
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -120,7 +127,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id setxkbmap -option caps:ctrl_modifier
 bindsym Print exec flameshot gui
-bindsym $mod+x exec --no-startup-id betterlockscreen -l dim
+bindsym $mod+x exec --no-startup-id betterlockscreen --off 30 -l dim
 
 focus_follows_mouse no
 

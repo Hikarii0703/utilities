@@ -2,6 +2,7 @@ set PATH $PATH ~/spicetify-cli
 set PATH $PATH ~/.cargo/bin
 set PATH $PATH ~/.local/bin
 set PATH $PATH ~/.poetry/bin
+set PATH $PATH ~/.npm-packages/bin
 
 function fm
     set tmpfile "/tmp/pwd-from-ranger"

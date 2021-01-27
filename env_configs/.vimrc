@@ -3,13 +3,14 @@ Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'ayu-theme/ayu-vim'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
 syntax on
-let g:lightline={'colorscheme': 'deus'}
-let ayucolor="dark" 
-colo ayu
+let g:lightline={'colorscheme': 'iceberg'}
+" let ayucolor="dark" 
+colo iceberg
 
 nnoremap j gj
 nnoremap k gk
