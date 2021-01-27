@@ -11,6 +11,7 @@ syntax on
 let g:lightline={'colorscheme': 'iceberg'}
 " let ayucolor="dark" 
 colo iceberg
+set guifont=Fira\ Code:h12
 
 nnoremap j gj
 nnoremap k gk
