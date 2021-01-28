@@ -4,6 +4,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'ayu-theme/ayu-vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'cohama/lexima.vim'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
@@ -11,7 +12,7 @@ syntax on
 let g:lightline={'colorscheme': 'iceberg'}
 " let ayucolor="dark" 
 colo iceberg
-set guifont=Fira\ Code:h12
+" set font=Fira\ Code:h12
 
 nnoremap j gj
 nnoremap k gk

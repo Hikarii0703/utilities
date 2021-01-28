@@ -38,17 +38,17 @@ endsnippet
 snippet db
 // ====================================================================
 #ifdef HKR0703
-void __pr(int x) { std::cerr << x; } void __pr(int64_t x) { std::cerr << x; } void __pr(uint64_t x) { std::cerr << x; }
-void __pr(double x) { std::cerr << x; } void __pr(long double x) { std::cerr << x; } void __pr(bool x) { std::cerr << (x ? "true" : "false"); }
-void __pr(char x) { std::cerr << '\'' << x << '\''; } void __pr(const char *x) { std::cerr << '\"' << x << '\"'; } void __pr(const std::string &x) { std::cerr << '\"' << x << '\"'; }
-template<typename T, typename V> void __pr(const std::pair<T, V> &x) { std::cerr << '{'; __pr(x.first); std::cerr << ", "; __pr(x.second); std::cerr << '}'; }
-template<size_t N> void __pr(std::bitset<N> v) { std::cerr << '{'; for (size_t i = 0; i < N; i++) { std::cerr << v[i]; } std::cerr << '}'; }
-template<typename A, typename B, typename C, typename D> void __pr(std::tuple<A, B, C, D> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')'; }
-template<typename A, typename B, typename C> void __pr(std::tuple<A, B, C> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')'; }
-template<typename A, typename B> void __pr(std::tuple<A, B> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')'; }
-template<typename T> void __pr(const T &x) { int f = 0; std::cerr << '{'; for (auto &i : x) { std::cerr << (f++ ? ", " : ""), __pr(i); } std::cerr << "}"; } void _pr() { std::cerr << "]" << std::endl; }
-template<typename T, typename... V> void _pr(T t, V... v) { __pr(t); if (sizeof...(v)) { std::cerr << ", "; } _pr(v...); }
-#define debug(x...) std::cerr << "[" << #x << "] = ["; _pr(x)
+void _dbpr(int x) { std::cerr << x; } void _dbpr(int64_t x) { std::cerr << x; } void _dbpr(uint64_t x) { std::cerr << x; }
+void _dbpr(double x) { std::cerr << x; } void _dbpr(long double x) { std::cerr << x; } void _dbpr(bool x) { std::cerr << (x ? "true" : "false"); }
+void _dbpr(char x) { std::cerr << '\'' << x << '\''; } void _dbpr(const char *x) { std::cerr << '\"' << x << '\"'; } void _dbpr(const std::string &x) { std::cerr << '\"' << x << '\"'; }
+template <typename T, typename V> void _dbpr(const std::pair<T, V> &x) { std::cerr << '{'; _dbpr(x.first); std::cerr << ", "; _dbpr(x.second); std::cerr << '}'; }
+template <size_t N> void _dbpr(std::bitset<N> v) { std::cerr << '{'; for (size_t i = 0; i < N; i++) { std::cerr << v[i]; } std::cerr << '}'; }
+template <typename A, typename B, typename C, typename D> void _dbpr(std::tuple<A, B, C, D> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')'; }
+template <typename A, typename B, typename C> void _dbpr(std::tuple<A, B, C> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')'; }
+template <typename A, typename B> void _dbpr(std::tuple<A, B> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')'; }
+template <typename T> void _dbpr(const T &x) { int f = 0; std::cerr << '{'; for (auto &i : x) { std::cerr << (f++ ? ", " : ""), _dbpr(i); } std::cerr << "}"; } void dbpr() { std::cerr << "]" << std::endl; }
+template <typename T, typename... V> void dbpr(T t, V... v) { _dbpr(t); if (sizeof...(v)) { std::cerr << ", "; } dbpr(v...); }
+#define debug(x...) std::cerr << "[" << #x << "] = ["; dbpr(x)
 #else
 #define debug(x...) "just a little spark of light."
 #endif
@@ -57,8 +57,8 @@ endsnippet
 
 snippet fast
 // ====================================================================
-template<typename T> void write(T x) { if (x < 0) { putchar('-'); x = -x; } char buf[20], *p = buf; do { *p++ = '0' + x % 10; x /= 10; } while (x); do { putchar(*--p); } while (p > buf); }
-template<typename T> void read(T &x) { char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') { x = (x << 3) + (x << 1) + (c - '0'); } if (sign)x = -x; }
+template <typename T> void write(T x) { if (x < 0) { putchar('-'); x = -x; } char buf[20], *p = buf; do { *p++ = '0' + x % 10; x /= 10; } while (x); do { putchar(*--p); } while (p > buf); }
+template <typename T> void read(T &x) { char c; while (c = getchar(), c <= ' '); bool sign = c == '-'; if (sign)c = getchar(); x = c - '0'; while (c = getchar(), c >= '0' && c <= '9') { x = (x << 3) + (x << 1) + (c - '0'); } if (sign)x = -x; }
 // ====================================================================
 endsnippet
 
@@ -120,12 +120,12 @@ endsnippet
 snippet yc
 // ====================================================================
 namespace std {
-template<class Fun>
+template <class Fun>
 class y_combinator_result {
     Fun fun_;
 public:
-    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
-    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+    template <class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template <class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
 };
 template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
 } // namespace std
@@ -135,9 +135,9 @@ endsnippet
 snippet vario
 // ====================================================================
 void read() { return; } void write() { return; }
-template<typename T, typename... A> void read(T &x, A&... Args) { std::cin >> x; read(Args...); }
-template<typename T, typename... A> void write(const T &x, const A&... Args) { std::cout << x; write(Args...); }
-template<typename... A> void writeln(const A&... Args) { write(Args...); std::cout << '\n'; }
+template <typename T, typename... A> void read(T &x, A&... Args) { std::cin >> x; read(Args...); }
+template <typename T, typename... A> void write(const T &x, const A&... Args) { std::cout << x; write(Args...); }
+template <typename... A> void writeln(const A&... Args) { write(Args...); std::cout << '\n'; }
 // ====================================================================
 endsnippet
 
