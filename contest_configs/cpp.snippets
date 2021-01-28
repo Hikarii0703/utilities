@@ -14,22 +14,24 @@ endsnippet
 snippet tests
 #include <bits/stdc++.h>
 
-void solveCase() {
-$0
-}
+void solveCase();
 
 signed main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    int T;
-	std::cin >> T;
+    int numTest
+	std::cin >> numTest;
 
-    while (T--) {
+    while (numTest--) {
 		solveCase();
     }
 
     return 0;
+}
+
+void solveCase() {
+$0
 }
 endsnippet
 
