@@ -138,3 +138,12 @@ template<typename T, typename... A> void write(const T &x, const A&... Args) { s
 template<typename... A> void writeln(const A&... Args) { write(Args...); std::cout << '\n'; }
 // ====================================================================
 endsnippet
+
+snippet c++17
+// ====================================================================
+#if __cplusplus < 201703L
+template <class C> constexpr auto empty(const C& c) -> decltype(c.empty()) { return c.empty(); }
+template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { return c.size(); }
+#endif
+// ====================================================================
+endsnippet
