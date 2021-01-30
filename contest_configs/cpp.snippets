@@ -2,8 +2,7 @@ snippet pure
 #include <bits/stdc++.h>
 
 signed main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+    std::ios_base::sync_with_stdio(false); std::cin.tie(nullptr);
 
 $0
 
@@ -17,11 +16,9 @@ snippet tests
 void solveCase();
 
 signed main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+    std::ios_base::sync_with_stdio(false); std::cin.tie(nullptr);
 
-    int numTest
-	std::cin >> numTest;
+    int numTest; std::cin >> numTest;
 
     while (numTest--) {
 		solveCase();
@@ -66,8 +63,7 @@ endsnippet
 
 snippet freopen
 #ifndef HKR0703
-    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
-    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin); freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 endsnippet
 

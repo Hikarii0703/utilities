@@ -2,6 +2,8 @@ This is where I save some general config files.
 (Yes, I use light themes, they are superior).
 * Alacritty: (~/.config/alacritty/)
     * **alacritty.yml**
+* Betterlockscreen (~/.config/):
+    * **betterlockscreenrc**
 * Compton: (~/.config/)
     * **compton.conf**
 * fish: (~/.config/fish/)

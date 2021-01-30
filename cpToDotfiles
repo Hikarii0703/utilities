@@ -23,6 +23,7 @@ Run('cp ' + HOME + '/.vim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_confi
 Run('cp ' + HOME + '/.local/bin/cpcompile'  + ' ' + GIT + '/contest_configs/cpcompile')
 Run('cp ' + HOME + '/.local/bin/cprun_test'  + ' ' + GIT + '/contest_configs/cprun_test')
 Run('cp ' + HOME + '/.local/bin/cprun'  + ' ' + GIT + '/contest_configs/cprun')
+Run('cp ' + HOME + '/.local/bin/voj'  + ' ' + GIT + '/contest_configs/voj')
 Run('cp ' + HOME + '/.local/bin/download_prob.py'  + ' ' + GIT + '/contest_configs/download_prob.py')
 
 ## env_configs

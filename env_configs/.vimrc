@@ -2,16 +2,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
-Plug 'ayu-theme/ayu-vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'cohama/lexima.vim'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'cocopon/iceberg.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
 syntax on
-let g:lightline={'colorscheme': 'iceberg'}
+let g:lightline={'colorscheme': 'solarized'}
 " let ayucolor="dark" 
-colo iceberg
+colo solarized8
 " set font=Fira\ Code:h12
 
 nnoremap j gj
