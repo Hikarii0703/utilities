@@ -4,7 +4,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'cocopon/iceberg.vim'
-Plug 'Raimondi/delimitMate'
+Plug 'cohama/lexima.vim'
 Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
