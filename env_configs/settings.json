@@ -1,0 +1,67 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.sideBar.location": "left",
+    "editor.fontSize": 13,
+    "editor.snippetSuggestions": "top",
+    "editor.fontFamily": "'MesloLGS NF', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "explorer.confirmDelete": false,
+    "terminal.integrated.cwd": "${workspaceRoot}",
+    "terminal.integrated.fontSize": 13,
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "toggle",
+    "emmet.excludeLanguages": [
+        "markdown"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "workbench.colorTheme": "FlatUI Immersed",
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "block",
+    "editor.lineNumbers": "relative",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.formatOnType": true,
+    "react-native.packager.port": 19000,
+    "window.zoomLevel": 0,
+    "prettier.jsxSingleQuote": true,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.useTabs": true,
+    "editor.formatOnSave": true,
+    "prettier.disableLanguages": [
+        "cpp"
+    ],
+    "autoprefixer.formatOnSave": true,
+    "autoprefixer.ignoreFiles": [
+        "cpp"
+    ],
+    // "C_Cpp.clang_format_style": "Google",
+    "editor.renderLineHighlight": "none",
+    "indentRainbow.excludedLanguages": [
+        "cpp",
+        "plaintext"
+    ],
+    "bracket-pair-colorizer-2.excludedLanguages": [
+        "cpp"
+    ],
+    "auto-rename-tag.activationOnLanguage": [
+        "*"
+    ],
+    // "[cpp]": {
+    //     "editor.formatOnType": false,
+    //     "editor.formatOnSave": false
+    // },
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-v>": false
+    },
+    // "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0, MaxEmptyLinesToKeep: 5, BreakBeforeBraces: Stroustrup}",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c17",
+    // "C_Cpp.default.enableConfigurationSquiggles": false,
+    "C_Cpp.default.intelliSenseMode": "gcc-x64"
+}
