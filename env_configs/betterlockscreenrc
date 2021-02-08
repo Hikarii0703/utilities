@@ -2,7 +2,7 @@
 
 insidecolor=00000000
 ringcolor=ffffffff
-keyhlcolor=d23c3dff
+keyhlcolor=03a1fcff
 bshlcolor=d23c3dff
 separatorcolor=00000000
 insidevercolor=00000000
@@ -15,4 +15,4 @@ datecolor=ffffffff
 loginbox=00000066
 font="sans-serif"
 locktext='just a little spark of light...'
-lock_timeout=5
+lock_timeout=30

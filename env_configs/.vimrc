@@ -3,16 +3,20 @@ Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 " Plug 'ayu-theme/ayu-vim'
-" Plug 'cocopon/iceberg.vim'
-Plug 'cohama/lexima.vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'cocopon/iceberg.vim'
+" Plug 'cohama/lexima.vim'
+" Plug 'lifepillar/vim-solarized8'
+Plug 'jiangmiao/auto-pairs'
+Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user'
+" Plug 'cjuniet/clang-format.vim'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
 syntax on
-let g:lightline={'colorscheme': 'solarized'}
+let g:lightline={'colorscheme': 'iceberg'}
 " let ayucolor="dark" 
-colo solarized8
+colo iceberg
 " set font=Fira\ Code:h12
 
 nnoremap j gj
@@ -31,8 +35,9 @@ set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 autocmd FileType cpp setlocal commentstring=//\ %s
+let g:clang_format_style = 'file'
 
-map <leader>fm :%!astyle --mode=c -A14 -xV -H -y -j -xf -p -xg -U -W3<CR>
+" map <leader>fm :%!astyle --mode=c -A14 -xV -H -y -j -xf -p -xg -U -W3<CR>
 map <F3> :%y+<CR>
 map <F9> :w <bar> !cpcompile "%:t"<CR>
 map <F10> :!cf test<CR>
