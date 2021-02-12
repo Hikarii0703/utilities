@@ -196,11 +196,12 @@ snippet util
 #if __cplusplus < 201703L
 template <class C> constexpr auto empty(const C& c) -> decltype(c.empty()) { return c.empty(); }
 template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { return c.size(); }
+template <class C> constexpr auto data(const C& c) -> decltype(c.data()) { return c.data(); }
 #endif
-namespace std {
-template <typename OutIt, typename SizeT, typename ValueT> void iota_n(OutIt dest, SizeT N, ValueT value) { while (N) { *dest = value; ++dest; ++value; --N; } }
-template <typename OutIt, typename SizeT> void sort_n(OutIt first, SizeT N) { std::sort(first, first + N); }
-template <typename OutIt, typename SizeT, class Comp> void sort_n(OutIt first, SizeT N, Comp comp) { std::sort(first, first + N, comp); }
+namespace std { // I mean, these aren't standard but meh
+template <class I, typename S, typename V> void iota_n(I dest, S N, V val) { while (N) { *dest = val; ++dest; ++val; --N; } }
+template <class I, typename S> void sort_n(I first, S N) { std::sort(first, first + N); }
+template <class I, typename S, class C> void sort_n(I first, S N, C comp) { std::sort(first, first + N, comp); }
 } // namespace std
 // clang-format on
 // ====================================================================
