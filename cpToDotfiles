@@ -12,9 +12,8 @@ def Run(command):
 
 HOME = '~'
 GIT = HOME + '/Documents/utilities'
-SUBLIME = HOME + '/.config/sublime-text-3/Packages/User'
-FIREFOX_ID = 'z68cknfg.default-release-1594229572044'
-FIREFOX = HOME + '/.mozilla/firefox/' + FIREFOX_ID
+# FIREFOX_ID = 'z68cknfg.default-release-1594229572044'
+# FIREFOX = HOME + '/.mozilla/firefox/' + FIREFOX_ID
 
 ## contest_configs
 Run('cp ' + HOME + '/.vim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_configs/cpp.snippets')
@@ -28,21 +27,21 @@ Run('cp ' + HOME + '/.local/bin/download_prob.py'  + ' ' + GIT + '/contest_confi
 
 ## env_configs
 Run('cp ' + HOME + '/.vimrc'  + ' ' + GIT + '/env_configs/.vimrc')
-Run('cp ' + HOME + '/.config/i3/config'  + ' ' + GIT + '/env_configs/i3_config')
-Run('cp ' + HOME + '/.config/polybar/config'  + ' ' + GIT + '/env_configs/polybar_config')
-Run('cp ' + HOME + '/.config/polybar/colors'  + ' ' + GIT + '/env_configs/polybar_colors')
+# Run('cp ' + HOME + '/.config/i3/config'  + ' ' + GIT + '/env_configs/i3_config')
+# Run('cp ' + HOME + '/.config/polybar/config'  + ' ' + GIT + '/env_configs/polybar_config')
+# Run('cp ' + HOME + '/.config/polybar/colors'  + ' ' + GIT + '/env_configs/polybar_colors')
 Run('cp ' + HOME + '/.config/fish/config.fish'  + ' ' + GIT + '/env_configs/config.fish')
 Run('cp ' + HOME + '/.config/alacritty/alacritty.yml'  + ' ' + GIT + '/env_configs/alacritty.yml')
-Run('cp ' + HOME + '/.config/rofi/config.rasi'  + ' ' + GIT + '/env_configs/config.rasi')
-Run('cp ' + HOME + '/.config/rofi/colors.rasi'  + ' ' + GIT + '/env_configs/colors.rasi')
+# Run('cp ' + HOME + '/.config/rofi/config.rasi'  + ' ' + GIT + '/env_configs/config.rasi')
+# Run('cp ' + HOME + '/.config/rofi/colors.rasi'  + ' ' + GIT + '/env_configs/colors.rasi')
 Run('cp ' + HOME + '/.config/ranger/rc.conf'  + ' ' + GIT + '/env_configs/rc.conf')
 Run('cp ' + HOME + '/.config/zathura/zathurarc'  + ' ' + GIT + '/env_configs/zathurarc')
-Run('cp ' + HOME + '/.config/betterlockscreenrc'  + ' ' + GIT + '/env_configs/betterlockscreenrc')
+# Run('cp ' + HOME + '/.config/betterlockscreenrc'  + ' ' + GIT + '/env_configs/betterlockscreenrc')
 
 Run('cp ' + HOME + '/bg.png'  + ' ' + GIT + '/bg.png')
 
 Run('cp ' + HOME + '/.local/bin/cpToDotfiles'  + ' ' + GIT + '/cpToDotfiles')
 
 # Firefox has to be installed manually
-Run('cp ' + FIREFOX + '/user.js'  + ' ' + GIT + '/env_configs/user.js')
-Run('cp ' + FIREFOX + '/chrome/userChrome.css'  + ' ' + GIT + '/env_configs/userChrome.css')
+# Run('cp ' + FIREFOX + '/user.js'  + ' ' + GIT + '/env_configs/user.js')
+# Run('cp ' + FIREFOX + '/chrome/userChrome.css'  + ' ' + GIT + '/env_configs/userChrome.css')

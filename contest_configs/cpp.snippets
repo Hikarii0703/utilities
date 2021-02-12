@@ -1,4 +1,14 @@
 snippet pure
+/*
+              ||========||
+              || i <3 u ||
+              ||========||
+            (\__/) || (\__/)
+            (•ㅅ•) || (•ㅅ•)
+            / 　 つ   /> ❤<\
+
+                彗星の光
+*/
 #include <bits/stdc++.h>
 
 signed main() {
@@ -12,6 +22,16 @@ $0
 endsnippet
 
 snippet tests
+/*
+              ||========||
+              || i <3 u ||
+              ||========||
+            (\__/) || (\__/)
+            (•ㅅ•) || (•ㅅ•)
+            / 　 つ   /> ❤<\
+
+                彗星の光
+*/
 #include <bits/stdc++.h>
 
 void solveCase() {
@@ -31,32 +51,9 @@ signed main() {
 
     return 0;
 }
-
 endsnippet
 
 snippet db
-// ====================================================================
-// clang-format off
-#ifdef HKR0703
-void _dbpr(int x) { std::cerr << x; } void _dbpr(int64_t x) { std::cerr << x; } void _dbpr(uint64_t x) { std::cerr << x; }
-void _dbpr(double x) { std::cerr << x; } void _dbpr(long double x) { std::cerr << x; } void _dbpr(bool x) { std::cerr << (x ? "true" : "false"); }
-void _dbpr(char x) { std::cerr << '\'' << x << '\''; } void _dbpr(const char *x) { std::cerr << '\"' << x << '\"'; } void _dbpr(const std::string &x) { std::cerr << '\"' << x << '\"'; }
-template <typename T, typename V> void _dbpr(const std::pair<T, V> &x) { std::cerr << '{'; _dbpr(x.first); std::cerr << ", "; _dbpr(x.second); std::cerr << '}'; }
-template <size_t N> void _dbpr(std::bitset<N> v) { std::cerr << '{'; for (size_t i = 0; i < N; i++) { std::cerr << v[i]; } std::cerr << '}'; }
-template <typename A, typename B, typename C, typename D> void _dbpr(std::tuple<A, B, C, D> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ", " << std::get<3>(p) << ')'; }
-template <typename A, typename B, typename C> void _dbpr(std::tuple<A, B, C> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ", " << std::get<2>(p) << ')'; }
-template <typename A, typename B> void _dbpr(std::tuple<A, B> p) { std::cerr << '(' << std::get<0>(p) << ", " << std::get<1>(p) << ')'; }
-template <typename T> void _dbpr(const T &x) { int f = 0; std::cerr << '{'; for (auto &i : x) { std::cerr << (f++ ? ", " : ""), _dbpr(i); } std::cerr << "}"; } void dbpr() { std::cerr << "]" << std::endl; }
-template <typename T, typename... V> void dbpr(T t, V... v) { _dbpr(t); if (sizeof...(v)) { std::cerr << ", "; } dbpr(v...); }
-#define debug(x...) std::cerr << "[" << #x << "] = ["; dbpr(x)
-#else
-#define debug(x...) "just a little spark of light."
-#endif
-// clang-format on
-// ====================================================================
-endsnippet
-
-snippet prdb
 // ====================================================================
 // clang-format off
 #ifdef HKR0703
@@ -71,8 +68,10 @@ template <typename T> void _dbpr(const T &x) { int f = 0; fprintf(stderr, "{"); 
 void dbpr() { fprintf(stderr, "]\n"); fflush(stderr); }
 template <typename T, typename... V> void dbpr(T t, V... v) { _dbpr(t); if (sizeof...(v)) { fprintf(stderr, ", "); } dbpr(v...); }
 #define debug(x...) fprintf(stderr, "[%s] = [", #x); dbpr(x)
+#define fdebug(...) fprintf(stderr, __VA_ARGS__); fflush(stderr);
 #else
 #define debug(x...) "just a little spark of light."
+#define fdebug(x...) "just a little spark of light."
 #endif
 // clang-format on
 // ====================================================================
@@ -113,6 +112,13 @@ endsnippet
 
 snippet freopen
 #ifndef HKR0703
+    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+#endif
+endsnippet
+
+snippet __freopen
+#ifndef HKR0703
     freopen("${TM_FILENAME_BASE}.inp", "r", stdin);
     freopen("${TM_FILENAME_BASE}.out", "w", stdout);
 #endif
@@ -132,7 +138,7 @@ template <int MOD_> struct modnum {
     modnum() : v(0) {}
     modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
     explicit operator int() const { return v; }
-    friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
+    // friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
     friend std::istream& operator >> (std::istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
  
     friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
@@ -161,7 +167,8 @@ template <int MOD_> struct modnum {
     friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
 template <typename T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
-using mod_t = modnum<int(1e9) + 7>;
+constexpr int MOD_ = 1e9 + 7;
+using mod_t = modnum<MOD_>;
 // clang-format on
 // ====================================================================
 endsnippet
@@ -183,13 +190,18 @@ template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator
 // ====================================================================
 endsnippet
 
-snippet c++17
+snippet util
 // ====================================================================
 // clang-format off
 #if __cplusplus < 201703L
 template <class C> constexpr auto empty(const C& c) -> decltype(c.empty()) { return c.empty(); }
 template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { return c.size(); }
 #endif
+namespace std {
+template <typename OutIt, typename SizeT, typename ValueT> void iota_n(OutIt dest, SizeT N, ValueT value) { while (N) { *dest = value; ++dest; ++value; --N; } }
+template <typename OutIt, typename SizeT> void sort_n(OutIt first, SizeT N) { std::sort(first, first + N); }
+template <typename OutIt, typename SizeT, class Comp> void sort_n(OutIt first, SizeT N, Comp comp) { std::sort(first, first + N, comp); }
+} // namespace std
 // clang-format on
 // ====================================================================
 endsnippet
