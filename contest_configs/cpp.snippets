@@ -56,22 +56,23 @@ endsnippet
 snippet db
 // ====================================================================
 // clang-format off
-#ifdef HKR0703
-void _dbpr(int x) { fprintf(stderr, "%d", x); } void _dbpr(int64_t x) { fprintf(stderr, "%jd", x); } void _dbpr(uint64_t x) { fprintf(stderr, "%ju", x); }
-void _dbpr(double x) { fprintf(stderr, "%lf", x); } void _dbpr(long double x) { fprintf(stderr, "%Lf", x); } void _dbpr(bool x) { fprintf(stderr, "%s\n", (x ? "true" : "false")); }
-void _dbpr(char x) { fprintf(stderr, "\'%c\'", x); } void _dbpr(const char *x) { fprintf(stderr, "\"%s\"", x); } void _dbpr(const std::string &x) { fprintf(stderr, "\"%s\"", x.data()); }
-template <typename T, typename V> void _dbpr(const std::pair<T, V> &x) { fprintf(stderr, "{"); _dbpr(x.first); fprintf(stderr, ", "); _dbpr(x.second); fprintf(stderr, "}"); }
-template <size_t N> void _dbpr(std::bitset<N> v) { fprintf(stderr, "{"); for (size_t i = 0; i < N; i++) { _dbpr(int(v[i])); } fprintf(stderr, "}"); }
-template <typename A, typename B, typename C, typename D> void _dbpr(std::tuple<A, B, C, D> p) { fprintf(stderr, "("); _dbpr(std::get<0>(p)); fprintf(stderr, ", "); _dbpr(std::get<1>(p)); fprintf(stderr, ", "); _dbpr(std::get<2>(p)); fprintf(stderr, ", "); _dbpr(std::get<3>(p)); fprintf(stderr, ")"); }
-template <typename A, typename B, typename C> void _dbpr(std::tuple<A, B, C> p) { fprintf(stderr, "("); _dbpr(std::get<0>(p)); fprintf(stderr, ", "); _dbpr(std::get<1>(p)); fprintf(stderr, ", "); _dbpr(std::get<2>(p)); fprintf(stderr, ")"); }
-template <typename T> void _dbpr(const T &x) { int f = 0; fprintf(stderr, "{"); for (const auto &i : x) { fprintf(stderr, f++ ? ", " : ""); _dbpr(i); } fprintf(stderr, "}"); }
-void dbpr() { fprintf(stderr, "]\n"); fflush(stderr); }
-template <typename T, typename... V> void dbpr(T t, V... v) { _dbpr(t); if (sizeof...(v)) { fprintf(stderr, ", "); } dbpr(v...); }
-#define debug(x...) fprintf(stderr, "[%s] = [", #x); dbpr(x)
-#define fdebug(...) fprintf(stderr, __VA_ARGS__); fflush(stderr);
+#ifdef HKR0703 // this looks like a pile of trash tbh
+#define ER(...) fprintf(stderr, __VA_ARGS__)
+inline void FP(int x) { ER("%d", x); } inline void FP(int64_t x) { ER("%jd", x); } inline void FP(uint64_t x) { ER("%ju", x); } inline void FP(double x) { ER("%lf", x); } inline void FP(long double x) { ER("%Lf", x); } inline void FP(bool x) { ER("%s", (x ? "true" : "false")); }
+inline void FP(char x) { ER("\'%c\'", x); } inline void FP(const char *x) { ER("\"%s\"", x); } inline void FP(const std::string &x) { ER("\"%s\"", x.data()); }
+template <class T, class V> inline void FP(const std::pair<T, V> &x) { ER("{"); FP(x.first); ER(", "); FP(x.second); ER("}"); }
+template <size_t N> inline void FP(std::bitset<N> v) { ER("{"); for (size_t i = 0; i < N; i++) { FP(int(v[i])); } ER("}"); }
+template <class A, class B, class C, class D> inline void FP(std::tuple<A, B, C, D> p) { ER("("); FP(std::get<0>(p)); ER(", "); FP(std::get<1>(p)); ER(", "); FP(std::get<2>(p)); ER(", "); FP(std::get<3>(p)); ER(")"); }
+template <class A, class B, class C> inline void FP(std::tuple<A, B, C> p) { ER("("); FP(std::get<0>(p)); ER(", "); FP(std::get<1>(p)); ER(", "); FP(std::get<2>(p)); ER(")"); }
+template <class T> inline void FP(const T &x) { int f = 0; ER("{"); for (const auto &i : x) { ER(f++ ? ", " : ""); FP(i); } ER("}"); }
+inline void DB() { ER("]\n"); fflush(stderr); } template <class T, class... V> inline void DB(T t, V... v) { FP(t); if (sizeof...(v)) { ER(", "); } DB(v...); }
+#define debug(x...) ER("[%s] = [", #x); DB(x)
+#define fdebug(...) ER(__VA_ARGS__); fflush(stderr)
+#define rdebug(x, l, r) assert((l) <= (r)); ER("[%s(%d:%d)] = [", #x, int(l), int(r)); ER("{"); for (int _i = int(l); _i < int(r); _i++) { FP(x[_i]); ER(", "); } FP(x[r]); ER("}]"); fflush(stderr)
 #else
-#define debug(x...) "just a little spark of light."
-#define fdebug(x...) "just a little spark of light."
+#define debug(x...)  ((void)0) // debug
+#define fdebug(x...) ((void)0) // formatted debug
+#define rdebug(x...) ((void)0) // range debug
 #endif
 // clang-format on
 // ====================================================================
@@ -130,11 +131,10 @@ snippet modint
 template <int MOD_> struct modnum {
     static constexpr int MOD = MOD_;
     static_assert(MOD_ > 0, "MOD must be positive");
-
-    using i64 = int64_t;
-    int v;
+private:
+    using i64 = int64_t; int v;
     static int minv(int a, int m) { a %= m; assert(a); return a == 1 ? 1 : int(m - i64(minv(m, a)) * i64(m) / a); }
-
+public:
     modnum() : v(0) {}
     modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
     explicit operator int() const { return v; }
@@ -166,26 +166,9 @@ template <int MOD_> struct modnum {
     friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
     friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
-template <typename T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
+template <class T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
 constexpr int MOD_ = 1e9 + 7;
 using mod_t = modnum<MOD_>;
-// clang-format on
-// ====================================================================
-endsnippet
-
-snippet yc
-// ====================================================================
-// clang-format off
-namespace std {
-template <class Fun>
-class y_combinator_result {
-    Fun fun_;
-public:
-    template <class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
-    template <class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
-};
-template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
-} // namespace std
 // clang-format on
 // ====================================================================
 endsnippet
@@ -199,9 +182,9 @@ template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { retur
 template <class C> constexpr auto data(const C& c) -> decltype(c.data()) { return c.data(); }
 #endif
 namespace std { // I mean, these aren't standard but meh
-template <class I, typename S, typename V> void iota_n(I dest, S N, V val) { while (N) { *dest = val; ++dest; ++val; --N; } }
-template <class I, typename S> void sort_n(I first, S N) { std::sort(first, first + N); }
-template <class I, typename S, class C> void sort_n(I first, S N, C comp) { std::sort(first, first + N, comp); }
+template <class I, class S, class V> inline void iota_n(I f, S N, V val) { std::iota(f, f + N, val); }
+template <class I, class S> inline void sort_n(I f, S N) { std::sort(f, f + N); }
+template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { std::sort(f, f + N, cmp); }
 } // namespace std
 // clang-format on
 // ====================================================================

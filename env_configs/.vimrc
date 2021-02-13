@@ -27,7 +27,7 @@ set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
 set autoindent smartindent cino=j1,(0,ws,Ws,L0
 set foldmethod=syntax nofoldenable foldlevel=99 
 set laststatus=2 noshowmode encoding=utf-8 showcmd nu rnu nobackup noswapfile nowrap
-" set ttimeout ttimeoutlen=0
+set ttimeout ttimeoutlen=0
 
 set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
