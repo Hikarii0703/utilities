@@ -1,0 +1,12 @@
+BasedOnStyle: Google
+IndentWidth: 4
+MaxEmptyLinesToKeep: 5
+ColumnLimit: 0
+SpaceAfterTemplateKeyword: true
+SpaceAfterCStyleCast: true
+SpaceBeforeCpp11BracedList: true
+AllowAllConstructorInitializersOnNextLine: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel: false
+    BeforeElse: true
