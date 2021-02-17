@@ -1,14 +1,10 @@
-ban.quietlight-plus
 CoenraadS.bracket-pair-colorizer-2
 donjayamanne.jquerysnippets
 dsznajder.es7-react-js-snippets
 EQuimper.react-native-react-redux
-Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
-johnpapa.winteriscoming
 lkytal.FlatUI
-miguelsolorio.min-theme
 mrmlnc.vscode-autoprefixer
 ms-python.python
 ms-toolsai.jupyter
@@ -16,9 +12,4 @@ ms-vscode.cpptools
 msjsdiag.vscode-react-native
 oderwat.indent-rainbow
 PKief.material-icon-theme
-sainnhe.gruvbox-material
-sdras.night-owl
-teabyii.ayu
-thenikso.github-plus-theme
-tomoki1207.pdf
 vscodevim.vim

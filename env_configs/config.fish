@@ -1,13 +1,3 @@
-set PATH $PATH ~/spicetify-cli
-set PATH $PATH ~/.cargo/bin
-set PATH $PATH ~/.local/bin
-set PATH $PATH ~/.poetry/bin
-set PATH $PATH ~/.npm-packages/bin
-set PATH $PATH /usr/local/go/bin
-set NPM_PACKAGES "$HOME/.npm-packages"
-set PATH $PATH $NPM_PACKAGES/bin
-set MANPATH $NPM_PACKAGES/share/man $MANPATH  
-
 function fm
     set tmpfile "/tmp/pwd-from-ranger"
     ranger --choosedir=$tmpfile $argv
@@ -40,3 +30,5 @@ function getin
     download_prob.py samples
 end
 
+function setenv; set -gx $argv; end
+source ~/.env

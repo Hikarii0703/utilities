@@ -9,29 +9,8 @@ snippet pure
 
                 彗星の光
 */
-#include <bits/stdc++.h>
+#define MULTITEST 0
 
-signed main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-
-$0
-
-    return 0;
-}
-endsnippet
-
-snippet tests
-/*
-              ||========||
-              || i <3 u ||
-              ||========||
-            (\__/) || (\__/)
-            (•ㅅ•) || (•ㅅ•)
-            / 　 つ   /> ❤<\
-
-                彗星の光
-*/
 #include <bits/stdc++.h>
 
 void solveCase() {
@@ -42,12 +21,12 @@ signed main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    int numTest;
-    std::cin >> numTest;
+	int nTC = 1;
+	if (MULTITEST) std::cin >> nTC;
 
-    while (numTest--) {
+	for (int iTC = 1; iTC <= nTC; iTC++) {
 		solveCase();
-    }
+	}
 
     return 0;
 }
@@ -68,7 +47,7 @@ template <class T> inline void FP(const T &x) { int f = 0; ER("{"); for (const a
 inline void DB() { ER("]\n"); fflush(stderr); } template <class T, class... V> inline void DB(T t, V... v) { FP(t); if (sizeof...(v)) { ER(", "); } DB(v...); }
 #define debug(x...) ER("[%s] = [", #x); DB(x)
 #define fdebug(...) ER(__VA_ARGS__); fflush(stderr)
-#define rdebug(x, l, r) assert((l) <= (r)); ER("[%s(%d:%d)] = [", #x, int(l), int(r)); ER("{"); for (int _i = int(l); _i < int(r); _i++) { FP(x[_i]); ER(", "); } FP(x[r]); ER("}]"); fflush(stderr)
+#define rdebug(x, l, r) assert((l) <= (r)); ER("[%s(%d:%d)] = [", #x, int(l), int(r)); ER("{"); for (int _i = int(l); _i < int(r); _i++) { FP(x[_i]); ER(", "); } FP(x[r]); ER("}]\n"); fflush(stderr)
 #else
 #define debug(x...)  ((void)0) // debug
 #define fdebug(x...) ((void)0) // formatted debug

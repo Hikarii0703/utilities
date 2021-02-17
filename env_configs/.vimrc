@@ -7,11 +7,15 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 Plug 'bfrg/vim-cpp-modern'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
 let g:lightline={'colorscheme': 'iceberg'}
 colo iceberg
+if &term == "alacritty"        
+  let &term = "xterm-256color"
+endif
 let c_no_curly_error=1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
@@ -50,6 +54,19 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 noremap <silent> <leader><cr> :noh<cr>
 
-if &term == "alacritty"        
-  let &term = "xterm-256color"
-endif
+let g:ycm_clangd_args=['--header-insertion=never']
+set completeopt-=preview
+set signcolumn=yes
+let g:UltiSnipsExpandTrigger = "<NOP>"
+let g:UltiSnipsJumpForwardTrigger = "<TAB>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-TAB>"
+function ExpandSnippet()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res
+        return ""
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippet()<CR>" : "\<CR>"
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'

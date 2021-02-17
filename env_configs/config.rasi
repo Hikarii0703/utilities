@@ -1,9 +1,0 @@
-configuration {
-    width: 800;
-    lines: 10;
-    columns: 2;
-    font: "MesloLGS NF 11";
-    show-icons: true;
-    theme: "~/.config/rofi/colors.rasi";
-    display-drun: "App";
-}

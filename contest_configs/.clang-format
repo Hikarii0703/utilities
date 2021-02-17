@@ -6,7 +6,10 @@ SpaceAfterTemplateKeyword: true
 SpaceAfterCStyleCast: true
 SpaceBeforeCpp11BracedList: true
 AllowAllConstructorInitializersOnNextLine: true
+AccessModifierOffset: -4
 BreakBeforeBraces: Custom
 BraceWrapping:
     AfterCaseLabel: false
     BeforeElse: true
+    BeforeCatch: true
+    AfterEnum: false
