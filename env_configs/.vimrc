@@ -3,6 +3,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'cocopon/iceberg.vim'
+Plug 'lifepillar/vim-solarized8'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
@@ -13,9 +14,6 @@ call plug#end()
 set termguicolors background=light t_Co=256 
 let g:lightline={'colorscheme': 'iceberg'}
 colo iceberg
-if &term == "alacritty"        
-  let &term = "xterm-256color"
-endif
 let c_no_curly_error=1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
@@ -27,11 +25,11 @@ nnoremap n nzz
 nnoremap N Nzz
 set hlsearch incsearch smartcase
 
-set shiftround shiftwidth=4 tabstop=4 expandtab softtabstop=4
-set autoindent smartindent cino=j1,(0,ws,Ws,L0
-set foldmethod=syntax nofoldenable foldlevel=99 
-set laststatus=2 noshowmode encoding=utf-8 showcmd nu rnu nobackup noswapfile nowrap
-set ttimeout ttimeoutlen=0
+set sr sw=4 ts=4 et sts=4
+set ai si cino=j1,(0,ws,Ws,L0
+set fdm=syntax nofen foldlevel=99 
+set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap cul scl=no
+set ttimeout ttm=0 re=1
 
 set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
@@ -49,14 +47,13 @@ map <F11> :w <bar> !cpcompile "%:t" 11<CR>
 map <F12> :w <bar> !cpcompile "%:t" 14<CR>
 map <F8> :!cprun "%:t"<CR>
 map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:h:t""/problem/""%:t:r" -f "%:t"<CR>
-map <F7> :!cf sid<CR><CR>
+map <F7> :!cprun "%:t" case<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 noremap <silent> <leader><cr> :noh<cr>
 
+set cot-=preview
 let g:ycm_clangd_args=['--header-insertion=never']
-set completeopt-=preview
-set signcolumn=yes
 let g:UltiSnipsExpandTrigger = "<NOP>"
 let g:UltiSnipsJumpForwardTrigger = "<TAB>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-TAB>"

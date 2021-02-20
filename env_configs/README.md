@@ -7,6 +7,7 @@ This is where I save some general config files.
 * Vim: (~)
     * **.vimrc**
     * install **vim-plug** to install other plugins
+    * **.ycm\_extra\_conf.py** (install based on the path on **.vimrc**)
 * Alacritty: (~/.config/alacritty/)
     * **alacritty.yml**
 * fish: (~/.config/fish/)
