@@ -7,7 +7,7 @@ This is where I save some general config files.
 * Vim: (~)
     * **.vimrc**
     * install **vim-plug** to install other plugins
-    * **.ycm\_extra\_conf.py** (install based on the path on **.vimrc**)
+    * **.ycm\_extra\_conf.py** (install to the path listed inside **.vimrc**)
 * Alacritty: (~/.config/alacritty/)
     * **alacritty.yml**
 * fish: (~/.config/fish/)
@@ -15,8 +15,6 @@ This is where I save some general config files.
 * VS Code: (~/.config/Code/User)
     * **settings.json**
     * **vscode\_extensions.txt**
-* Firefox: (~/.mozilla/firefox/[release-folder]/)
-    * **user.js**
 * Ranger: (~/.config/ranger/)
     * **rc.conf**
     * install **Ueberzug** to preview images in Ranger
