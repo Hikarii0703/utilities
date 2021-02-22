@@ -27,8 +27,8 @@ set hlsearch incsearch smartcase
 
 set sr sw=4 ts=4 et sts=4
 set ai si cino=j1,(0,ws,Ws,L0
-set fdm=syntax nofen foldlevel=99 
-set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap cul scl=no
+set fdm=marker fmr=clang-format\ off,clang-format\ on
+set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap cul scl=no mouse=a
 set ttimeout ttm=0 re=1
 
 set clipboard=unnamedplus

@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
             case 0:
                 break;
             case 2:
-                throw std::invalid_argument("Keyboard Interruption.");
+                throw std::invalid_argument("Aborted");
             default:
                 throw std::invalid_argument("Compilation did not exit successfully.");
         }

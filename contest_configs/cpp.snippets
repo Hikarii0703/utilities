@@ -8,23 +8,24 @@ snippet pure
             / 　 つ   /> ❤<\
 
                 彗星の光
+   				 271048
 */
 #define MULTITEST 0
 
 #include <bits/stdc++.h>
+using namespace std;
 
-void solveCase() {
-$0
+void solveCase() {$0
 }
 
 signed main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
 	int nTC = 1;
-	if (MULTITEST) std::cin >> nTC;
+	if (MULTITEST) cin >> nTC;
 
-	for (int iTC = 1; iTC <= nTC; iTC++) {
+	for (int iTC = 0; iTC < nTC; iTC++) {
 		solveCase();
 	}
 
@@ -33,16 +34,15 @@ signed main() {
 endsnippet
 
 snippet db
-// ====================================================================
+// db  ================================================================
 // clang-format off
 #ifdef HKR0703 // this looks like a pile of trash tbh
 #define ER(...) fprintf(stderr, __VA_ARGS__)
 inline void FP(int x) { ER("%d", x); } inline void FP(int64_t x) { ER("%jd", x); } inline void FP(uint64_t x) { ER("%ju", x); } inline void FP(double x) { ER("%lf", x); } inline void FP(long double x) { ER("%Lf", x); } inline void FP(bool x) { ER("%s", (x ? "true" : "false")); }
-inline void FP(char x) { ER("\'%c\'", x); } inline void FP(const char *x) { ER("\"%s\"", x); } inline void FP(const std::string &x) { ER("\"%s\"", x.data()); }
-template <class T, class V> inline void FP(const std::pair<T, V> &x) { ER("{"); FP(x.first); ER(", "); FP(x.second); ER("}"); }
-template <size_t N> inline void FP(std::bitset<N> v) { ER("{"); for (size_t i = 0; i < N; i++) { FP(int(v[i])); } ER("}"); }
-template <class A, class B, class C, class D> inline void FP(std::tuple<A, B, C, D> p) { ER("("); FP(std::get<0>(p)); ER(", "); FP(std::get<1>(p)); ER(", "); FP(std::get<2>(p)); ER(", "); FP(std::get<3>(p)); ER(")"); }
-template <class A, class B, class C> inline void FP(std::tuple<A, B, C> p) { ER("("); FP(std::get<0>(p)); ER(", "); FP(std::get<1>(p)); ER(", "); FP(std::get<2>(p)); ER(")"); }
+inline void FP(char x) { ER("\'%c\'", x); } inline void FP(const char *x) { ER("\"%s\"", x); } inline void FP(const string &x) { ER("\"%s\"", x.data()); }
+template <class T, class V> inline void FP(const pair<T, V> &x) { ER("{"); FP(x.first); ER(", "); FP(x.second); ER("}"); }
+template <size_t N> inline void FP(bitset<N> v) { ER("{"); for (size_t i = 0; i < N; i++) { FP(int(v[i])); } ER("}"); }
+template <class A, class B, class C> inline void FP(tuple<A, B, C> p) { ER("("); FP(get<0>(p)); ER(", "); FP(get<1>(p)); ER(", "); FP(get<2>(p)); ER(")"); }
 template <class T> inline void FP(const T &x) { int f = 0; ER("{"); for (const auto &i : x) { ER(f++ ? ", " : ""); FP(i); } ER("}"); }
 inline void DB() { ER("]\n"); fflush(stderr); } template <class T, class... V> inline void DB(T t, V... v) { FP(t); if (sizeof...(v)) { ER(", "); } DB(v...); }
 #define debug(x...) ER("[%s] = [", #x); DB(x)
@@ -54,16 +54,15 @@ inline void DB() { ER("]\n"); fflush(stderr); } template <class T, class... V> i
 #define rdebug(x...) ((void)0) // range debug
 #endif
 // clang-format on
-// ====================================================================
+// end of db ==========================================================
 endsnippet
 
 snippet fast
-// ====================================================================
+// fast ===============================================================
 // clang-format off
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 namespace io {
-using namespace std;
 static const int buf_size = 4096; static unsigned char buf[buf_size]; static int buf_len = 0, buf_pos = 0;
 inline bool isEof() { if (buf_pos == buf_len) { buf_pos = 0, buf_len = fread(buf, 1, buf_size, stdin); if (buf_pos == buf_len) { return 1; } } return 0; }
 inline int getChar() { return isEof() ? -1 : buf[buf_pos++]; }
@@ -82,20 +81,20 @@ inline void writeChar(int x) { if (write_buf_pos == buf_size) { fwrite(write_buf
 inline void flush() { if (write_buf_pos) { fwrite(write_buf, 1, write_buf_pos, stdout), write_buf_pos = 0; fflush(stdout); } }
 template <class T> inline void writeInt(T x, char end = 0, int output_len = -1) { if (x < 0) { writeChar('-'), x = -x; } char s[24]; int n = 0; while (x || !n) { s[n++] = '0' + x % 10, x /= 10; } while (n < output_len) { s[n++] = '0'; } while (n--) { writeChar(s[n]); } if (end) { writeChar(end); } }
 inline void writeWord(const char*s) { while (*s) { writeChar(*s++); } }
-inline void writeDouble(double x, int output_len = 0) { if (x < 0) { writeChar('-'), x = -x; } int t = (int)x; writeInt(t), x -= t; writeChar('.'); for (int i = output_len - 1; i > 0; i--) { x *= 10; t = std::min(9, (int)x); writeChar('0' + t), x -= t; } x *= 10; t = std::min(9, (int)(x + 0.5)); writeChar('0' + t); }
+inline void writeDouble(double x, int output_len = 0) { if (x < 0) { writeChar('-'), x = -x; } int t = (int)x; writeInt(t), x -= t; writeChar('.'); for (int i = output_len - 1; i > 0; i--) { x *= 10; t = min(9, (int)x); writeChar('0' + t), x -= t; } x *= 10; t = min(9, (int)(x + 0.5)); writeChar('0' + t); }
 static struct buffer_flusher_t { ~buffer_flusher_t() { flush(); } } buffer_flusher;
 };
 #pragma GCC diagnostic pop
 // clang-format on
-// ====================================================================
+// end of fast ========================================================
 endsnippet
 
 snippet freopen
-#ifndef HKR0703
+#ifdef HKR0703
+#pragma message("freopen enabled")
+#else
     freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
     freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
-#else
-#pragma message("freopen enabled")
 #endif
 endsnippet
 
@@ -107,7 +106,7 @@ snippet __freopen
 endsnippet
 
 snippet modint
-// ====================================================================
+// modint =============================================================
 // clang-format off
 template <int MOD_> struct modnum {
     static constexpr int MOD = MOD_;
@@ -120,8 +119,8 @@ public:
     modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
     explicit operator int() const { return v; }
 #pragma message("cast mod_t to int when printf")
-    // friend std::ostream& operator << (std::ostream& out, const modnum& n) { return out << int(n); }
-    friend std::istream& operator >> (std::istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
+    // friend ostream& operator << (ostream& out, const modnum& n) { return out << int(n); }
+    friend istream& operator >> (istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
  
     friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
     friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; }
@@ -152,22 +151,20 @@ template <class T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { 
 constexpr int MOD_ = 1e9 + 7;
 using mod_t = modnum<MOD_>;
 // clang-format on
-// ====================================================================
+// end of modint ======================================================
 endsnippet
 
 snippet util
-// ====================================================================
+// util ===============================================================
 // clang-format off
 #if __cplusplus < 201703L
 template <class C> constexpr auto empty(const C& c) -> decltype(c.empty()) { return c.empty(); }
 template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { return c.size(); }
 template <class C> constexpr auto data(const C& c) -> decltype(c.data()) { return c.data(); }
 #endif
-namespace std { // I mean, these aren't standard but meh
-template <class I, class S, class V> inline void iota_n(I f, S N, V val) { std::iota(f, f + N, val); }
-template <class I, class S> inline void sort_n(I f, S N) { std::sort(f, f + N); }
-template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { std::sort(f, f + N, cmp); }
-} // namespace std
+template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
+template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
+template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
 // clang-format on
-// ====================================================================
+// end of util ========================================================
 endsnippet
