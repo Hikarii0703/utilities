@@ -8,14 +8,14 @@ snippet pure
             / 　 つ   /> ❤<\
 
                 彗星の光
-   				 271048
 */
 #define MULTITEST 0
 
 #include <bits/stdc++.h>
 using namespace std;
 
-void solveCase() {$0
+void solveCase() {
+$0
 }
 
 signed main() {
@@ -34,24 +34,21 @@ signed main() {
 endsnippet
 
 snippet db
-// db  ================================================================
+// db =================================================================
 // clang-format off
-#ifdef HKR0703 // this looks like a pile of trash tbh
-#define ER(...) fprintf(stderr, __VA_ARGS__)
-inline void FP(int x) { ER("%d", x); } inline void FP(int64_t x) { ER("%jd", x); } inline void FP(uint64_t x) { ER("%ju", x); } inline void FP(double x) { ER("%lf", x); } inline void FP(long double x) { ER("%Lf", x); } inline void FP(bool x) { ER("%s", (x ? "true" : "false")); }
-inline void FP(char x) { ER("\'%c\'", x); } inline void FP(const char *x) { ER("\"%s\"", x); } inline void FP(const string &x) { ER("\"%s\"", x.data()); }
-template <class T, class V> inline void FP(const pair<T, V> &x) { ER("{"); FP(x.first); ER(", "); FP(x.second); ER("}"); }
-template <size_t N> inline void FP(bitset<N> v) { ER("{"); for (size_t i = 0; i < N; i++) { FP(int(v[i])); } ER("}"); }
-template <class A, class B, class C> inline void FP(tuple<A, B, C> p) { ER("("); FP(get<0>(p)); ER(", "); FP(get<1>(p)); ER(", "); FP(get<2>(p)); ER(")"); }
-template <class T> inline void FP(const T &x) { int f = 0; ER("{"); for (const auto &i : x) { ER(f++ ? ", " : ""); FP(i); } ER("}"); }
-inline void DB() { ER("]\n"); fflush(stderr); } template <class T, class... V> inline void DB(T t, V... v) { FP(t); if (sizeof...(v)) { ER(", "); } DB(v...); }
-#define debug(x...) ER("[%s] = [", #x); DB(x)
-#define fdebug(...) ER(__VA_ARGS__); fflush(stderr)
-#define rdebug(x, l, r) assert((l) <= (r)); ER("[%s(%d:%d)] = [", #x, int(l), int(r)); ER("{"); for (int _i = int(l); _i < int(r); _i++) { FP(x[_i]); ER(", "); } FP(x[r]); ER("}]\n"); fflush(stderr)
+#ifdef LOCAL
+template <typename A, typename B> string to_string(pair<A, B> p); template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p);
+string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
+string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
+string to_string(const vector<bool> &v) { bool first = true; string res = "{"; for (int i = 0; i < static_cast<int>(v.size()); i++) { if (!first) { res += ", "; } first = false; res += to_string(v[i]); } res += "}"; return res; }
+template <size_t N> string to_string(bitset<N> v) { string res = ""; for (size_t i = 0; i < N; i++) { res += static_cast<char>('0' + v[i]); } return res; }
+template <typename A> string to_string(A v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
+template <typename A, typename B> string to_string(pair<A, B> p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
+template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
+void debug_out() { cerr << endl; } template <typename Head, typename... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
-#define debug(x...)  ((void)0) // debug
-#define fdebug(x...) ((void)0) // formatted debug
-#define rdebug(x...) ((void)0) // range debug
+#define debug(...) ((void)0)
 #endif
 // clang-format on
 // end of db ==========================================================
@@ -118,8 +115,7 @@ public:
     modnum() : v(0) {}
     modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
     explicit operator int() const { return v; }
-#pragma message("cast mod_t to int when printf")
-    // friend ostream& operator << (ostream& out, const modnum& n) { return out << int(n); }
+    friend ostream& operator << (ostream& out, const modnum& n) { return out << int(n); }
     friend istream& operator >> (istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
  
     friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
@@ -167,4 +163,21 @@ template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
 // clang-format on
 // end of util ========================================================
+endsnippet
+
+snippet yc
+// yc =================================================================
+// clang-format off
+namespace std {
+template <class Fun>
+class y_combinator_result {
+    Fun fun_;
+public:
+    template <class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template <class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+} // namespace std
+// clang-format on
+// end of yc ==========================================================
 endsnippet
