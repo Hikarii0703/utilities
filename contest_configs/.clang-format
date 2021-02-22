@@ -7,7 +7,6 @@ SpaceAfterCStyleCast: true
 SpaceBeforeCpp11BracedList: true
 AllowAllConstructorInitializersOnNextLine: true
 AccessModifierOffset: -4
-KeepEmptyLinesAtTheStartOfBlocks: true
 BreakBeforeBraces: Custom
 BraceWrapping:
     AfterCaseLabel: false
