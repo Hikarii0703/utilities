@@ -8,7 +8,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 Plug 'bfrg/vim-cpp-modern'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
@@ -52,18 +52,8 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 noremap <silent> <leader><cr> :noh<cr>
 
-set cot-=preview
-let g:ycm_clangd_args=['--header-insertion=never']
 let g:UltiSnipsExpandTrigger = "<NOP>"
-let g:UltiSnipsJumpForwardTrigger = "<TAB>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-TAB>"
-function ExpandSnippet()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res
-        return ""
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippet()<CR>" : "\<CR>"
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"

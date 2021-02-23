@@ -9,7 +9,7 @@ snippet pure
 
                 彗星の光
 */
-#define MULTITEST 0
+#define MULTICASE 0
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,12 +22,16 @@ signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-	int nTC = 1;
-	if (MULTITEST) cin >> nTC;
-
-	for (int iTC = 0; iTC < nTC; iTC++) {
-		solveCase();
-	}
+#if MULTICASE
+#pragma message("multicase enabled")
+    int nTC;
+    cin >> nTC;
+    for (int iTC = 0; iTC < nTC; iTC++) {
+        solveCase();
+    }
+#else
+    solveCase();
+#endif
 
     return 0;
 }
@@ -36,7 +40,7 @@ endsnippet
 snippet db
 // db =================================================================
 // clang-format off
-#ifdef LOCAL
+#ifdef LOCAL_DEFINE
 template <typename A, typename B> string to_string(pair<A, B> p); template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p);
 string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
 string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
@@ -87,7 +91,7 @@ static struct buffer_flusher_t { ~buffer_flusher_t() { flush(); } } buffer_flush
 endsnippet
 
 snippet freopen
-#ifdef HKR0703
+#ifdef LOCAL_DEFINE
 #pragma message("freopen enabled")
 #else
     freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
@@ -96,7 +100,7 @@ snippet freopen
 endsnippet
 
 snippet __freopen
-#ifndef HKR0703
+#ifndef LOCAL_DEFINE
     freopen("${TM_FILENAME_BASE}.inp", "r", stdin);
     freopen("${TM_FILENAME_BASE}.out", "w", stdout);
 #endif

@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
                        "-Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align "
                        "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 "
                        "-fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector "
-                       "-DHKR0703")
+                       "-DLOCAL_DEFINE")
                        .data());
 
         switch (exitcode) {
