@@ -3,7 +3,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'cocopon/iceberg.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
@@ -29,7 +28,7 @@ set sr sw=4 ts=4 et sts=4
 set ai si cino=j1,(0,ws,Ws,L0
 set fdm=marker fmr=clang-format\ off,clang-format\ on
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap cul scl=no mouse=a
-set ttimeout ttm=0 re=1
+set ttimeout ttm=0
 
 set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))

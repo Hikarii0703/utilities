@@ -15,7 +15,6 @@ snippet pure
 using namespace std;
 
 void solveCase() {
-$0
 }
 
 signed main() {
@@ -27,10 +26,10 @@ signed main() {
     int nTC;
     cin >> nTC;
     for (int iTC = 0; iTC < nTC; iTC++) {
+#endif
         solveCase();
+#if MULTICASE
     }
-#else
-    solveCase();
 #endif
 
     return 0;
