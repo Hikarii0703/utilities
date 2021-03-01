@@ -8,6 +8,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'kana/vim-operator-user'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'neoclide/coc.nvim'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 set termguicolors background=light t_Co=256 
@@ -56,3 +57,9 @@ let g:UltiSnipsExpandTrigger = "<NOP>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+let g:tmuxline_preset = {
+      \'b'    : '#H',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W#F'],
+      \'y'    : ['%R', '%a', '%Y']}
