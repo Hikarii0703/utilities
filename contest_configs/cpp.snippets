@@ -6,12 +6,12 @@ snippet pure
             (\__/) || (\__/)
             (•ㅅ•) || (•ㅅ•)
             / 　 つ   /> ❤<\
-
-                彗星の光
+                 君が好き
 */
 #define MULTICASE 0
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 void solveCase() {
@@ -27,6 +27,103 @@ signed main() {
     int nTC;
     cin >> nTC;
     for (int iTC = 0; iTC < nTC; iTC++) {
+#endif
+        solveCase();
+#if MULTICASE
+    }
+#endif
+
+    return 0;
+}
+endsnippet
+
+snippet code
+/*
+              ||========||
+              || i <3 u ||
+              ||========||
+            (\__/) || (\__/)
+            (•ㅅ•) || (•ㅅ•)
+            / 　 つ   /> ❤<\
+                 君が好き
+*/
+#define MULTICASE 0
+#define FILEIO 0
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// template ===========================================================
+// clang-format off
+// stupid 2019's omgursocute template
+#define this_template "extreme literal garbage"
+using i64 = int64_t;
+using u64 = uint64_t;
+using ld = long double;
+#define all(_x_) (_x_).begin(), (_x_).end()
+#define rall(_x_) (_x_).rbegin(), (_x_).rend()
+
+#define ForA(_i_, _a_, _b_) for (i64 _i_ = (_a_); _i_ <= (_b_); ++_i_)
+#define ForB(_i_, _a_, _b_, _c_) for (i64 _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
+#define ForN(_i_, _n_) for (i64 _i_ = 0; _i_ < (_n_); ++_i_)
+#define RForA(_i_, _a_, _b_) for (i64 _i_ = (_a_); _i_ >= (_b_); --_i_)
+#define RForB(_i_, _a_, _b_, _c_) for (i64 _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
+#define RForN(_i_, _n_) for (i64 _i_ = ((_n_) - 1); _i_ >= 0; --_i_)
+
+#define NumArgs(_1, _2, _3, _4, ForFunc, ...) ForFunc
+#define For(...) NumArgs(__VA_ARGS__, ForB, ForA, ForN) (__VA_ARGS__)
+#define RFor(...) NumArgs(__VA_ARGS__, RForB, RForA, RForN) (__VA_ARGS__)
+#define ForE(_i_, _x_) for (auto &_i_ : _x_)
+#define Rep(_x_) For(_i_, _x_)
+
+#define popcount(x) __builtin_popcountll(x)
+#define clz(x) __builtin_clzll(x)
+#define ffs(x) __builtin_ffsll(x)
+
+inline void read() {} template <typename T, typename... A> inline void read(T &x, A &...a) { cin >> x; read(a...); }
+inline void write() {} template <typename T, typename... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
+template <typename... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
+
+template <class A, class B> bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
+template <class A, class B> bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
+
+#ifdef LOCAL_DEFINE
+mt19937_64 engine(258133 + 271048);
+#else
+mt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());
+#endif
+
+namespace streamSetup {
+void initIO() {
+    ios_base::sync_with_stdio(false); cin.tie(nullptr);
+    cout << setprecision(9) << fixed;
+#if FILEIO
+#ifdef LOCAL_DEFINE
+#warning "freopen enabled"
+#else
+    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+#endif
+#endif
+}
+}  // namespace streamSetup
+// clang-format on
+// end of template ====================================================
+
+void solveCase() {
+$0
+}
+
+signed main() {
+    streamSetup::initIO();
+#if MULTICASE
+#ifdef LOCAL_DEFINE
+#warning "multicase enabled"
+#endif
+    int nTC;
+    cin >> nTC;
+    For (iTC, nTC) {
 #endif
         solveCase();
 #if MULTICASE

@@ -5,9 +5,10 @@ Plug 'tpope/vim-commentary'
 Plug 'cocopon/iceberg.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/vim-clang-format'
-Plug 'kana/vim-operator-user'
-Plug 'bfrg/vim-cpp-modern'
+" Plug 'kana/vim-operator-user'
+" Plug 'bfrg/vim-cpp-modern'
 Plug 'neoclide/coc.nvim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
@@ -15,9 +16,9 @@ set termguicolors background=light t_Co=256
 let g:lightline={'colorscheme': 'iceberg'}
 colo iceberg
 let c_no_curly_error=1
-let g:cpp_attributes_highlight = 1
-let g:cpp_member_highlight = 1
-let g:cpp_simple_highlight = 1
+" let g:cpp_attributes_highlight = 1
+" let g:cpp_member_highlight = 1
+" let g:cpp_simple_highlight = 1
 
 nnoremap j gj
 nnoremap k gk
@@ -37,7 +38,7 @@ autocmd VimLeave * call system("xsel -ib", getreg('+'))
 autocmd FileType cpp setlocal commentstring=//\ %s
 
 let g:clang_format_style = 'file'
-let g:clang_format#auto_format=1
+" let g:clang_format#auto_format=1
 
 map <F2> :!getin<CR>
 map <F3> :%y+<CR>
@@ -57,9 +58,3 @@ let g:UltiSnipsExpandTrigger = "<NOP>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-
-let g:tmuxline_preset = {
-      \'b'    : '#H',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W#F'],
-      \'y'    : ['%R', '%a', '%Y']}
