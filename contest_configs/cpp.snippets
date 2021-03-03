@@ -55,21 +55,22 @@ snippet code
 using namespace std;
 
 // template ===========================================================
-// clang-format off
+// *INDENT-OFF*
 // stupid 2019's omgursocute template
 #define this_template "extreme literal garbage"
 using i64 = int64_t;
 using u64 = uint64_t;
+using db = double;
 using ld = long double;
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
 
-#define ForA(_i_, _a_, _b_) for (i64 _i_ = (_a_); _i_ <= (_b_); ++_i_)
-#define ForB(_i_, _a_, _b_, _c_) for (i64 _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
-#define ForN(_i_, _n_) for (i64 _i_ = 0; _i_ < (_n_); ++_i_)
-#define RForA(_i_, _a_, _b_) for (i64 _i_ = (_a_); _i_ >= (_b_); --_i_)
-#define RForB(_i_, _a_, _b_, _c_) for (i64 _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
-#define RForN(_i_, _n_) for (i64 _i_ = ((_n_) - 1); _i_ >= 0; --_i_)
+#define ForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); _i_ <= i64(_b_); ++_i_)
+#define ForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); _i_ <= i64(_b_); _i_ += i64(_c_))
+#define ForN(_i_, _n_) for (i64 _i_ = 0; _i_ < i64(_n_); ++_i_)
+#define RForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); _i_ >= i64(_b_); --_i_)
+#define RForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); _i_ >= i64(_b_); _i_ -= i64(_c_))
+#define RForN(_i_, _n_) for (i64 _i_ = i64(_n_) - 1; _i_ >= 0; --_i_)
 
 #define NumArgs(_1, _2, _3, _4, ForFunc, ...) ForFunc
 #define For(...) NumArgs(__VA_ARGS__, ForB, ForA, ForN) (__VA_ARGS__)
@@ -77,7 +78,7 @@ using ld = long double;
 #define ForE(_i_, _x_) for (auto &_i_ : _x_)
 #define Rep(_x_) For(_i_, _x_)
 
-#define popcount(x) __builtin_popcountll(x)
+#define popcnt(x) __builtin_popcountll(x)
 #define clz(x) __builtin_clzll(x)
 #define ffs(x) __builtin_ffsll(x)
 
@@ -108,13 +109,14 @@ void initIO() {
 #endif
 }
 }  // namespace streamSetup
-// clang-format on
+// *INDENT-ON*
 // end of template ====================================================
 
 void solveCase() {
 $0
 }
 
+// *INDENT-OFF*
 signed main() {
     streamSetup::initIO();
 #if MULTICASE
@@ -132,11 +134,12 @@ signed main() {
 
     return 0;
 }
+// *INDENT-ON*
 endsnippet
 
 snippet db
 // db =================================================================
-// clang-format off
+// *INDENT-OFF*
 #ifdef LOCAL_DEFINE
 template <typename A, typename B> string to_string(pair<A, B> p); template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p);
 string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
@@ -151,13 +154,13 @@ void debug_out() { cerr << endl; } template <typename Head, typename... Tail> vo
 #else
 #define debug(...) ((void)0)
 #endif
-// clang-format on
+// *INDENT-ON*
 // end of db ==========================================================
 endsnippet
 
 snippet fast
 // fast ===============================================================
-// clang-format off
+// *INDENT-OFF*
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 namespace io {
@@ -183,7 +186,7 @@ inline void writeDouble(double x, int output_len = 0) { if (x < 0) { writeChar('
 static struct buffer_flusher_t { ~buffer_flusher_t() { flush(); } } buffer_flusher;
 };
 #pragma GCC diagnostic pop
-// clang-format on
+// *INDENT-ON*
 // end of fast ========================================================
 endsnippet
 
@@ -205,7 +208,7 @@ endsnippet
 
 snippet modint
 // modint =============================================================
-// clang-format off
+// *INDENT-OFF*
 template <int MOD_> struct modnum {
     static constexpr int MOD = MOD_;
     static_assert(MOD_ > 0, "MOD must be positive");
@@ -247,13 +250,13 @@ public:
 template <class T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
 constexpr int MOD_ = 1e9 + 7;
 using mod_t = modnum<MOD_>;
-// clang-format on
+// *INDENT-ON*
 // end of modint ======================================================
 endsnippet
 
 snippet util
 // util ===============================================================
-// clang-format off
+// *INDENT-OFF*
 #if __cplusplus < 201703L
 template <class C> constexpr auto empty(const C& c) -> decltype(c.empty()) { return c.empty(); }
 template <class C> constexpr auto size(const C& c) -> decltype(c.size()) { return c.size(); }
@@ -262,13 +265,13 @@ template <class C> constexpr auto data(const C& c) -> decltype(c.data()) { retur
 template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
 template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
-// clang-format on
+// *INDENT-ON*
 // end of util ========================================================
 endsnippet
 
 snippet yc
 // yc =================================================================
-// clang-format off
+// *INDENT-OFF*
 namespace std {
 template <class Fun>
 class y_combinator_result {
@@ -279,6 +282,7 @@ public:
 };
 template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
 } // namespace std
-// clang-format on
+// *INDENT-ON*
 // end of yc ==========================================================
 endsnippet
+

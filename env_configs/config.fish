@@ -32,3 +32,4 @@ end
 
 function setenv; set -gx $argv; end
 source ~/.env
+
