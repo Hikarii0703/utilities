@@ -56,49 +56,84 @@ using namespace std;
 
 // template ===========================================================
 // *INDENT-OFF*
-// stupid 2019's omgursocute template
-#define this_template "extreme literal garbage"
+// omgursocute's 2019 total garbage template, revised
 using i64 = int64_t;
 using u64 = uint64_t;
 using db = double;
 using ld = long double;
+
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
 
-#define ForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); _i_ <= i64(_b_); ++_i_)
-#define ForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); _i_ <= i64(_b_); _i_ += i64(_c_))
-#define ForN(_i_, _n_) for (i64 _i_ = 0; _i_ < i64(_n_); ++_i_)
-#define RForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); _i_ >= i64(_b_); --_i_)
-#define RForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); _i_ >= i64(_b_); _i_ -= i64(_c_))
-#define RForN(_i_, _n_) for (i64 _i_ = i64(_n_) - 1; _i_ >= 0; --_i_)
+// variadic for-loops ftw
+#define ForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); (_i_) <= i64(_b_); ++(_i_))
+#define ForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); (_i_) <= i64(_b_); (_i_) += i64(_c_))
+#define ForN(_i_, _n_) for (i64 _i_ = 0; (_i_) < i64(_n_); ++(_i_))
+#define RForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); (_i_) >= i64(_b_); --(_i_))
+#define RForB(_i_, _a_, _b_, _c_) for (i64 _i_ = i64(_a_); (_i_) >= i64(_b_); (_i_) -= i64(_c_))
+#define RForN(_i_, _n_) for (i64 _i_ = i64(_n_) - 1; (_i_) >= 0; --(_i_))
+
+#define ForE1(_a_, _x_) for (auto &_a_ : _x_)
+#define ForE2(_a_, _b_, _x_) for (auto &[_a_, _b_] : _x_)
+#define ForE3(_a_, _b_, _c_, _x_) for (auto &[_a_, _b_, _c_] : _x_)
+#define ForE4(_a_, _b_, _c_, _d_, _x_) for (auto &[_a_, _b_, _c_, _d_] : _x_)
 
 #define NumArgs(_1, _2, _3, _4, ForFunc, ...) ForFunc
+#define NumArgsE(_1, _2, _3, _4, _5, ForEFunc, ...) ForEFunc
+
 #define For(...) NumArgs(__VA_ARGS__, ForB, ForA, ForN) (__VA_ARGS__)
 #define RFor(...) NumArgs(__VA_ARGS__, RForB, RForA, RForN) (__VA_ARGS__)
-#define ForE(_i_, _x_) for (auto &_i_ : _x_)
+#define ForE(...) NumArgsE(__VA_ARGS__, ForE4, ForE3, ForE2, ForE1) (__VA_ARGS__)
 #define Rep(_x_) For(_i_, _x_)
 
+// I know they are GCC's built-in functions
 #define popcnt(x) __builtin_popcountll(x)
 #define clz(x) __builtin_clzll(x)
 #define ffs(x) __builtin_ffsll(x)
 
-inline void read() {} template <typename T, typename... A> inline void read(T &x, A &...a) { cin >> x; read(a...); }
-inline void write() {} template <typename T, typename... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
-template <typename... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
+// who doesn't love FORTRAN-style languages?
+inline void read() {} template <class T, class... A> inline void read(T &x, A &...a) { cin >> x; read(a...); }
+inline void write() {} template <class T, class... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
+template <class... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
 
-template <class A, class B> bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
-template <class A, class B> bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
+template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
+template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
+
+// why C++, why?
+template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
+template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
+template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
+
+// I definitely didn't steal this from any high-rated coder ;)
+#ifdef LOCAL_DEFINE
+template <class A, class B> string to_string(pair<A, B> p); template <class A, class B, class C> string to_string(tuple<A, B, C> p);
+string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
+string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
+string to_string(const vector<bool> &v) { bool first = true; string res = "{"; for (int i = 0; i < static_cast<int>(v.size()); i++) { if (!first) { res += ", "; } first = false; res += to_string(v[i]); } res += "}"; return res; }
+template <size_t N> string to_string(bitset<N> v) { string res = ""; for (size_t i = 0; i < N; i++) { res += static_cast<char>('0' + v[i]); } return res; }
+template <class A> string to_string(A v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
+template <class A, class B> string to_string(pair<A, B> p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
+template <class A, class B, class C> string to_string(tuple<A, B, C> p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
+void debug_out() { cerr << endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#else
+#define debug(...) ((void)0)
+#endif
 
 #ifdef LOCAL_DEFINE
-mt19937_64 engine(258133 + 271048);
+mt19937_64 rng(258133 + 271048); // yes, feel free to use them ( ͡° ͜ʖ ͡°)
 #else
-mt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif
+
+#ifdef PB_DS_ASSOC_CNTNR_HPP
+template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+#endif // PB_DS_ASSOC_CNTNR_HPP
 
 namespace streamSetup {
 void initIO() {
     ios_base::sync_with_stdio(false); cin.tie(nullptr);
-    cout << setprecision(9) << fixed;
+    cout << setprecision(10) << fixed;
 #if FILEIO
 #ifdef LOCAL_DEFINE
 #warning "freopen enabled"
@@ -116,6 +151,7 @@ void solveCase() {
 $0
 }
 
+// main ===============================================================
 // *INDENT-OFF*
 signed main() {
     streamSetup::initIO();
@@ -135,21 +171,22 @@ signed main() {
     return 0;
 }
 // *INDENT-ON*
+// end of main ========================================================
 endsnippet
 
 snippet db
 // db =================================================================
 // *INDENT-OFF*
 #ifdef LOCAL_DEFINE
-template <typename A, typename B> string to_string(pair<A, B> p); template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p);
+template <class A, class B> string to_string(pair<A, B> p); template <class A, class B, class C> string to_string(tuple<A, B, C> p);
 string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
 string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
 string to_string(const vector<bool> &v) { bool first = true; string res = "{"; for (int i = 0; i < static_cast<int>(v.size()); i++) { if (!first) { res += ", "; } first = false; res += to_string(v[i]); } res += "}"; return res; }
 template <size_t N> string to_string(bitset<N> v) { string res = ""; for (size_t i = 0; i < N; i++) { res += static_cast<char>('0' + v[i]); } return res; }
-template <typename A> string to_string(A v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
-template <typename A, typename B> string to_string(pair<A, B> p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
-template <typename A, typename B, typename C> string to_string(tuple<A, B, C> p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
-void debug_out() { cerr << endl; } template <typename Head, typename... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
+template <class A> string to_string(A v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
+template <class A, class B> string to_string(pair<A, B> p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
+template <class A, class B, class C> string to_string(tuple<A, B, C> p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
+void debug_out() { cerr << endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define debug(...) ((void)0)
@@ -285,4 +322,5 @@ template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator
 // *INDENT-ON*
 // end of yc ==========================================================
 endsnippet
+
 

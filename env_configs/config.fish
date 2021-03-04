@@ -30,6 +30,9 @@ function getin
     download_prob.py samples
 end
 
+function cptmux
+    tmux new-session \; split-window -h \; select-pane -L
+end
+
 function setenv; set -gx $argv; end
 source ~/.env
-

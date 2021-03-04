@@ -15,7 +15,7 @@ GIT = HOME + '/Documents/utilities'
 
 ## contest_configs
 Run('cp ' + HOME + '/.vim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_configs/cpp.snippets')
-Run('cp ' + HOME + '/.clang-format'  + ' ' + GIT + '/contest_configs/.clang-format')
+Run('cp ' + HOME + '/.astylerc'  + ' ' + GIT + '/contest_configs/.astylerc')
 
 # competitive programming tools
 Run('cp ' + HOME + '/.local/bin/download_prob.py'  + ' ' + GIT + '/contest_configs/download_prob.py')

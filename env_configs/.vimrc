@@ -4,8 +4,6 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'cocopon/iceberg.vim'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'kana/vim-operator-user'
-" Plug 'bfrg/vim-cpp-modern'
 Plug 'neoclide/coc.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -14,11 +12,8 @@ call plug#end()
 set termguicolors background=light t_Co=256
 let g:lightline={'colorscheme':'iceberg'}
 colo iceberg
+let g:lsp_cxx_hl_light_bg = 1 
 let c_no_curly_error=1
-" let g:cpp_attributes_highlight=1
-" let g:cpp_member_highlight=1
-" let g:cpp_simple_highlight=1
-" let g:rainbow_active=1
 
 nnoremap j gj
 nnoremap k gk
@@ -57,4 +52,4 @@ inoremap <expr><Tab> pumvisible() ? "\<C-n>" :"\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" :"\<S-Tab>"
 inoremap <silent><expr><cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 
-" au BufWrite * :Autoformat
+au BufWrite *.cpp :Autoformat
