@@ -64,6 +64,8 @@ using ld = long double;
 
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
+#define expv(...) auto [__VA_ARGS__]
+#define expr(...) auto &[__VA_ARGS__]
 
 // variadic for-loops ftw
 #define ForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); (_i_) <= i64(_b_); ++(_i_))
@@ -92,10 +94,11 @@ using ld = long double;
 #define ffs(x) __builtin_ffsll(x)
 
 // who doesn't love FORTRAN-style languages?
-inline void read() {} template <class T, class... A> inline void read(T &x, A &...a) { cin >> x; read(a...); }
-inline void write() {} template <class T, class... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
+inline bool read() { return true; } template <class T, class... A> inline bool read(T &x, A &...a) { return (cin >> x) && read(a...); }
+inline void write() { return; } template <class T, class... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
 template <class... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
 
+// idk it's just convenient
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 
@@ -103,6 +106,8 @@ template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t
 template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
 template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
+template <class I> struct _RStruct_ { I &v_; explicit _RStruct_(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
+template <class I> _RStruct_<I> reversed(I &v) { return _RStruct_<I>(v); }
 
 // I definitely didn't steal this from any high-rated coder ;)
 #ifdef LOCAL_DEFINE
@@ -128,12 +133,14 @@ mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 #ifdef PB_DS_ASSOC_CNTNR_HPP
 template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+#define ook order_of_key
+#define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
 namespace streamSetup {
 void initIO() {
     ios_base::sync_with_stdio(false); cin.tie(nullptr);
-    cout << setprecision(10) << fixed;
+	write(setprecision(10), fixed);
 #if FILEIO
 #ifdef LOCAL_DEFINE
 #warning "freopen enabled"
@@ -155,12 +162,13 @@ $0
 // *INDENT-OFF*
 signed main() {
     streamSetup::initIO();
+
 #if MULTICASE
 #ifdef LOCAL_DEFINE
 #warning "multicase enabled"
 #endif
     int nTC;
-    cin >> nTC;
+	read(nTC);
     For (iTC, nTC) {
 #endif
         solveCase();
@@ -322,5 +330,3 @@ template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator
 // *INDENT-ON*
 // end of yc ==========================================================
 endsnippet
-
-
