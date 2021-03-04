@@ -57,15 +57,22 @@ using namespace std;
 // template ===========================================================
 // *INDENT-OFF*
 // omgursocute's 2019 total garbage template, revised
+
+// #pragma GCC optimize("Ofast", "unroll-loops", "no-stack-protector")
 using i64 = int64_t;
 using u64 = uint64_t;
+using i128 = __int128;
 using db = double;
 using ld = long double;
 
+#define isz(_x_) static_cast<i64>((_x_).size())
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
 #define expv(...) auto [__VA_ARGS__]
 #define expr(...) auto &[__VA_ARGS__]
+#define make_unique(_x_) sort(all(_x_)); (_x_).erase(unique(_x_), (_x_).end())
+#define vec vector
+#define heap priority_queue
 
 // variadic for-loops ftw
 #define ForA(_i_, _a_, _b_) for (i64 _i_ = i64(_a_); (_i_) <= i64(_b_); ++(_i_))
@@ -130,6 +137,7 @@ mt19937_64 rng(258133 + 271048); // yes, feel free to use them ( ͡° ͜ʖ ͡°)
 #else
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif
+i64 randrange(i64 a, i64 b) { return uniform_int_distribution<i64>(a, b)(rng); }
 
 #ifdef PB_DS_ASSOC_CNTNR_HPP
 template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
