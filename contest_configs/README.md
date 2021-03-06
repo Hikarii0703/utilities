@@ -1,8 +1,8 @@
-* clang-format: (~)
-    * **.clang-format**
+* astyle: (~)
+    * **.astylerc**
 * CP tools: (~/.local/bin)
     * **cprun**
     * **cpcompile**
     * **download\_prob.py**
-* UltiSnips: (~/.vim/UltiSnips)
+* UltiSnips: (~/.config/nvim/UltiSnips)
     * **cpp.snippets**

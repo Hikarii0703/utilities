@@ -4,10 +4,10 @@ This is where I save some general config files.
     * **.bashrc**
 * Environment variables: (~/)
     * **.env**
-* Vim: (~)
-    * **.vimrc**
+* NeoVim: (~/.config/nvim)
+    * **init.vim**
+    * **coc-settings.json** (coc.nvim)
     * install **vim-plug** to install other plugins
-    * **.ycm\_extra\_conf.py** (install to the path listed inside **.vimrc**)
 * Alacritty: (~/.config/alacritty/)
     * **alacritty.yml**
 * fish: (~/.config/fish/)
