@@ -25,8 +25,9 @@ using namespace std;
 #warning "I've just been in this place before"
 #pragma GCC target ("avx2")
 #pragma GCC optimize("Ofast", "unroll-loops", "no-stack-protector")
-#endif
+#endif // DEJAVU
 
+// shorthands
 using i64 = int64_t;
 using u64 = uint64_t;
 using db = double;
@@ -66,7 +67,7 @@ template <class T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
 #define ForE2(_a_, _b_, _x_) for (auto &[_a_, _b_] : _x_)
 #define ForE3(_a_, _b_, _c_, _x_) for (auto &[_a_, _b_, _c_] : _x_)
 
-#define NumArgsT(_1, _2, _3, _4, _5, ForTFunc) ForTFunc
+#define NumArgsT(_1, _2, _3, _4, _5, ForTFunc, ...) ForTFunc
 #define NumArgs(_1, _2, _3, _4, ForFunc, ...) ForFunc
 #define NumArgsE(_1, _2, _3, _4, ForEFunc, ...) ForEFunc
 
@@ -74,7 +75,7 @@ template <class T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
 #define RForT(...) NumArgsT(__VA_ARGS__, RForTS, RForTU, RForTN) (__VA_ARGS__)
 #define For(...) NumArgs(__VA_ARGS__, ForS, ForU, ForN) (__VA_ARGS__)
 #define RFor(...) NumArgs(__VA_ARGS__, RForS, RForU, RForN) (__VA_ARGS__)
-#define ForE(...) NumArgsE(__VA_ARGS__, ForE4, ForE3, ForE2, ForE1) (__VA_ARGS__)
+#define ForE(...) NumArgsE(__VA_ARGS__, ForE3, ForE2, ForE1) (__VA_ARGS__)
 #define Rep(_x_) For(_rep_, _x_)
 
 // I know they are GCC's built-in functions
@@ -87,18 +88,21 @@ inline bool read() { return true; } template <class T, class... A> inline bool r
 inline void write() { return; } template <class T, class... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
 template <class... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
 
-// idk it's just convenient
+// well idk they are just convenient
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
-template <class T> void make_unique(T &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
-template <class T> inline i64 isz(const T &x) { return static_cast<i64>(x.size()); }
+template <class C> inline void make_unique(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
+template <class C> inline bool empty(const C& c) { return c.empty(); }
+template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); }
+inline const string YN(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
+inline const string yn(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
 
 // why C++, why?
 template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
 template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
-template <class I> struct _Rev_ { I &v_; explicit _Rev_(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
-template <class I> _Rev_<I> reversed(I &v) { return _Rev_<I>(v); }
+template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
+template <class I> __<I> reversed(I &v) { return __<I>(v); }
 
 // I definitely didn't steal this from any high-rated coder ;)
 #ifdef LOCAL_DEFINE
@@ -114,23 +118,24 @@ void debug_out() { cerr << endl; } template <class Head, class... Tail> void deb
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define debug(...) "Kimi ga suki."
-#endif
+#endif // LOCAL_DEFINE
 
+// trivia: I'm such a big fan of rng_58 that I used to call myself nrg_69 ( ͡° ͜ʖ ͡°)
 #ifdef LOCAL_DEFINE
 mt19937_64 rng(258133 + 271048); // yes, feel free to use them ( ͡° ͜ʖ ͡°)
 #else
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
-#endif
+#endif // LOCAL_DEFINE
 inline i64 randrange(i64 a, i64 b) { return uniform_int_distribution<i64>(a, b)(rng); }
 
+// strong data structure, but it makes compilation time significantly slower
 #ifdef PB_DS_ASSOC_CNTNR_HPP
 template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 #define ook order_of_key
 #define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
-namespace InitialRun {
-void initIO() {
+void initialSetup() {
     ios_base::sync_with_stdio(false); cin.tie(nullptr);
     write(setprecision(10), fixed);
 #if FILEIO
@@ -142,7 +147,6 @@ void initIO() {
 #endif
 #endif
 }
-}  // namespace InitialRun
 // *INDENT-ON*
 // end of template ====================================================
 
@@ -153,7 +157,7 @@ $0
 // main ===============================================================
 // *INDENT-OFF*
 signed main() {
-    InitialRun::initIO();
+	initialSetup();
 
 #if MULTICASE
 #ifdef LOCAL_DEFINE

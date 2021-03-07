@@ -13,6 +13,8 @@ function mkcdir
 end
 
 alias l "ls -l -a"
+alias vim "nvim"
+alias vi "nvim"
 
 function fish_user_key_bindings
     for mode in insert default visual
