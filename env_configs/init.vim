@@ -7,6 +7,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 set tgc bg=light t_Co=256
@@ -44,3 +45,9 @@ ino <expr><S-Tab> pumvisible() ? "\<C-p>" :"\<S-Tab>"
 ino <silent><expr><cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 
 au BufWrite *.cpp :Autoformat
+
+let g:tmuxline_preset = {
+      \'b'    : '#H',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W#F'],
+      \'y'    : ['HKR0703', '❤', 'PrgrmAnh']}

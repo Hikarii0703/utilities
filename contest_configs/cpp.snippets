@@ -92,17 +92,19 @@ template <class... A> inline void writeln(const A &...a) { write(a...); cout << 
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 template <class C> inline void make_unique(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
-template <class C> inline bool empty(const C& c) { return c.empty(); }
-template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); }
+template <class C> inline bool empty(const C& c) { return c.empty(); } // available since C++17
+template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); } // std::ssize() is introduced in C++20
 inline const string YN(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
 inline const string yn(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
+template <class I, class S> inline I max_n(I f, S N) { return max_element(f, f + N); }
+template <class I, class S> inline I min_n(I f, S N) { return min_element(f, f + N); }
 
 // why C++, why?
 template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
 template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
 template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
-template <class I> __<I> reversed(I &v) { return __<I>(v); }
+template <class I> __<I> reversed(I &v) { return __<I>(v); } // Python time :D
 
 // I definitely didn't steal this from any high-rated coder ;)
 #ifdef LOCAL_DEFINE
@@ -128,7 +130,7 @@ mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif // LOCAL_DEFINE
 inline i64 randrange(i64 a, i64 b) { return uniform_int_distribution<i64>(a, b)(rng); }
 
-// strong data structure, but it makes compilation time significantly slower
+// nice data structure, but it's rarely used and it makes compile time significantly slower
 #ifdef PB_DS_ASSOC_CNTNR_HPP
 template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 #define ook order_of_key
