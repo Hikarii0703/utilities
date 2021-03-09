@@ -84,8 +84,10 @@ template <class T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
 #define ffs(x) __builtin_ffsll(x)
 
 // who doesn't love FORTRAN-style languages?
-inline bool read() { return true; } template <class T, class... A> inline bool read(T &x, A &...a) { return (cin >> x) && read(a...); }
-inline void write() { return; } template <class T, class... A> inline void write(const T &x, const A &...a) { cout << x; write(a...); }
+inline bool read() { return true; }
+template <class T, class... A> inline bool read(T &x, A &...a) { return (cin >> x) && read(a...); }
+template <bool SP = false> inline void write() {}
+template <bool SP = false, class T, class... A> inline void write(const T &x, const A &...a) { if (SP) cout << ' '; cout << x; write<true>(a...); }
 template <class... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
 
 // well idk they are just convenient
@@ -122,9 +124,9 @@ void debug_out() { cerr << endl; } template <class Head, class... Tail> void deb
 #define debug(...) "Kimi ga suki."
 #endif // LOCAL_DEFINE
 
-// trivia: I'm such a big fan of rng_58 that I used to call myself nrg_69 ( ͡° ͜ʖ ͡°)
+// trivia: I'm such a big fan of rng_58 that I used to call myself nrg_69 8)
 #ifdef LOCAL_DEFINE
-mt19937_64 rng(258133 + 271048); // yes, feel free to use them ( ͡° ͜ʖ ͡°)
+mt19937_64 rng(258133 + 271048); // yes, feel free to use them ;)
 #else
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif // LOCAL_DEFINE
@@ -136,10 +138,17 @@ template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type
 #define ook order_of_key
 #define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
+// *INDENT-ON*
+// end of template ====================================================
 
-void initialSetup() {
+// main ===============================================================
+// *INDENT-OFF*
+void solveCase();
+void initialRun();
+
+signed main() {
     ios_base::sync_with_stdio(false); cin.tie(nullptr);
-    write(setprecision(10), fixed);
+	cout << setprecision(12) << fixed;
 #if FILEIO
 #ifdef LOCAL_DEFINE
 #warning "freopen enabled"
@@ -148,18 +157,8 @@ void initialSetup() {
     freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 #endif
-}
-// *INDENT-ON*
-// end of template ====================================================
 
-void solveCase() {
-$0
-}
-
-// main ===============================================================
-// *INDENT-OFF*
-signed main() {
-	initialSetup();
+	initialRun();
 
 #if MULTICASE
 #ifdef LOCAL_DEFINE
@@ -178,6 +177,17 @@ signed main() {
 }
 // *INDENT-ON*
 // end of main ========================================================
+
+void solveCase() {
+$0
+}
+
+// initial run ========================================================
+// will only run once regardless of MULTICASE
+void initialRun() {
+	;
+}
+// end of initial run =================================================
 endsnippet
 
 snippet fast

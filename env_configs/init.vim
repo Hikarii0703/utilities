@@ -8,12 +8,16 @@ Plug 'neoclide/coc.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
+Plug 'cormacrelf/vim-colors-github'
 call plug#end()
 
-set tgc bg=light t_Co=256
-let g:lightline={'colorscheme':'iceberg'}
+set tgc t_Co=256 bg=light
 colo iceberg
-let g:lsp_cxx_hl_light_bg = 1 
+let g:lightline={'colorscheme':'iceberg'}
+let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
 
 nn j gj
@@ -24,8 +28,8 @@ set hls is scs
 
 set sr sw=4 ts=4 et sts=4
 set ai si
-set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\*
-set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap scl=no mouse=a " cul
+set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
+set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap scl=no mouse=a cul
 
 set clipboard=unnamedplus
 au VimLeave *call system("xsel -ib", getreg('+'))
@@ -51,3 +55,17 @@ let g:tmuxline_preset = {
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W#F'],
       \'y'    : ['HKR0703', '❤', 'PrgrmAnh']}
+
+
+function! s:CustomizeColors()
+    if has('gui_running') || &termguicolors || exists('g:gonvim_running')
+        hi CursorLine ctermfg=white
+    else
+        hi CursorLine guifg=white
+    endif
+endfunction
+
+augroup OnColorScheme
+    autocmd!
+    autocmd ColorScheme,BufEnter,BufWinEnter * call s:CustomizeColors()
+augroup END
