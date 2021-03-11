@@ -9,22 +9,28 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
-Plug 'cormacrelf/vim-colors-github'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 set tgc t_Co=256 bg=light
 colo iceberg
+let ayucolor="light"
 let g:lightline={'colorscheme':'iceberg'}
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
+
+let NERDTreeShowHidden=1
+nn <C-F> :NERDTreeToggle<CR>
 
 nn j gj
 nn k gk
 nn n nzz
 nn N Nzz
 set hls is scs
+nn <C-h> <C-w>h
+nn <C-j> <C-w>j
+nn <C-k> <C-w>k
+nn <C-l> <C-w>l
 
 set sr sw=4 ts=4 et sts=4
 set ai si
@@ -66,6 +72,10 @@ function! s:CustomizeColors()
 endfunction
 
 augroup OnColorScheme
-    autocmd!
-    autocmd ColorScheme,BufEnter,BufWinEnter * call s:CustomizeColors()
+    au!
+    au ColorScheme,BufEnter,BufWinEnter * call s:CustomizeColors()
 augroup END
+
+au BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+au BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>

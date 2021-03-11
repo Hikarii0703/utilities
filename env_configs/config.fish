@@ -22,17 +22,11 @@ function fish_user_key_bindings
     end
 end
 
-function quick_git_push
-    git add .
-    git commit -am.
-    git push origin master
-end
-
 function getin
     download_prob.py samples
 end
 
-function cptmux
+function ptmux
     tmux new-session \; split-window -h \; select-pane -L
 end
 

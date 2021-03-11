@@ -138,23 +138,19 @@ template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type
 #define ook order_of_key
 #define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
-// *INDENT-ON*
-// end of template ====================================================
 
-// main ===============================================================
-// *INDENT-OFF*
 void solveCase();
 void initialRun();
 
 signed main() {
-    ios_base::sync_with_stdio(false); cin.tie(nullptr);
+	ios_base::sync_with_stdio(false); cin.tie(nullptr);
 	cout << setprecision(12) << fixed;
 #if FILEIO
 #ifdef LOCAL_DEFINE
 #warning "freopen enabled"
 #else
-    freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
-    freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
+	freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
+	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 #endif
 
@@ -164,19 +160,19 @@ signed main() {
 #ifdef LOCAL_DEFINE
 #warning "multicase enabled"
 #endif
-    int nTC;
-    read(nTC);
-    For (iTC, nTC) {
+	int nTC;
+	read(nTC);
+	For (iTC, nTC) {
 #endif
-        solveCase();
+		solveCase();
 #if MULTICASE
-    }
+	}
 #endif
 
-    return 0;
+	return 0;
 }
 // *INDENT-ON*
-// end of main ========================================================
+// end of template ====================================================
 
 void solveCase() {
 $0
