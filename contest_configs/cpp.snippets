@@ -10,7 +10,7 @@ snippet code
 */
 #define MULTICASE 0
 #define FILEIO 0
-#define DEJAVU 0
+#define PRAGMAS 0
 
 #include <bits/stdc++.h>
 
@@ -21,24 +21,25 @@ using namespace std;
 // my total garbage template, 2019, revised
 // (and it's even more garbage than before)
 
-#if DEJAVU
-#warning "I've just been in this place before"
+#if PRAGMAS
+#warning "PRAGMAS ON"
 #pragma GCC target ("avx2")
 #pragma GCC optimize("Ofast", "unroll-loops", "no-stack-protector")
-#endif // DEJAVU
+#endif // PRAGMAS
 
 // shorthands
-using i64 = int64_t;
-using u64 = uint64_t;
+using i64 = long long;
+using u64 = unsigned long long;
+using uint = unsigned;
 using db = double;
 using ld = long double;
-template <class T, class Cmp = less<T>> using max_heap = priority_queue<T, vector<T>, Cmp>;
-template <class T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
-
+using str = string;
+int MAX32 = INT_MAX; int MIN32 = INT_MIN;
+i64 MAX64 = LLONG_MAX; i64 MIN64 = LLONG_MIN;
+template <class T, class Cmp = less<T>> using maxheap = priority_queue<T, vector<T>, Cmp>;
+template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
-#define expdv(...) auto [__VA_ARGS__] // expand values
-#define expdr(...) auto &[__VA_ARGS__] // expand references
 
 // variadic for-loops ftw
 
@@ -84,18 +85,19 @@ template <class T> using min_heap = priority_queue<T, vector<T>, greater<T>>;
 #define ffs(x) __builtin_ffsll(x)
 
 // who doesn't love FORTRAN-style languages?
-inline bool read() { return true; }
-template <class T, class... A> inline bool read(T &x, A &...a) { return (cin >> x) && read(a...); }
-template <bool SP = false> inline void write() {}
-template <bool SP = false, class T, class... A> inline void write(const T &x, const A &...a) { if (SP) cout << ' '; cout << x; write<true>(a...); }
+inline bool read() { return true; } template <class T, class... A> inline bool read(T &x, A &...a) { return (cin >> x) && read(a...); }
+inline bool readln(string &s) { return !!getline(cin, s); }
+template <bool SP = false> inline void write() {} template <bool SP = false, class T, class... A> inline void write(const T &x, const A &...a) { if (SP) cout << ' '; cout << x; write<true>(a...); }
 template <class... A> inline void writeln(const A &...a) { write(a...); cout << '\n'; }
 
 // well idk they are just convenient
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
-template <class C> inline void make_unique(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
+template <class C> inline void remdup(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
+#if __cplusplus < 201703L
 template <class C> inline bool empty(const C& c) { return c.empty(); } // available since C++17
-template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); } // std::ssize() is introduced in C++20
+#endif
+template <class C> inline i64 ssize(const C &x) { return static_cast<i64>(x.size()); } // introduced in C++20
 inline const string YN(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
 inline const string yn(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
 template <class I, class S> inline I max_n(I f, S N) { return max_element(f, f + N); }
@@ -104,6 +106,7 @@ template <class I, class S> inline I min_n(I f, S N) { return min_element(f, f +
 // why C++, why?
 template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
 template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
+template <class I, class S> inline void rev_n(I f, S N) { reverse(f, f + N); }
 template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
 template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
 template <class I> __<I> reversed(I &v) { return __<I>(v); } // Python time :D
@@ -126,7 +129,7 @@ void debug_out() { cerr << endl; } template <class Head, class... Tail> void deb
 
 // trivia: I'm such a big fan of rng_58 that I used to call myself nrg_69 8)
 #ifdef LOCAL_DEFINE
-mt19937_64 rng(258133 + 271048); // yes, feel free to use them ;)
+mt19937_64 rng(27022004); // <3
 #else
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif // LOCAL_DEFINE
@@ -134,34 +137,50 @@ inline i64 randrange(i64 a, i64 b) { return uniform_int_distribution<i64>(a, b)(
 
 // nice data structure, but it's rarely used and it makes compile time significantly slower
 #ifdef PB_DS_ASSOC_CNTNR_HPP
-template <class T> using indexed_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 #define ook order_of_key
 #define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
+#if __cplusplus >= 201402L
+namespace std {
+template <class Fun>
+class ___ {
+	Fun fun_;
+public:
+	template<class T> explicit ___(T &&fun): fun_(std::forward<T>(fun)) {}
+	template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template <class Fun> decltype(auto) y_combinator(Fun &&fun) { return ___<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+} // namespace std
+#endif
+
+// up upright right downright down downleft left upleft
+constexpr int dx[]  = {-1, -1,  0,  1,  1,  1,  0, -1};
+constexpr int dy[]  = { 0,  1,  1,  1,  0, -1, -1, -1};
+
 void solveCase();
 void initialRun();
 
-signed main() {
-	ios_base::sync_with_stdio(false); cin.tie(nullptr);
-	cout << setprecision(12) << fixed;
+int main() {
 #if FILEIO
 #ifdef LOCAL_DEFINE
-#warning "freopen enabled"
+#warning "FILEIO ON"
 #else
 	freopen("`!p snip.rv = snip.basename`.inp", "r", stdin);
 	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 #endif
+	ios_base::sync_with_stdio(false); cin.tie(nullptr);
+	cout << setprecision(12) << fixed;
 
 	initialRun();
 
 #if MULTICASE
 #ifdef LOCAL_DEFINE
-#warning "multicase enabled"
+#warning "MULTICASE ON"
 #endif
-	int nTC;
-	read(nTC);
+	int nTC; (cin >> nTC).ignore();
 	For (iTC, nTC) {
 #endif
 		solveCase();
@@ -174,12 +193,14 @@ signed main() {
 // *INDENT-ON*
 // end of template ====================================================
 
+constexpr int N = 3e5 + 5;
+
 void solveCase() {
 $0
 }
 
 // initial run ========================================================
-// will only run once regardless of MULTICASE
+// will run ONCE only regardless of MULTICASE
 void initialRun() {
 	;
 }

@@ -8,16 +8,17 @@ Plug 'neoclide/coc.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
+Plug 'cormacrelf/vim-colors-github'
 call plug#end()
 
 set tgc t_Co=256 bg=light
-colo iceberg
+colo github
 let ayucolor="light"
-let g:lightline={'colorscheme':'iceberg'}
+let g:lightline={'colorscheme':'one'}
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
+let g:github_colors_soft=1
 
 let NERDTreeShowHidden=1
 nn <C-F> :NERDTreeToggle<CR>
@@ -31,6 +32,7 @@ nn <C-h> <C-w>h
 nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
+let g:AutoPairsShortcutFastWrap='<C-e>'
 
 set sr sw=4 ts=4 et sts=4
 set ai si
@@ -60,8 +62,7 @@ let g:tmuxline_preset = {
       \'b'    : '#H',
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W#F'],
-      \'y'    : ['HKR0703', '❤', 'PrgrmAnh']}
-
+      \'y'    : ['HKR0703', '<3', 'PrgrmAnh']}
 
 function! s:CustomizeColors()
     if has('gui_running') || &termguicolors || exists('g:gonvim_running')
