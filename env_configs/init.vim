@@ -10,6 +10,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
 Plug 'preservim/nerdtree'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'hugolgst/vimsence'
 call plug#end()
 
 set tgc t_Co=256 bg=light
@@ -18,7 +19,7 @@ let ayucolor="light"
 let g:lightline={'colorscheme':'one'}
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
-let g:github_colors_soft=1
+let g:github_colors_soft=0
 
 let NERDTreeShowHidden=1
 nn <C-F> :NERDTreeToggle<CR>
