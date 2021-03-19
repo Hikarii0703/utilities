@@ -10,6 +10,7 @@ snippet code
 */
 #define MULTICASE 0
 #define FILEIO 0
+#define INTERACTIVE 0
 #define PRAGMAS 0
 
 #include <bits/stdc++.h>
@@ -133,7 +134,7 @@ template <class A, class B> ostream &operator<<(ostream &os, const pair<A, B> &p
 template <class T> ostream &operator<<(ostream &os, const vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz - 1; i++) { os << v[i] << ' '; } return os << v[sz - 1];} 
 template <bool SP = false> inline void wr() {}
 template <bool SP = false, class T, class... A> inline void wr(const T &x, const A &...a) { if (SP) cout << ' '; cout << x; wr<true>(a...); }
-template <class... A> inline void wrln(const A &...a) { wr(a...); cout << '\n'; }
+template <class... A> inline void wrln(const A &...a) { wr(a...); cout << '\n'; if (INTERACTIVE) cout << flush; }
 
 // container access
 #define TEMPL_ELEM(func) template <class C> constexpr inline auto func(C &c) -> decltype(c.func()) { return c.func(); }
@@ -245,6 +246,8 @@ int main() {
 // end of template ====================================================
 
 constexpr int N = 3e5 + 5;
+constexpr int INF = 1e9;
+constexpr i64 INF64 = 1e18;
 
 void solveCase() {
 $0

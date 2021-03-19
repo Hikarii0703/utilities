@@ -15,6 +15,7 @@ end
 alias l "ls -l -a"
 alias vim "nvim"
 alias vi "nvim"
+alias gvim "nvim-gtk"
 
 function fish_user_key_bindings
     for mode in insert default visual

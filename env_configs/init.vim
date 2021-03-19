@@ -2,12 +2,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
-Plug 'cocopon/iceberg.vim'
+" Plug 'cocopon/iceberg.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'preservim/nerdtree'
 Plug 'cormacrelf/vim-colors-github'
 call plug#end()
@@ -38,8 +38,7 @@ set sr sw=4 ts=4 et sts=4
 set ai si
 set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap scl=no mouse=a cul
-set shm+=F
-set synmaxcol=2048
+set shortmess=aoOtIFcW synmaxcol=2048
 
 set clipboard=unnamedplus
 au VimLeave *call system("xsel -ib", getreg('+'))
@@ -57,26 +56,7 @@ ino <expr><Tab> pumvisible() ? "\<C-n>" :"\<Tab>"
 ino <expr><S-Tab> pumvisible() ? "\<C-p>" :"\<S-Tab>"
 ino <silent><expr><cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 
-au BufWrite *.cpp :silent! Autoformat
-
-let g:tmuxline_preset = {
-      \'b'    : '#H',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W#F'],
-      \'y'    : ['HKR0703', '<3', 'PrgrmAnh']}
-
-function! s:CustomizeColors()
-    if has('gui_running') || &termguicolors || exists('g:gonvim_running')
-        hi CursorLine ctermfg=white
-    else
-        hi CursorLine guifg=white
-    endif
-endfunction
-
-augroup OnColorScheme
-    au!
-    au ColorScheme,BufEnter,BufWinEnter * call s:CustomizeColors()
-augroup END
+au BufWrite *.cpp :silent !Autoformat
 
 au BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 au BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
