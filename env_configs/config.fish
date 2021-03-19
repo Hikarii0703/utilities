@@ -32,3 +32,6 @@ end
 
 function setenv; set -gx $argv; end
 source ~/.env
+
+fish_vi_key_bindings
+set -U fish_greeting

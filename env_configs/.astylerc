@@ -8,10 +8,9 @@
 --pad-oper
 --pad-comma
 --pad-header
---align-pointer=name
---align-reference=name
 --break-closing-braces
 --attach-return-type-decl
 --keep-one-line-statements
 --close-templates
-
+--align-pointer=name
+--align-reference=name

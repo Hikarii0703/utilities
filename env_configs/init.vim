@@ -10,7 +10,6 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'edkolev/tmuxline.vim'
 Plug 'preservim/nerdtree'
 Plug 'cormacrelf/vim-colors-github'
-Plug 'hugolgst/vimsence'
 call plug#end()
 
 set tgc t_Co=256 bg=light
@@ -39,13 +38,14 @@ set sr sw=4 ts=4 et sts=4
 set ai si
 set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk noswf nowrap scl=no mouse=a cul
+set shm+=F
+set synmaxcol=2048
 
 set clipboard=unnamedplus
 au VimLeave *call system("xsel -ib", getreg('+'))
 au FileType cpp setlocal commentstring=//\ %s
 
 map <F3> :%y+<CR>
-map <F5> :w <bar> !cf submit "https://codeforces.com/contest/""%:p:h:h:t""/problem/""%:t:r"-f "%:t"<CR>
 
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
@@ -57,7 +57,7 @@ ino <expr><Tab> pumvisible() ? "\<C-n>" :"\<Tab>"
 ino <expr><S-Tab> pumvisible() ? "\<C-p>" :"\<S-Tab>"
 ino <silent><expr><cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
 
-au BufWrite *.cpp :Autoformat
+au BufWrite *.cpp :silent! Autoformat
 
 let g:tmuxline_preset = {
       \'b'    : '#H',
