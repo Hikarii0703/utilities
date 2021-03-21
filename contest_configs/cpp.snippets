@@ -154,12 +154,6 @@ template <class C> inline void remdup(C &x) { sort(all(x)); x.erase(unique(all(x
 template <class C> inline i64 ssize(const C &x) { return static_cast<i64>(x.size()); }
 inline const string YN(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
 inline const string yn(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
-template <class I, class S> inline I max_n(I f, S N) { return max_element(f, f + N); }
-template <class I, class S> inline I min_n(I f, S N) { return min_element(f, f + N); }
-template <class I, class S, class V> inline void iota_n(I f, S N, V val) { iota(f, f + N, val); }
-template <class I, class S> inline void sort_n(I f, S N) { sort(f, f + N); }
-template <class I, class S> inline void rev_n(I f, S N) { reverse(f, f + N); }
-template <class I, class S, class C> inline void sort_n(I f, S N, C cmp) { sort(f, f + N, cmp); }
 template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
 template <class I> __<I> reversed(I &v) { return __<I>(v); } // Python time :D
 
@@ -210,8 +204,8 @@ template <class Fun> decltype(auto) y_combinator(Fun &&fun) { return ___<std::de
 
 // adjacent grid coords
 // up upright right downright down downleft left upleft
-constexpr int dx[]  = {-1, -1,  0,  1,  1,  1,  0, -1};
-constexpr int dy[]  = { 0,  1,  1,  1,  0, -1, -1, -1};
+constexpr int dx[] = {-1, -1,  0,  1,  1,  1,  0, -1};
+constexpr int dy[] = { 0,  1,  1,  1,  0, -1, -1, -1};
 
 void solveCase();
 void initialRun();
