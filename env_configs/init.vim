@@ -14,10 +14,10 @@ call plug#end()
 set tgc t_Co=256 bg=light
 colo github
 let ayucolor="light"
-let g:lightline={'colorscheme':'one'}
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
 let g:github_colors_soft=0
+let g:lightline={'colorscheme': 'one'}
 
 let NERDTreeShowHidden=1
 nn <C-F> :NERDTreeToggle<CR>
