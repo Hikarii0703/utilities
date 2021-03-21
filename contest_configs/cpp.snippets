@@ -18,8 +18,6 @@ snippet code
 
 #include <bits/stdc++.h>
 
-using namespace std;
-
 // template ===========================================================
 // *INDENT-OFF*
 
@@ -37,7 +35,7 @@ using u64 = unsigned long long;
 using uint = unsigned;
 using db = double;
 using ld = long double;
-using str = string;
+using str = std::string;
 
 // limits
 constexpr int MAX32 = INT_MAX;
@@ -46,33 +44,33 @@ constexpr i64 MAX64 = LLONG_MAX;
 constexpr i64 MIN64 = LLONG_MIN;
 
 // pairs
-using pi = pair<int, int>;
-using p64 = pair<i64, i64>;
-using pdb = pair<db, db>;
+using pi = std::pair<int, int>;
+using p64 = std::pair<i64, i64>;
+using pdb = std::pair<db, db>;
 
 // vectors of types
-using vb = vector<bool>;
-using vi = vector<int>;
-using v64 = vector<i64>;
-using vdb = vector<db>;
-using vld = vector<ld>;
-using vstr = vector<str>;
+using vb = std::vector<bool>;
+using vi = std::vector<int>;
+using v64 = std::vector<i64>;
+using vdb = std::vector<db>;
+using vld = std::vector<ld>;
+using vstr = std::vector<str>;
 
 // vectors of pairs
-using vpi = vector<pi>;
-using vp64 = vector<p64>;
-using vpdb = vector<pdb>;
+using vpi = std::vector<pi>;
+using vp64 = std::vector<p64>;
+using vpdb = std::vector<pdb>;
 
 // vectors of vectors
-using vvi = vector<vi>;
-using vv64 = vector<v64>;
-using vvpi = vector<vpi>;
-using vvp64 = vector<vp64>;
-using vvb = vector<vb>;
+using vvi = std::vector<vi>;
+using vv64 = std::vector<v64>;
+using vvpi = std::vector<vpi>;
+using vvp64 = std::vector<vp64>;
+using vvb = std::vector<vb>;
 
 // priority_queue -> heap
-template <class T, class Cmp = less<T>> using maxheap = priority_queue<T, vector<T>, Cmp>;
-template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;
+template <class T, class Cmp = std::less<T>> using maxheap = std::priority_queue<T, std::vector<T>, Cmp>;
+template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
@@ -125,18 +123,18 @@ template <class T> void delBit(T &mask, int b) { mask &= ~(T(1) << b); }
 template <class T> void flipBit(T &mask, int b) { mask ^= (T(1) << b); }
 
 // read
-template <class A, class B> istream &operator>>(istream &is, pair<A, B> &p) { return is >> p.first >> p.second; }
-template <class T> istream &operator>>(istream &is, vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz; i++) { is >> v[i]; } return is; } 
+template <class A, class B> std::istream &operator>>(std::istream &is, std::pair<A, B> &p) { return is >> p.first >> p.second; }
+template <class T> std::istream &operator>>(std::istream &is, std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz; i++) { is >> v[i]; } return is; } 
 inline bool re() { return true; }
-template <class T, class... A> inline bool re(T &x, A &...a) { return (cin >> x) && re(a...); }
-inline bool reln(string &s) { return !!getline(cin, s); }
+template <class T, class... A> inline bool re(T &x, A &...a) { return (std::cin >> x) && re(a...); }
+inline bool reln(str &s) { return !!getline(std::cin, s); }
 
 // write
-template <class A, class B> ostream &operator<<(ostream &os, const pair<A, B> &p) { return os << p.first << ' ' << p.second; }
-template <class T> ostream &operator<<(ostream &os, const vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz - 1; i++) { os << v[i] << ' '; } return os << v[sz - 1];} 
+template <class A, class B> std::ostream &operator<<(std::ostream &os, const std::pair<A, B> &p) { return os << p.first << ' ' << p.second; }
+template <class T> std::ostream &operator<<(std::ostream &os, const std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz - 1; i++) { os << v[i] << ' '; } return os << v[sz - 1];} 
 template <bool SP = false> inline void wr() {}
-template <bool SP = false, class T, class... A> inline void wr(const T &x, const A &...a) { if (SP) cout << ' '; cout << x; wr<true>(a...); }
-template <class... A> inline void wrln(const A &...a) { wr(a...); cout << '\n'; if (INTERACTIVE) cout << flush; }
+template <bool SP = false, class T, class... A> inline void wr(const T &x, const A &...a) { if (SP) std::cout << ' '; std::cout << x; wr<true>(a...); }
+template <class... A> inline void wrln(const A &...a) { wr(a...); std::cout << '\n'; if (INTERACTIVE) std::cout << std::flush; }
 
 // container access
 #define TEMPL_ELEM(func) template <class C> constexpr inline auto func(C &c) -> decltype(c.func()) { return c.func(); }
@@ -152,22 +150,24 @@ template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 template <class C> inline void remdup(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
 template <class C> inline i64 ssize(const C &x) { return static_cast<i64>(x.size()); }
-inline const string YN(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
-inline const string yn(bool cond) { return static_cast<const string &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
+inline const str YN(bool cond) { return static_cast<const str &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
+inline const str yn(bool cond) { return static_cast<const str &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
 template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
-template <class I> __<I> reversed(I &v) { return __<I>(v); } // Python time :D
+template <class I> __<I> reversed(I &v) { return __<I>(v); }
 
 // debugger
 #ifdef LOCAL_DEFINE
-template <class A, class B> string to_string(const pair<A, B> &p); template <class A, class B, class C> string to_string(const tuple<A, B, C> &p);
+namespace std {
+template <class A, class B> string to_string(const std::pair<A, B> &p); template <class A, class B, class C> string to_string(const tuple<A, B, C> &p);
 string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
 string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
-string to_string(const vector<bool> &v) { bool first = true; string res = "{"; for (int i = 0; i < static_cast<int>(v.size()); i++) { if (!first) { res += ", "; } first = false; res += to_string(v[i]); } res += "}"; return res; }
+string to_string(const std::vector<bool> &v) { bool first = true; string res = "{"; for (int i = 0; i < static_cast<int>(v.size()); i++) { if (!first) { res += ", "; } first = false; res += to_string(v[i]); } res += "}"; return res; }
 template <size_t N> string to_string(const bitset<N> &v) { string res = ""; for (size_t i = 0; i < N; i++) { res += static_cast<char>('0' + v[i]); } return res; }
 template <class A> string to_string(const A &v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
-template <class A, class B> string to_string(const pair<A, B> &p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
+template <class A, class B> string to_string(const std::pair<A, B> &p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
 template <class A, class B, class C> string to_string(const tuple<A, B, C> &p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
 void debug_out() { cerr << endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
+}
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define debug(...) "A world without you is..."
@@ -175,11 +175,11 @@ void debug_out() { cerr << endl; } template <class Head, class... Tail> void deb
 
 // high-precision random
 #ifdef LOCAL_DEFINE
-mt19937_64 rng(0703);
+std::mt19937_64 rng(0703);
 #else
-mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
+std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
 #endif // LOCAL_DEFINE
-inline i64 randrange(i64 a, i64 b) { return uniform_int_distribution<i64>(a, b)(rng); }
+inline i64 randrange(i64 a, i64 b) { return std::uniform_int_distribution<i64>(a, b)(rng); }
 
 // indexed set
 #ifdef PB_DS_ASSOC_CNTNR_HPP
@@ -219,8 +219,8 @@ int main() {
 	freopen("`!p snip.rv = snip.basename`.out", "w", stdout);
 #endif
 #endif
-	ios_base::sync_with_stdio(false); cin.tie(nullptr);
-	cout << setprecision(12) << fixed;
+	std::ios_base::sync_with_stdio(false); std::cin.tie(nullptr);
+	std::cout << std::setprecision(12) << std::fixed;
 
 	initialRun();
 
@@ -241,6 +241,9 @@ int main() {
 // *INDENT-ON*
 // end of template ====================================================
 
+using namespace std;
+
+constexpr db EPS = 1e-9;
 constexpr int INF = 1e9;
 constexpr i64 INF64 = 1e18;
 constexpr int N = 3e5 + 5;
@@ -252,7 +255,7 @@ $0
 // initial run ========================================================
 // will run ONCE only before solveCase(), regardless of MULTICASE
 void initialRun() {
-	;
+
 }
 // end of initial run =================================================
 endsnippet
@@ -291,42 +294,42 @@ snippet modint
 // modint =============================================================
 // *INDENT-OFF*
 template <int MOD_> struct modnum {
-    static constexpr int MOD = MOD_;
-    static_assert(MOD_ > 0, "MOD must be positive");
+	static constexpr int MOD = MOD_;
+	static_assert(MOD_ > 0, "MOD must be positive");
 private:
-    using i64 = int64_t; int v;
-    static int minv(int a, int m) { a %= m; assert(a); return a == 1 ? 1 : int(m - i64(minv(m, a)) * i64(m) / a); }
+	using i64 = int64_t; int v;
+	static int minv(int a, int m) { a %= m; assert(a); return a == 1 ? 1 : int(m - i64(minv(m, a)) * i64(m) / a); }
 public:
-    modnum() : v(0) {}
-    modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
-    explicit operator int() const { return v; }
-    friend ostream& operator << (ostream& out, const modnum& n) { return out << int(n); }
-    friend istream& operator >> (istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
- 
-    friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
-    friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; }
- 
-    modnum inv() const { modnum res; res.v = minv(v, MOD); return res; }
-    friend modnum inv(const modnum& m) { return m.inv(); }
-    modnum neg() const { modnum res; res.v = v ? MOD-v : 0; return res; }
-    friend modnum neg(const modnum& m) { return m.neg(); }
- 
-    modnum operator- () const { return neg(); }
-    modnum operator+ () const { return modnum(*this); }
- 
-    modnum& operator ++ () { v ++; if (v == MOD) v = 0; return *this; }
-    modnum& operator -- () { if (v == 0) v = MOD; v --; return *this; }
-    modnum& operator += (const modnum& o) { v -= MOD-o.v; v = (v < 0) ? v + MOD : v; return *this; }
-    modnum& operator -= (const modnum& o) { v -= o.v; v = (v < 0) ? v + MOD : v; return *this; }
-    modnum& operator *= (const modnum& o) { v = int(i64(v) * i64(o.v) % MOD); return *this; }
-    modnum& operator /= (const modnum& o) { return *this *= o.inv(); }
- 
-    friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
-    friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
-    friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
-    friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
-    friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
-    friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
+	modnum() : v(0) {}
+	modnum(i64 v_) : v(int(v_ % MOD)) { if (v < 0) v += MOD; }
+	explicit operator int() const { return v; }
+	friend ostream& operator << (ostream& out, const modnum& n) { return out << int(n); }
+	friend istream& operator >> (istream& in, modnum& n) { i64 v_; in >> v_; n = modnum(v_); return in; }
+	
+	friend bool operator == (const modnum& a, const modnum& b) { return a.v == b.v; }
+	friend bool operator != (const modnum& a, const modnum& b) { return a.v != b.v; }
+	
+	modnum inv() const { modnum res; res.v = minv(v, MOD); return res; }
+	friend modnum inv(const modnum& m) { return m.inv(); }
+	modnum neg() const { modnum res; res.v = v ? MOD-v : 0; return res; }
+	friend modnum neg(const modnum& m) { return m.neg(); }
+	
+	modnum operator- () const { return neg(); }
+	modnum operator+ () const { return modnum(*this); }
+	
+	modnum& operator ++ () { v ++; if (v == MOD) v = 0; return *this; }
+	modnum& operator -- () { if (v == 0) v = MOD; v --; return *this; }
+	modnum& operator += (const modnum& o) { v -= MOD-o.v; v = (v < 0) ? v + MOD : v; return *this; }
+	modnum& operator -= (const modnum& o) { v -= o.v; v = (v < 0) ? v + MOD : v; return *this; }
+	modnum& operator *= (const modnum& o) { v = int(i64(v) * i64(o.v) % MOD); return *this; }
+	modnum& operator /= (const modnum& o) { return *this *= o.inv(); }
+	
+	friend modnum operator ++ (modnum& a, int) { modnum r = a; ++a; return r; }
+	friend modnum operator -- (modnum& a, int) { modnum r = a; --a; return r; }
+	friend modnum operator + (const modnum& a, const modnum& b) { return modnum(a) += b; }
+	friend modnum operator - (const modnum& a, const modnum& b) { return modnum(a) -= b; }
+	friend modnum operator * (const modnum& a, const modnum& b) { return modnum(a) *= b; }
+	friend modnum operator / (const modnum& a, const modnum& b) { return modnum(a) /= b; }
 };
 template <class T> T pow(T a, int64_t b) { assert(b >= 0); T r = 1; while (b) { if (b & 1) r *= a; b >>= 1; a *= a; } return r; }
 constexpr int MOD_ = 1e9 + 7;
