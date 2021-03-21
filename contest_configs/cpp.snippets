@@ -1,12 +1,15 @@
 snippet code
 /*
-              ||========||
-              || i <3 u ||
-              ||========||
-            (\__/) || (\__/)
-            (•ㅅ•) || (•ㅅ•)
-            / 　 つ   /> ❤<\
-                 君が好き
+				君のいない　世界にも
+				何かの意味はきっとあって
+
+				でも君のいない　世界など
+				夏休みのない　八月のよう
+
+				君のいない　世界など
+				笑うことない　サンタのよう
+
+				君のいない　世界など...
 */
 #define MULTICASE 0
 #define FILEIO 0
@@ -19,7 +22,6 @@ using namespace std;
 
 // template ===========================================================
 // *INDENT-OFF*
-// man do I love myself some hot mess
 
 #if PRAGMAS
 #warning "PRAGMAS ON"
@@ -140,10 +142,10 @@ template <class... A> inline void wrln(const A &...a) { wr(a...); cout << '\n'; 
 #define TEMPL_ELEM(func) template <class C> constexpr inline auto func(C &c) -> decltype(c.func()) { return c.func(); }
 TEMPL_ELEM(front) TEMPL_ELEM(back) TEMPL_ELEM(top)
 #if __cplusplus < 201703L
-template <class C> inline bool empty(const C& c) { return c.empty(); }
-template <class C> constexpr inline auto data(C& c) -> decltype(c.data()) { return c.data(); }
+TEMPL_ELEM(empty) TEMPL_ELEM(data) TEMPL_ELEM(size)
 #endif
 template <class C> inline void clear(C& c) { c.clear(); }
+#undef TEMPL_ELEM
 
 // utilities
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
@@ -174,12 +176,12 @@ template <class A, class B, class C> string to_string(const tuple<A, B, C> &p) {
 void debug_out() { cerr << endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
-#define debug(...) "Kimi ga suki."
+#define debug(...) "A world without you is..."
 #endif // LOCAL_DEFINE
 
 // high-precision random
 #ifdef LOCAL_DEFINE
-mt19937_64 rng(27022004); // <3
+mt19937_64 rng(0703);
 #else
 mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 #endif // LOCAL_DEFINE
@@ -245,9 +247,9 @@ int main() {
 // *INDENT-ON*
 // end of template ====================================================
 
-constexpr int N = 3e5 + 5;
 constexpr int INF = 1e9;
 constexpr i64 INF64 = 1e18;
+constexpr int N = 3e5 + 5;
 
 void solveCase() {
 $0
