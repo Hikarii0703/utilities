@@ -74,6 +74,8 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 
 #define all(_x_) (_x_).begin(), (_x_).end()
 #define rall(_x_) (_x_).rbegin(), (_x_).rend()
+#define bb(_x_) (_x_).begin(), (_x_).begin()
+#define rbb(_x_) (_x_).rbegin(), (_x_).rbegin()
 
 // variadic for-loops
 
@@ -112,6 +114,7 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define RFor(...) NumArgs(__VA_ARGS__, RForS, RForU, RForN) (__VA_ARGS__)
 #define ForE(...) NumArgsE(__VA_ARGS__, ForE3, ForE2, ForE1) (__VA_ARGS__)
 #define Rep(_x_) For(_rep_, _x_)
+#define Forever for (;;)
 
 // bit stuff
 #define popcnt(x) __builtin_popcountll(x)
@@ -140,7 +143,7 @@ template <class... A> inline void wrln(const A &...a) { wr(a...); std::cout << '
 #define TEMPL_ELEM(func) template <class C> constexpr inline auto func(C &c) -> decltype(c.func()) { return c.func(); }
 TEMPL_ELEM(front) TEMPL_ELEM(back) TEMPL_ELEM(top)
 #if __cplusplus < 201703L
-TEMPL_ELEM(empty) TEMPL_ELEM(data) TEMPL_ELEM(size)
+TEMPL_ELEM(empty) TEMPL_ELEM(data)
 #endif
 template <class C> inline void clear(C& c) { c.clear(); }
 #undef TEMPL_ELEM
@@ -149,15 +152,18 @@ template <class C> inline void clear(C& c) { c.clear(); }
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 template <class C> inline void remdup(C &x) { sort(all(x)); x.erase(unique(all(x)), x.end()); }
-template <class C> inline i64 ssize(const C &x) { return static_cast<i64>(x.size()); }
+template <class C> inline i64 len(const C &x) { return static_cast<i64>(x.size()); }
 inline const str YN(bool cond) { return static_cast<const str &>((reinterpret_cast<const char *>((& (const int &)(23438671621410638LL >> (cond << 5)))))); }
 inline const str yn(bool cond) { return static_cast<const str &>((reinterpret_cast<const char *>((& (const int &)(32481055248248654LL >> (cond << 5)))))); }
 template <class I> struct __ { I &v_; explicit __(I &v) : v_{v} {} class I::reverse_iterator begin() const { return v_.rbegin(); } class I::reverse_iterator end() const { return v_.rend(); } };
 template <class I> __<I> reversed(I &v) { return __<I>(v); }
+template <class I> inline I maxElem(I f, I l) { return std::max_element(f, l); }
+template <class I> inline I minElem(I f, I l) { return std::min_element(f, l); }
 
 // debugger
 #ifdef LOCAL_DEFINE
 namespace std {
+using namespace std;
 template <class A, class B> string to_string(const std::pair<A, B> &p); template <class A, class B, class C> string to_string(const tuple<A, B, C> &p);
 string to_string(const string &s) { return '"' + s + '"'; } string to_string(const char *s) { return to_string(static_cast<string>(s)); }
 string to_string(char c) { return "\'" + string(1, c) + "\'"; } string to_string(bool b) { return (b ? "true" : "false"); }
@@ -173,7 +179,7 @@ void debug_out() { cerr << endl; } template <class Head, class... Tail> void deb
 #define debug(...) "A world without you is..."
 #endif // LOCAL_DEFINE
 
-// high-precision random
+// randomizer
 #ifdef LOCAL_DEFINE
 std::mt19937_64 rng(0703);
 #else
@@ -202,12 +208,16 @@ template <class Fun> decltype(auto) y_combinator(Fun &&fun) { return ___<std::de
 } // namespace std
 #endif
 
+// multidimensional vector
+template <int D, class T> struct dvec : public std::vector<dvec<D - 1, T>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<D - 1, T>>(n, dvec<D - 1, T>(args...)) {} };
+template <class T> struct dvec<1, T> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
+
 // adjacent grid coords
 // up upright right downright down downleft left upleft
 constexpr int dx[] = {-1, -1,  0,  1,  1,  1,  0, -1};
 constexpr int dy[] = { 0,  1,  1,  1,  0, -1, -1, -1};
 
-void solveCase();
+void solveCase(int iTC = 0);
 void initialRun();
 
 int main() {
@@ -223,32 +233,32 @@ int main() {
 	std::cout << std::setprecision(12) << std::fixed;
 
 	initialRun();
+	int nTC = 1;
 
 #if MULTICASE
 #ifdef LOCAL_DEFINE
 #warning "MULTICASE ON"
 #endif
-	int nTC; (cin >> nTC).ignore();
-	For (iTC, nTC) {
+	(std::cin >> nTC).ignore();
 #endif
-		solveCase();
-#if MULTICASE
-	}
-#endif
+	for (int iTC = 0; iTC < nTC; iTC++) solveCase(iTC);
 
 	return 0;
 }
-// *INDENT-ON*
-// end of template ====================================================
 
-using namespace std;
-
+// constants
 constexpr db EPS = 1e-9;
 constexpr int INF = 1e9;
 constexpr i64 INF64 = 1e18;
 constexpr int N = 3e5 + 5;
 
-void solveCase() {
+// *INDENT-ON*
+// end of template ====================================================
+
+using namespace std;
+#define int i64
+
+void solveCase(int iTC) {
 $0
 }
 
