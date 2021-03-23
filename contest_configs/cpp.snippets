@@ -217,7 +217,7 @@ template <class T> struct dvec<1, T> : public std::vector<T> { dvec(int n, const
 constexpr int dx[] = {-1, -1,  0,  1,  1,  1,  0, -1};
 constexpr int dy[] = { 0,  1,  1,  1,  0, -1, -1, -1};
 
-void solveCase(int iTC = 0);
+void solveCase();
 void initialRun();
 
 int main() {
@@ -233,15 +233,18 @@ int main() {
 	std::cout << std::setprecision(12) << std::fixed;
 
 	initialRun();
-	int nTC = 1;
 
 #if MULTICASE
 #ifdef LOCAL_DEFINE
 #warning "MULTICASE ON"
 #endif
-	(std::cin >> nTC).ignore();
+	int nTC; (std::cin >> nTC).ignore();
+	for (int iTC = 0; iTC < nTC; iTC++) {
 #endif
-	for (int iTC = 0; iTC < nTC; iTC++) solveCase(iTC);
+		solveCase();
+#if MULTICASE
+	}
+#endif
 
 	return 0;
 }
@@ -257,7 +260,7 @@ constexpr int N = 3e5 + 5;
 
 using namespace std;
 
-void solveCase(int iTC) {
+void solveCase() {
 $0
 }
 
