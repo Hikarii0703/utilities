@@ -116,6 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 source "$HOME/.cargo/env"
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 # Preserve MANPATH if you already defined it somewhere in your config.

@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim'
@@ -34,7 +34,7 @@ nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
 
 set sr sw=4 ts=4 et sts=4
-set ai si
+set ai si cino=j1,(0,ws,Ws,L0
 set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a cul
 set synmaxcol=2048 cmdheight=2
@@ -79,7 +79,6 @@ function AddTemplate(tmpl_file)
     let substDict["in"] = expand("%:t:r").".inp"
     let substDict["out"] = expand("%:t:r").".out"
     exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-    248
+    280
 endfunction
 au BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/Documents/CP/template.cpp")
-

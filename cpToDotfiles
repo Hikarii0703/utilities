@@ -14,7 +14,7 @@ HOME = '~'
 GIT = HOME + '/Documents/utilities'
 
 ## contest_configs
-Run('cp ' + HOME + '/.config/nvim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_configs/cpp.snippets')
+# Run('cp ' + HOME + '/.config/nvim/UltiSnips/cpp.snippets'  + ' ' + GIT + '/contest_configs/cpp.snippets')
 Run('cp ' + HOME + '/.config/nvim/coc-settings.json'  + ' ' + GIT + '/env_configs/coc-settings.json')
 
 # competitive programming tools
