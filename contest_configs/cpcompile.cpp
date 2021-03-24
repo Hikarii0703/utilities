@@ -34,7 +34,9 @@ int main(int argc, char **argv) {
 
         try {
             std::array<int, 4> versions {17, 14, 11, 98};
-            if (std::none_of(versions.begin(), versions.end(), [&ver](int x) { return x == ver; })) {
+            if (std::none_of(versions.begin(), versions.end(), [&ver](int x) {
+            return x == ver;
+        })) {
                 throw std::invalid_argument("C++ version is invalid.");
             }
         }
@@ -50,8 +52,8 @@ int main(int argc, char **argv) {
                        "-Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align "
                        "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 "
                        "-fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector "
-                       "-DLOCAL_DEFINE")
-                       .data());
+                       "-DLOCAL_DEFINE -I/home/hikarii/Documents/CP/ac-library")
+                   .data());
 
         switch (exitcode) {
             case 0:
