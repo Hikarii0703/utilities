@@ -79,6 +79,6 @@ function AddTemplate(tmpl_file)
     let substDict["in"] = expand("%:t:r").".inp"
     let substDict["out"] = expand("%:t:r").".out"
     exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-    248
+    258
 endfunction
 au BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/Documents/CP/template.cpp")
