@@ -4,7 +4,7 @@ shell:
     args:
         - --login
 font:
-    size: 10
+    size: 8
     normal:
         # family: "MesloLGS NF"
         family: "JetBrains Mono"

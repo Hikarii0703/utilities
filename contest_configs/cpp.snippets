@@ -106,7 +106,9 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define For(...) NumArgs(__VA_ARGS__, ForS, ForU, ForN) (__VA_ARGS__)
 #define RFor(...) NumArgs(__VA_ARGS__, RForS, RForU, RForN) (__VA_ARGS__)
 #define ForE(...) NumArgsE(__VA_ARGS__, ForE3, ForE2, ForE1) (__VA_ARGS__)
-#define Rep(_x_) For(_rep_, _x_)
+#define CAT(x, y) CAT_(x, y)
+#define CAT_(x, y) x ## y
+#define Rep(_x_) For(CAT(__, _x_), _x_)
 #define Forever for (;;)
 
 // bit stuff
@@ -182,11 +184,10 @@ inline i64 randrange(i64 a, i64 b) { return std::uniform_int_distribution<i64>(a
 
 struct splitmix64_hash { static uint64_t splitmix64(uint64_t x) { x += 0x9e3779b97f4a7c15; x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9; x = (x ^ (x >> 27)) * 0x94d049bb133111eb; return x ^ (x >> 31); } size_t operator()(uint64_t x) const { static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM); } };
 #ifdef PB_DS_ASSOC_CNTNR_HPP
-template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less <T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
+template <class T> using idmulset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less_equal<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 template <typename K, typename V, typename Hash = splitmix64_hash> using hashmap = __gnu_pbds::gp_hash_table<K, V, Hash>;
 template <typename K, typename Hash = splitmix64_hash> using hashset = hashmap<K, __gnu_pbds::null_type, Hash>;
-#define ook order_of_key
-#define fbo find_by_order
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
 // y_combinator
