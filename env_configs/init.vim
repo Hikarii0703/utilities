@@ -35,7 +35,7 @@ let g:AutoPairsShortcutFastWrap='<C-e>'
 
 set sr sw=4 ts=4 et sts=4
 set ai si cino=j1,(0,ws,Ws,L0
-set fdm=marker fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
+set fdm=marker ""fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a cul
 set synmaxcol=2048 cmdheight=2
 
@@ -47,6 +47,8 @@ map <F3> :%y+<CR>
 
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
+nn <Leader>fm :Autoformat<CR>
+nn <tab> za 
 nn <silent> <leader><cr> :noh<cr>
 
 let g:UltiSnipsExpandTrigger="<NOP>"
@@ -54,7 +56,7 @@ let g:UltiSnipsExpandTrigger="<NOP>"
 ino <expr><Tab> pumvisible() ? "\<C-n>" :"\<Tab>"
 ino <expr><S-Tab> pumvisible() ? "\<C-p>" :"\<S-Tab>"
 ino <silent><expr><cr> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>"
-au BufWrite *.cpp :Autoformat
+" au BufWrite *.cpp :Autoformat
 
 function! s:CustomizeColors()
     if has('gui_running') || &termguicolors || exists('g:gonvim_running')
@@ -79,6 +81,6 @@ function AddTemplate(tmpl_file)
     let substDict["in"] = expand("%:t:r").".inp"
     let substDict["out"] = expand("%:t:r").".out"
     exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-    280
+    283
 endfunction
 au BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/Documents/CP/template.cpp")

@@ -19,6 +19,7 @@ Run('cp ' + HOME + '/.config/nvim/coc-settings.json'  + ' ' + GIT + '/env_config
 
 # competitive programming tools
 Run('cp ' + HOME + '/.local/bin/download_prob.py'  + ' ' + GIT + '/contest_configs/download_prob.py')
+Run('cp ' + HOME + '/Documents/CP/template.cpp'  + ' ' + GIT + '/contest_configs/template.cpp')
 
 ## env_configs
 Run('cp ' + HOME + '/.env'  + ' ' + GIT + '/env_configs/.env')
