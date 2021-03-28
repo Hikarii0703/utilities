@@ -91,22 +91,22 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 // variadic for-loops
 
 // for with type
-#define furTS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
-#define furTU(T, _i_, _a_, _b_) furTS(T, _i_, _a_, _b_, 1)
-#define furTN(T, _i_, _n_) furTS(T, _i_, 0, _n_ - 1, 1)
+#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
+#define furtU(T, _i_, _a_, _b_) furtS(T, _i_, _a_, _b_, 1)
+#define furtN(T, _i_, _n_) furtS(T, _i_, 0, _n_ - 1, 1)
 
 // reversed for with type
-#define rfurTS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
-#define rfurTU(T, _i_, _a_, _b_) rfurTS(T, _i_, _a_, _b_, 1)
-#define rfurTN(T, _i_, _n_) rfurTS(T, _i_, _n_ - 1, 0, 1)
+#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
+#define rfurtU(T, _i_, _a_, _b_) rfurtS(T, _i_, _a_, _b_, 1)
+#define rfurtN(T, _i_, _n_) rfurtS(T, _i_, _n_ - 1, 0, 1)
 
 // for
-#define furS(_i_, _a_, _b_, _c_) furTS(int, _i_, _a_, _b_, _c_)
+#define furS(_i_, _a_, _b_, _c_) furtS(int, _i_, _a_, _b_, _c_)
 #define furU(_i_, _a_, _b_) furS(_i_, _a_, _b_, 1)
 #define furN(_i_, _n_) furS(_i_, 0, (_n_) - 1, 1)
 
 // reversed for
-#define rfurS(_i_, _a_, _b_, _c_) rfurTS(int, _i_, _a_, _b_, _c_)
+#define rfurS(_i_, _a_, _b_, _c_) rfurtS(int, _i_, _a_, _b_, _c_)
 #define rfurU(_i_, _a_, _b_) rfurS(_i_, _a_, _b_, 1)
 #define rfurN(_i_, _n_) rfurS(_i_, (_n_) - 1, 0, 1)
 
@@ -115,12 +115,12 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define furj2(_a_, _b_, _x_) for (auto &[_a_, _b_] : _x_)
 #define furj3(_a_, _b_, _c_, _x_) for (auto &[_a_, _b_, _c_] : _x_)
 
-#define NumArgsT(_1, _2, _3, _4, _5, furTFunc, ...) furTFunc
+#define NumArgsT(_1, _2, _3, _4, _5, furtFunc, ...) furtFunc
 #define NumArgs(_1, _2, _3, _4, furFunc, ...) furFunc
 #define NumArgsE(_1, _2, _3, _4, furjFunc, ...) furjFunc
 
-#define furT(...) NumArgsT(__VA_ARGS__, furTS, furTU, furTN) (__VA_ARGS__)
-#define rfurT(...) NumArgsT(__VA_ARGS__, rfurTS, rfurTU, rfurTN) (__VA_ARGS__)
+#define furt(...) NumArgsT(__VA_ARGS__, furtS, furtU, furtN) (__VA_ARGS__)
+#define rfurt(...) NumArgsT(__VA_ARGS__, rfurtS, rfurtU, rfurtN) (__VA_ARGS__)
 #define fur(...) NumArgs(__VA_ARGS__, furS, furU, furN) (__VA_ARGS__)
 #define rfur(...) NumArgs(__VA_ARGS__, rfurS, rfurU, rfurN) (__VA_ARGS__)
 #define furj(...) NumArgsE(__VA_ARGS__, furj3, furj2, furj1) (__VA_ARGS__)
