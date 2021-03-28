@@ -11,6 +11,8 @@ Plug 'preservim/nerdtree'
 Plug 'cormacrelf/vim-colors-github'
 call plug#end()
 
+let mapleader = " "
+
 set tgc t_Co=256 bg=light
 colo github
 let ayucolor="light"
@@ -36,7 +38,7 @@ let g:AutoPairsShortcutFastWrap='<C-e>'
 set sr sw=4 ts=4 et sts=4
 set ai si cino=j1,(0,ws,Ws,L0
 set fdm=marker ""fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
-set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a cul
+set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a ruler cul
 set synmaxcol=2048 cmdheight=2
 
 set clipboard=unnamedplus
@@ -50,6 +52,8 @@ nn <Leader>vr :source $MYVIMRC<CR>
 nn <Leader>fm :Autoformat<CR>
 nn <tab> za 
 nn <silent> <leader><cr> :noh<cr>
+vn < <gv
+vn > >gv
 
 let g:UltiSnipsExpandTrigger="<NOP>"
 
@@ -81,6 +85,6 @@ function AddTemplate(tmpl_file)
     let substDict["in"] = expand("%:t:r").".inp"
     let substDict["out"] = expand("%:t:r").".out"
     exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-    283
+    290
 endfunction
 au BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/Documents/CP/template.cpp")

@@ -85,6 +85,8 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define rbb(_x_) (_x_).rbegin(), (_x_).rbegin()
 #define fi first
 #define se second
+#define CAT(x, y) CAT_(x, y)
+#define CAT_(x, y) x ## y
 
 // variadic for-loops
 
@@ -122,8 +124,6 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define fur(...) NumArgs(__VA_ARGS__, furS, furU, furN) (__VA_ARGS__)
 #define rfur(...) NumArgs(__VA_ARGS__, rfurS, rfurU, rfurN) (__VA_ARGS__)
 #define furj(...) NumArgsE(__VA_ARGS__, furj3, furj2, furj1) (__VA_ARGS__)
-#define CAT(x, y) CAT_(x, y)
-#define CAT_(x, y) x ## y
 #define rep(_x_) fur(CAT(__, _x_), _x_)
 #define furimmer for (;;)
 
@@ -141,6 +141,13 @@ template <class A, class B> std::istream &operator>>(std::istream &is, std::pair
 template <class T> std::istream &operator>>(std::istream &is, std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz; i++) { is >> v[i]; } return is; } 
 class Reader { private: bool _M_ok_ = true; public: explicit operator bool() { return _M_ok_; } template <typename T> Reader &operator, (T &_t_) { _M_ok_ &= !!(std::cin >> _t_); return *this; } };
 #define re Reader(),
+template <class T> T reNxt() { T _x_; re _x_; return _x_; }
+#define ri reNxt<int>()
+#define r64 reNxt<i64>()
+#define rdb reNxt<db>()
+#define rld reNxt<ld>()
+#define rst reNxt<str>()
+#define rch reNxt<char>()
 
 // write
 template <class A, class B> std::ostream &operator<<(std::ostream &os, const std::pair<A, B> &p) { return os << p.first << ' ' << p.second; }
