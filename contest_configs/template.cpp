@@ -79,10 +79,10 @@ using vvb = std::vector<vb>;
 template <class T, class Cmp = std::less<T>> using maxheap = std::priority_queue<T, std::vector<T>, Cmp>;
 template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
-#define all(_x_) (_x_).begin(), (_x_).end()
-#define rall(_x_) (_x_).rbegin(), (_x_).rend()
-#define bb(_x_) (_x_).begin(), (_x_).begin()
-#define rbb(_x_) (_x_).rbegin(), (_x_).rbegin()
+#define all(_x_) begin(_x_), end(_x_)
+#define rall(_x_) rbegin(_x_), rend(_x_)
+#define bb(_x_) begin(_x_), begin(_x_)
+#define rbb(_x_) rbegin(_x_), rbegin(_x_)
 #define fi first
 #define se second
 #define CAT(x, y) CAT_(x, y)
@@ -91,12 +91,12 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 // variadic for-loops
 
 // for with type
-#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
+#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ <= CAT(_j_, __LINE__); _i_ += (_c_))
 #define furtU(T, _i_, _a_, _b_) furtS(T, _i_, _a_, _b_, 1)
 #define furtN(T, _i_, _n_) furtS(T, _i_, 0, _n_ - 1, 1)
 
 // reversed for with type
-#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
+#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ >= CAT(_j_, __LINE__); _i_ -= (_c_))
 #define rfurtU(T, _i_, _a_, _b_) rfurtS(T, _i_, _a_, _b_, 1)
 #define rfurtN(T, _i_, _n_) rfurtS(T, _i_, _n_ - 1, 0, 1)
 
@@ -124,7 +124,7 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define fur(...) NumArgs(__VA_ARGS__, furS, furU, furN) (__VA_ARGS__)
 #define rfur(...) NumArgs(__VA_ARGS__, rfurS, rfurU, rfurN) (__VA_ARGS__)
 #define furj(...) NumArgsE(__VA_ARGS__, furj3, furj2, furj1) (__VA_ARGS__)
-#define rep(_x_) fur(CAT(__, _x_), _x_)
+#define rep(_x_) fur(CAT(_rep_, __LINE__), _x_)
 #define furimmer for (;;)
 
 // bit stuff
@@ -270,9 +270,9 @@ int main() {
 }
 
 // modulo
-#ifdef ATCODER_MATH_HPP
+#if ATCODER_MATH_HPP
 // using imod = modint998244353;
-using imod = modint1000000007;
+using imod = atcoder::modint1000000007;
 #endif
 
 // constants

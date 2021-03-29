@@ -2,16 +2,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 " Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim'
-Plug 'Chiel92/vim-autoformat'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-" Plug 'edkolev/tmuxline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
+Plug 'Chiel92/vim-autoformat'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'cormacrelf/vim-colors-github'
 call plug#end()
-
-let mapleader = " "
 
 set tgc t_Co=256 bg=light
 colo github
@@ -20,7 +18,6 @@ let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
 let g:github_colors_soft=0
 let g:lightline={'colorscheme': 'one'}
-
 let NERDTreeShowHidden=1
 nn <C-F> :NERDTreeToggle<CR>
 
@@ -34,6 +31,7 @@ nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
+nn <C-s> :w<CR>
 
 set sr sw=4 ts=4 et sts=4
 set ai si cino=j1,(0,ws,Ws,L0
@@ -49,7 +47,7 @@ map <F3> :%y+<CR>
 
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
-nn <Leader>fm :Autoformat<CR>
+nn <Leader>fm :Autoformat <bar> w<CR>
 nn <tab> za 
 nn <silent> <leader><cr> :noh<cr>
 vn < <gv
