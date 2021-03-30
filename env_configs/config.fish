@@ -22,7 +22,7 @@ function fish_user_key_bindings
     end
 end
 
-function getin
+function p
     download_prob.py samples
 end
 
