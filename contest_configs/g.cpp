@@ -18,9 +18,17 @@ std::string getTargetName(const std::string &s) {
     return ret;
 }
 
-int main() {
+int main(int argc, char **argv) {
+    if (argc > 2) {
+        std::cout << "fuck you\n";
+        return 1;
+    }
+
     // copy
     fs::path sourceFile = "/home/hikarii/template.cpp";
+    if (argc == 2) {
+        sourceFile = "/home/hikarii/template_short.cpp";
+    }
     fs::path targetParent = fs::current_path();
     std::string targetName = getTargetName(std::string(fs::current_path()));
     auto target = targetParent / (targetName + ".cpp");
@@ -37,7 +45,6 @@ int main() {
     // replace
     try {
         std::string command = std::string("sed -i \"s/\\\${FILENAME}/") + targetName + "/\" " + targetName + ".cpp";
-        std::cerr << command << '\n';
         system(command.data());
     }
     catch(const std::exception& e) {

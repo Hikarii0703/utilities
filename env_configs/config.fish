@@ -26,6 +26,10 @@ function p
     download_prob.py samples
 end
 
+function t
+    cf test
+end
+
 function ptmux
     tmux new-session \; split-window -h \; select-pane -L
 end

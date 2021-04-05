@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -43,7 +43,9 @@ set clipboard=unnamedplus
 au VimLeave *call system("xsel -ib", getreg('+'))
 au FileType cpp setlocal commentstring=//\ %s
 
+let mapleader = " "
 map <F3> :%y+<CR>
+map <space>y :%y+<CR>
 
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
