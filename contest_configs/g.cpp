@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <cassert>
+#include <cstring>
 
 namespace fs = std::filesystem;
 
@@ -18,7 +19,7 @@ std::string getTargetName(const std::string &s) {
     return ret;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
     if (argc > 2) {
         std::cout << "fuck you\n";
         return 1;
@@ -26,8 +27,17 @@ int main(int argc, char **argv) {
 
     // copy
     fs::path sourceFile = "/home/hikarii/template.cpp";
+    std::string templateType = "NORMAL";
+
     if (argc == 2) {
-        sourceFile = "/home/hikarii/template_short.cpp";
+        if (strcmp(argv[1], "c") == 0) {
+            sourceFile = "/home/hikarii/template_cases.cpp";
+            templateType = "CASES";
+        }
+        else if (strcmp(argv[1], "l") == 0) {
+            sourceFile = "/home/hikarii/template_long.cpp";
+            templateType = "LONG";
+        }
     }
     fs::path targetParent = fs::current_path();
     std::string targetName = getTargetName(std::string(fs::current_path()));
@@ -52,7 +62,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    std::cout << targetName << ".cpp is generated!\n";
+    std::cout << "[Name]: " << targetName << ".cpp\n";
+    std::cout << "[Type]: " << templateType << '\n';
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 
+#ifdef COLOR
 #define RESET "\033[0m"
 #define YELLOW "\033[33m"             /* Yellow */
 #define BOLDRED "\033[1m\033[31m"     /* Bold Red */
@@ -8,6 +9,15 @@
 #define BOLDYELLOW "\033[1m\033[33m"  /* Bold Yellow */
 #define BOLDMAGENTA "\033[1m\033[35m" /* Bold Magenta */
 #define BOLDCYAN "\033[1m\033[36m"    /* Bold Cyan */
+#else
+#define RESET ""
+#define YELLOW ""             /* Yellow */
+#define BOLDRED ""     /* Bold Red */
+#define BOLDGREEN ""   /* Bold Green */
+#define BOLDYELLOW ""  /* Bold Yellow */
+#define BOLDMAGENTA "" /* Bold Magenta */
+#define BOLDCYAN ""    /* Bold Cyan */
+#endif
 
 void quitFromException(const std::invalid_argument &e) {
     printf("%s[ERROR]: %s%s%s\n", BOLDRED, YELLOW, e.what(), RESET);

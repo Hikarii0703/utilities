@@ -36,11 +36,24 @@ constexpr int N = 3e5 + 5;
 
 // ====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====
 
+namespace Solution {
+
+void solve() {
+
+}
+
+} // namespace Solution
+
+
 signed main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
+	int nTC; std::cin >> nTC;
 
+	for (int iTC = 0; iTC < nTC; iTC++) {
+		Solution::solve();
+	}
 
     return 0;
 }
