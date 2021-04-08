@@ -48,7 +48,7 @@ let g:asyncrun_open = 8
 
 let mapleader = " "
 map <F3> :%y+<CR>
-nmap <F9> :AsyncRun c %<CR>
+nmap <F9> :w <bar> AsyncRun c %<CR>
 nmap <F10> :AsyncRun t<CR>
 noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
 map <space>y :%y+<CR>

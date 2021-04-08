@@ -49,11 +49,11 @@ signed main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-	int nTC; std::cin >> nTC;
+    int nTC; std::cin >> nTC;
 
-	for (int iTC = 0; iTC < nTC; iTC++) {
-		Solution::solve();
-	}
+    for (int iTC = 0; iTC < nTC; iTC++) {
+        Solution::solve();
+    }
 
     return 0;
 }
