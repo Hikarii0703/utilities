@@ -29,21 +29,25 @@ template <class C> inline long long length(const C &x) { return static_cast<long
 template <typename I> struct __ { I &v_; explicit __(I &v) : v_{v} {} typename I::reverse_iterator begin() const { return v_.rbegin(); } typename I::reverse_iterator end() const { return v_.rend(); } };
 template <typename I> __<I> reversed(I &v) { return __<I>(v); }
 
+// ====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====
+
 constexpr double EPS = 1e-9;
 constexpr int INF = 1e9;
 constexpr i64 INF64 = 1e18;
 constexpr int N = 3e5 + 5;
 
-// ====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====*====
+/*
+Note:
 
-namespace Solution {
+*/
+
+struct Solver {
 
 void solve() {
 
 }
 
-} // namespace Solution
-
+};
 
 signed main() {
     std::ios_base::sync_with_stdio(false);
@@ -52,7 +56,7 @@ signed main() {
     int nTC; std::cin >> nTC;
 
     for (int iTC = 0; iTC < nTC; iTC++) {
-        Solution::solve();
+        Solver solver; solver.solve();
     }
 
     return 0;

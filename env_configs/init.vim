@@ -39,6 +39,7 @@ set ai si cino=j1,(0,ws,Ws,L0
 set fdm=marker ""fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
 set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a ruler cul
 set synmaxcol=2048 cmdheight=2
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 set clipboard=unnamedplus
 au VimLeave *call system("xsel -ib", getreg('+'))

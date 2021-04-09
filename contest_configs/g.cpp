@@ -43,6 +43,21 @@ int main(int argc, char *argv[]) {
     std::string targetName = getTargetName(std::string(fs::current_path()));
     auto target = targetParent / (targetName + ".cpp");
 
+    if (fs::exists(target)) {
+        std::cout << "File already existed" << std::endl;
+        std::cout << "Override? [Y/N]: ";
+
+        std::string option;
+        std::cin >> option;
+
+        if (option != "Y" && option != "y") {
+            if (option != "N" && option != "n") {
+                std::cout << "Invalid option\n";
+            }
+            return 0;
+        }
+    }
+
     try {
         fs::create_directories(targetParent);
         fs::copy_file(sourceFile, target, fs::copy_options::overwrite_existing);

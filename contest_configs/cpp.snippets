@@ -92,13 +92,17 @@ endsnippet
 
 snippet pbds
 // pbds ===============================================================
+// #include <ext/pb_ds/assoc_container.hpp>
+// #include <ext/pb_ds/tree_policy.hpp>
 struct splitmix64_hash { static uint64_t splitmix64(uint64_t x) { x += 0x9e3779b97f4a7c15; x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9; x = (x ^ (x >> 27)) * 0x94d049bb133111eb; return x ^ (x >> 31); } size_t operator()(uint64_t x) const { static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM); } };
 #ifdef PB_DS_ASSOC_CNTNR_HPP
+#warning "__gnu::pbds::gp_hash_table used"
 template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 // template <class T> using idmulset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less_equal<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 template <class K, class V, class Hash = splitmix64_hash> using hashmap = __gnu_pbds::gp_hash_table<K, V, Hash>;
 template <class K, class Hash = splitmix64_hash> using hashset = hashmap<K, __gnu_pbds::null_type, Hash>;
 #else
+#warning "std::unordered_map/set used"
 template <class K, class V> using hashmap = std::unordered_map<K, V, splitmix64_hash>;
 template <class K> using hashset = std::unordered_set<K, splitmix64_hash>;
 #endif // PB_DS_ASSOC_CNTNR_HPP
@@ -107,7 +111,7 @@ endsnippet
 
 snippet dvec
 // dvec ===============================================================
-template <int D, class T> struct dvec : public std::vector<dvec<D - 1, T>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<D - 1, T>>(n, dvec<D - 1, T>(args...)) {} };
-template <class T> struct dvec<1, T> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
+template <class T, int D> struct dvec : public std::vector<dvec<T, D - 1>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<T, D - 1>>(n, dvec<T, D - 1>(args...)) {} };
+template <class T> struct dvec<T, 1> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
 // end of dvec ========================================================
 endsnippet
