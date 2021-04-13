@@ -20,6 +20,7 @@
 // end of libraries ===================================================
 
 // template ===========================================================
+// {{{
 
 // shorthands
 
@@ -128,10 +129,9 @@ template <class T> void flipBit(T &mask, int b) { mask ^= (T(1) << b); }
 template <class A, class B> std::istream &operator>>(std::istream &is, std::pair<A, B> &p) { return is >> p.first >> p.second; }
 template <class T> std::istream &operator>>(std::istream &is, std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz; i++) { is >> v[i]; } return is; } 
 class Reader { private: bool _M_ok_ = true; public: explicit operator bool() { return _M_ok_; } template <typename T> Reader &operator, (T &_t_) { _M_ok_ &= !!(std::cin >> _t_); return *this; } };
+template <class T> T reNxt() { T _x_; std::cin >> _x_; return _x_; }
 #define re Reader(),
-template <class T> T reNxt() { T _x_; re _x_; return _x_; }
 #define ri reNxt<int>()
-#define r64 reNxt<i64>()
 
 // write
 template <class A, class B> std::ostream &operator<<(std::ostream &os, const std::pair<A, B> &p) { return os << p.first << ' ' << p.second; }
@@ -158,8 +158,8 @@ template <class C> inline void remdup(C &x) { sort(x.begin(), x.end()); x.erase(
 template <class C> inline i64 length(const C &x) { return static_cast<i64>(x.size()); }
 template <typename I> struct __ { I &v_; explicit __(I &v) : v_{v} {} typename I::reverse_iterator begin() const { return v_.rbegin(); } typename I::reverse_iterator end() const { return v_.rend(); } };
 template <typename I> __<I> reversed(I &v) { return __<I>(v); }
-template <class I> inline I maxElem(I f, I l) { return std::max_element(f, l); }
-template <class I> inline I minElem(I f, I l) { return std::min_element(f, l); }
+template <class I> inline I maxelem(I f, I l) { return std::max_element(f, l); }
+template <class I> inline I minelem(I f, I l) { return std::min_element(f, l); }
 
 // debugger
 #ifdef LOCAL_DEFINE
@@ -173,11 +173,13 @@ template <size_t N> string to_string(const bitset<N> &v) { string res = ""; for 
 template <class A> string to_string(const A &v) { bool first = true; string res = "{"; for (const auto &x : v) { if (!first) { res += ", "; } first = false; res += to_string(x); } res += "}"; return res; }
 template <class A, class B> string to_string(const std::pair<A, B> &p) { return "(" + to_string(p.first) + ", " + to_string(p.second) + ")"; }
 template <class A, class B, class C> string to_string(const tuple<A, B, C> &p) { return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " + to_string(get<2>(p)) + ")"; }
-void debug_out() { cerr << endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { cerr << " " << to_string(H); debug_out(T...); }
-}
-#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+} // namespace std
+void debug_out() { std::cerr << std::endl; } template <class Head, class... Tail> void debug_out(Head H, Tail... T) { std::cerr << " " << std::to_string(H); debug_out(T...); }
+#define debug(...) std::cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#define err(...) fprintf(stderr, __VA_ARGS__)
 #else
 #define debug(...) "Goodbye."
+#define err(...) "Don't find me."
 #endif // LOCAL_DEFINE
 
 // rng
@@ -188,8 +190,10 @@ std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count())
 #endif // LOCAL_DEFINE
 inline long long randrange(long long a, long long b) { return std::uniform_int_distribution<long long>(a, b)(rng); }
 
+// hash map/set and idset
 struct splitmix64_hash { static uint64_t splitmix64(uint64_t x) { x += 0x9e3779b97f4a7c15; x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9; x = (x ^ (x >> 27)) * 0x94d049bb133111eb; return x ^ (x >> 31); } size_t operator()(uint64_t x) const { static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM); } };
 #ifdef PB_DS_ASSOC_CNTNR_HPP
+#warning "__gnu::pbds::gp_hash_table used"
 template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 // template <class T> using idmulset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less_equal<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 template <class K, class V, class Hash = splitmix64_hash> using hashmap = __gnu_pbds::gp_hash_table<K, V, Hash>;
@@ -214,15 +218,15 @@ template <class Fun> decltype(auto) y_combinator(Fun &&fun) { return ___<std::de
 #endif
 
 // multidimensional vector
-template <int D, class T> struct dvec : public std::vector<dvec<D - 1, T>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<D - 1, T>>(n, dvec<D - 1, T>(args...)) {} };
-template <class T> struct dvec<1, T> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
+template <class T, int D> struct dvec : public std::vector<dvec<T, D - 1>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<T, D - 1>>(n, dvec<T, D - 1>(args...)) {} };
+template <class T> struct dvec<T, 1> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
 
 // adjacent grid coords
 // up upright right downright down downleft left upleft
 constexpr int dx[] = {-1, -1,  0,  1,  1,  1,  0, -1};
 constexpr int dy[] = { 0,  1,  1,  1,  0, -1, -1, -1};
 
-namespace Solution { void solve(); }
+void solveCase();
 void initialRun();
 
 int main() {
@@ -249,7 +253,7 @@ int main() {
     int nTC; (std::cin >> nTC).ignore();
     for (int iTC = 0; iTC < nTC; iTC++) {
 #endif
-        Solution::solve();
+        solveCase();
 #if MULTICASE
     }
 #endif
@@ -267,19 +271,17 @@ using imod = atcoder::modint1000000007;
 constexpr db EPS = 1e-9;
 constexpr int INF = 1e9;
 constexpr i64 INF64 = 1e18;
-constexpr int N = 3e5 + 5;
 
+// }}}
 // end of template ====================================================
 
 using namespace std;
 
-namespace Solution {
+constexpr int N = 3e5 + 5;
 
-void solve() {
+void solveCase() {
 
 }
-
-} // namespace Solution
 
 // initial run ========================================================
 // will run ONCE only before solveCase(), regardless of MULTICASE

@@ -13,8 +13,11 @@ function mkcdir
 end
 
 alias l "ls -l -a"
-alias vim "nvim"
-alias gvim "nvim-gtk"
+alias v "NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
+alias gv "NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim-gtk"
+alias p "download_prob.py samples"
+alias t "cf test"
+alias e "nvr -s"
 
 function fish_user_key_bindings
     for mode in insert default visual
@@ -22,15 +25,7 @@ function fish_user_key_bindings
     end
 end
 
-function p
-    download_prob.py samples
-end
-
-function t
-    cf test
-end
-
-function ptmux
+function pt
     tmux new-session \; split-window -h \; select-pane -L
 end
 

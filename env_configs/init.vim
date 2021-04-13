@@ -7,57 +7,80 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'Chiel92/vim-autoformat'
-" Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'mengelbrecht/lightline-bufferline'
 call plug#end()
 
 set tgc t_Co=256 bg=light
-colo github
-let ayucolor="light"
+" let ayucolor="light"
+colo PaperColor
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
 let g:github_colors_soft=0
-let g:lightline={'colorscheme': 'one'}
 let NERDTreeShowHidden=1
-nn <C-F> :NERDTreeToggle<CR>
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
 
+set hls is scs
+set backspace=indent,eol,start
+set sr sw=4 ts=4 et sts=4
+set ai si cino=j1,(0,ws,Ws,L0,N-s
+set fdm=marker
+set ls=2 stal=2 nosmd enc=utf-8 sc nu rnu
+set nobk nowb noswf nowrap scl=no mouse=a ruler cul hid
+set synmaxcol=2048 cmdheight=2
+set clipboard=unnamedplus
+
+au BufNewFile,BufRead * setlocal formatoptions-=cro
+au VimLeave *call system("xsel -ib", getreg('+'))
+au FileType cpp setlocal commentstring=//\ %s
+
+let g:asyncrun_open = 8
+let g:lightline.component_raw = {'buffers': 1}
+let g:lightline#bufferline#clickable = 1
+let mapleader = " "
+
+nmap <F9> :w <bar> AsyncRun c %<CR>
+nmap <F10> :AsyncRun t<CR>
+noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
+nnoremap gA :%y+<CR>
 nn j gj
 nn k gk
 nn n nzz
 nn N Nzz
-set hls is scs
 nn <C-h> <C-w>h
 nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
-nn <C-s> :w<CR>
-
-set sr sw=4 ts=4 et sts=4
-set ai si cino=j1,(0,ws,Ws,L0
-set fdm=marker ""fmr=\*INDENT-OFF\*,\*INDENT-ON\* "nofen
-set ls=2 nosmd enc=utf-8 sc nu rnu nobk nowb noswf nowrap scl=no mouse=a ruler cul
-set synmaxcol=2048 cmdheight=2
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-
-set clipboard=unnamedplus
-au VimLeave *call system("xsel -ib", getreg('+'))
-au FileType cpp setlocal commentstring=//\ %s
-
-let g:asyncrun_open = 8
-
-let mapleader = " "
-map <F3> :%y+<CR>
-nmap <F9> :w <bar> AsyncRun c %<CR>
-nmap <F10> :AsyncRun t<CR>
-noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
-map <space>y :%y+<CR>
-
+nn <C-F> :NERDTreeToggle<CR>
+nmap tt :enew<cr>
+nmap tk :bnext<CR>
+nmap tj :bprevious<CR>
+nmap tq :bp <bar> bd #<CR>
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
 nn <Leader>fm :Autoformat <bar> w<CR>
-nn <silent> <leader><cr> :noh<cr>
+nn <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":nohl\<CR>"
 vn < <gv
 vn > >gv
 
@@ -85,12 +108,8 @@ au BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') 
 au BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
 
-" function AddTemplate(tmpl_file)
-"     exe "0read " . a:tmpl_file
-"     let substDict = {}
-"     let substDict["in"] = expand("%:t:r").".inp"
-"     let substDict["out"] = expand("%:t:r").".out"
-"     exe '%s/<<\([^>]*\)>>/\=substDict[submatch(1)]/g'
-"     290
-" endfunction
-" au BufRead *.cpp if getfsize(expand('%'))==0|call AddTemplate("~/Documents/CP/template.cpp")
+let g:tmuxline_preset = {
+      \'b'    : '#H',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W#F'],
+      \'y'    : ['HKR0703']}

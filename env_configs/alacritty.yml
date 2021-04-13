@@ -10,19 +10,19 @@ font:
         family: "JetBrains Mono"
 
 # Colors (One Light)
-colors:
-  primary:
-    background: '#fafafa'
-    foreground: '#383a42'
-  normal:
-    black:      '#696c77' # mono-2
-    red:        '#e45649' # red 1
-    green:      '#50a14f'
-    yellow:     '#c18401' # orange 2
-    blue:       '#4078f2'
-    magenta:    '#a626a4'
-    cyan:       '#0184bc'
-    white:      '#dbdbdb' # mono-3
+# colors:
+#   primary:
+#     background: '#fafafa'
+#     foreground: '#383a42'
+#   normal:
+#     black:      '#696c77' # mono-2
+#     red:        '#e45649' # red 1
+#     green:      '#50a14f'
+#     yellow:     '#c18401' # orange 2
+#     blue:       '#4078f2'
+#     magenta:    '#a626a4'
+#     cyan:       '#0184bc'
+#     white:      '#dbdbdb' # mono-3
 
 # Colors (Solarized Light)
 # colors:
@@ -82,4 +82,35 @@ colors:
 #     cyan:    '0x327698'
 #     white:   '0x262a3f'
 
+colors:
+  # Default colors
+  primary:
+    background: '0xeeeeee'
+    foreground: '0x4d4d4c'
 
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0xf3f3f3'
+    cursor: '0x4d4d4c'
+
+  # Normal colors
+  normal:
+    black:   '0xededed'
+    red:     '0xd7005f'
+    green:   '0x718c00'
+    yellow:  '0xd75f00'
+    blue:    '0x4271ae'
+    magenta: '0x8959a8'
+    cyan:    '0x3e999f'
+    white:   '0x4d4d4c'
+
+  # Bright colors
+  bright:
+    black:   '0x949494'
+    red:     '0xd7005f'
+    green:   '0x718c00'
+    yellow:  '0xd75f00'
+    blue:    '0x4271ae'
+    magenta: '0x8959a8'
+    cyan:    '0x3e999f'
+    white:   '0xf5f5f5'
