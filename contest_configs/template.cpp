@@ -12,7 +12,7 @@
 #ifndef LOCAL_DEFINE
 #pragma GCC optimize ("Ofast")
 #pragma GCC optimize ("unroll-loops")
-#pragma GCC target ("avx")
+#pragma GCC target ("avx,avx2")
 #endif
 
 #include <bits/stdc++.h>
