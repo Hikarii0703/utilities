@@ -9,13 +9,14 @@
         Cứ chạy theo dòng đời, chạy theo cuộc chơi
         Về nhau.
 */
+// control panel ======================================================
 #define MULTICASE 0
 #define FILEIO 0
 #define INTERACTIVE 0
-
-#include <bits/stdc++.h>
+// end of control panel ===============================================
 
 // libraries ==========================================================
+#include <bits/stdc++.h>
 // #include <atcoder/all>
 // end of libraries ===================================================
 
@@ -79,22 +80,22 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 // variadic for-loops
 
 // for with type
-#define furTS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ <= (_b_); _i_ += (_c_))
-#define furTU(T, _i_, _a_, _b_) furTS(T, _i_, _a_, _b_, 1)
-#define furTN(T, _i_, _n_) furTS(T, _i_, 0, _n_ - 1, 1)
+#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ <= CAT(_j_, __LINE__); _i_ += (_c_))
+#define furtU(T, _i_, _a_, _b_) furtS(T, _i_, _a_, _b_, 1)
+#define furtN(T, _i_, _n_) furtS(T, _i_, 0, _n_ - 1, 1)
 
 // reversed for with type
-#define rfurTS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_); _i_ >= (_b_); _i_ -= (_c_))
-#define rfurTU(T, _i_, _a_, _b_) rfurTS(T, _i_, _a_, _b_, 1)
-#define rfurTN(T, _i_, _n_) rfurTS(T, _i_, _n_ - 1, 0, 1)
+#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ >= CAT(_j_, __LINE__); _i_ -= (_c_))
+#define rfurtU(T, _i_, _a_, _b_) rfurtS(T, _i_, _a_, _b_, 1)
+#define rfurtN(T, _i_, _n_) rfurtS(T, _i_, _n_ - 1, 0, 1)
 
 // for
-#define furS(_i_, _a_, _b_, _c_) furTS(int, _i_, _a_, _b_, _c_)
+#define furS(_i_, _a_, _b_, _c_) furtS(int, _i_, _a_, _b_, _c_)
 #define furU(_i_, _a_, _b_) furS(_i_, _a_, _b_, 1)
 #define furN(_i_, _n_) furS(_i_, 0, (_n_) - 1, 1)
 
 // reversed for
-#define rfurS(_i_, _a_, _b_, _c_) rfurTS(int, _i_, _a_, _b_, _c_)
+#define rfurS(_i_, _a_, _b_, _c_) rfurtS(int, _i_, _a_, _b_, _c_)
 #define rfurU(_i_, _a_, _b_) rfurS(_i_, _a_, _b_, 1)
 #define rfurN(_i_, _n_) rfurS(_i_, (_n_) - 1, 0, 1)
 
@@ -112,7 +113,7 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define rfurt(...) NumArgsT(__VA_ARGS__, rfurtS, rfurtU, rfurtN) (__VA_ARGS__)
 #define fur(...) NumArgs(__VA_ARGS__, furS, furU, furN) (__VA_ARGS__)
 #define rfur(...) NumArgs(__VA_ARGS__, rfurS, rfurU, rfurN) (__VA_ARGS__)
-#define furj(...) NumArgsE(__VA_ARGS__, furj3, furj2, furj1) (__VA_ARGS__)
+#define furj(...) NumArgsE(__VA_ARGS__, furj4, furj3, furj2, furj1) (__VA_ARGS__)
 #define rep(_x_) fur(CAT(_rep_, __LINE__), _x_)
 #define furdich for (;;)
 
@@ -143,21 +144,21 @@ template <char _sep_, char _end_> class Writer { private: bool _M_ok_ = true; bo
 #define	wrln Writer<' ', '\n'>(),
 
 // container access
+template <class C> inline void clear(C& c) { c.clear(); }
 #define TEMPL_ELEM(func) template <class C> constexpr inline auto func(C &c) -> decltype(c.func()) { return c.func(); }
 TEMPL_ELEM(front) TEMPL_ELEM(back) TEMPL_ELEM(top)
 #if __cplusplus < 201703L
 TEMPL_ELEM(empty) TEMPL_ELEM(data)
 #endif
-template <class C> inline void clear(C& c) { c.clear(); }
 #undef TEMPL_ELEM
 
 // utilities
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 template <class C> inline void remdup(C &x) { sort(x.begin(), x.end()); x.erase(unique(x.begin(), x.end()), x.end()); }
-template <class C> inline i64 length(const C &x) { return static_cast<i64>(x.size()); }
+template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); }
 template <typename I> struct __ { I &v_; explicit __(I &v) : v_{v} {} typename I::reverse_iterator begin() const { return v_.rbegin(); } typename I::reverse_iterator end() const { return v_.rend(); } };
-template <typename I> __<I> reversed(I &v) { return __<I>(v); }
+template <typename I> __<I> rev(I &v) { return __<I>(v); }
 template <class I> inline I maxelem(I f, I l) { return std::max_element(f, l); }
 template <class I> inline I minelem(I f, I l) { return std::min_element(f, l); }
 
@@ -193,7 +194,7 @@ inline long long randrange(long long a, long long b) { return std::uniform_int_d
 // hash map/set and idset
 struct splitmix64_hash { static uint64_t splitmix64(uint64_t x) { x += 0x9e3779b97f4a7c15; x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9; x = (x ^ (x >> 27)) * 0x94d049bb133111eb; return x ^ (x >> 31); } size_t operator()(uint64_t x) const { static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count(); return splitmix64(x + FIXED_RANDOM); } };
 #ifdef PB_DS_ASSOC_CNTNR_HPP
-#warning "__gnu::pbds::gp_hash_table used"
+#warning "pbds used"
 template <class T> using idset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 // template <class T> using idmulset = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less_equal<T>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update>;
 template <class K, class V, class Hash = splitmix64_hash> using hashmap = __gnu_pbds::gp_hash_table<K, V, Hash>;
@@ -203,33 +204,52 @@ template <class K, class V> using hashmap = std::unordered_map<K, V, splitmix64_
 template <class K> using hashset = std::unordered_set<K, splitmix64_hash>;
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
-// y_combinator
-#if __cplusplus >= 201402L
-namespace std {
-template <class Fun>
-class ___ {
-    Fun fun_;
-public:
-    template<class T> explicit ___(T &&fun): fun_(std::forward<T>(fun)) {}
-    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
-};
-template <class Fun> decltype(auto) y_combinator(Fun &&fun) { return ___<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
-} // namespace std
-#endif
-
 // multidimensional vector
 template <class T, int D> struct dvec : public std::vector<dvec<T, D - 1>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<T, D - 1>>(n, dvec<T, D - 1>(args...)) {} };
 template <class T> struct dvec<T, 1> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
+
+// modulo
+#if ATCODER_MATH_HPP
+// using imod = atcoder::modint998244353;
+using imod = atcoder::modint1000000007;
+#endif
 
 // adjacent grid coords
 // up upright right downright down downleft left upleft
 constexpr int dx[] = {-1, -1,  0,  1,  1,  1,  0, -1};
 constexpr int dy[] = { 0,  1,  1,  1,  0, -1, -1, -1};
 
-void solveCase();
-void initialRun();
+// constants
+constexpr db EPS = 1e-9;
+constexpr int INF = 1e9;
+constexpr i64 INF64 = 1e18;
+// }}}
+// end of template ====================================================
 
-int main() {
+using namespace std;
+
+constexpr int N = 3e5 + 5;
+
+class Solver {
+private:
+
+public:
+    void solve() {
+
+    }
+};
+
+
+// initial run ========================================================
+// will run ONCE only before solve(), regardless of MULTICASE
+void initialRun() {
+
+}
+// end of initial run =================================================
+
+// main ===============================================================
+// {{{
+signed main() {
 #if FILEIO
 #ifdef LOCAL_DEFINE
 #warning "FILEIO ON"
@@ -253,39 +273,12 @@ int main() {
     int nTC; (std::cin >> nTC).ignore();
     for (int iTC = 0; iTC < nTC; iTC++) {
 #endif
-        solveCase();
+        std::make_unique<Solver>()->solve();
 #if MULTICASE
     }
 #endif
 
     return 0;
 }
-
-// modulo
-#if ATCODER_MATH_HPP
-// using imod = atcoder::modint998244353;
-using imod = atcoder::modint1000000007;
-#endif
-
-// constants
-constexpr db EPS = 1e-9;
-constexpr int INF = 1e9;
-constexpr i64 INF64 = 1e18;
-
 // }}}
-// end of template ====================================================
-
-using namespace std;
-
-constexpr int N = 3e5 + 5;
-
-void solveCase() {
-
-}
-
-// initial run ========================================================
-// will run ONCE only before solveCase(), regardless of MULTICASE
-void initialRun() {
-
-}
-// end of initial run =================================================
+// end of main ========================================================

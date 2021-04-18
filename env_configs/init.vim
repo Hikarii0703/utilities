@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -22,8 +22,6 @@ colo PaperColor
 
 let g:AutoPairsFlyMode = 0
 let g:asyncrun_open = 8
-let g:lightline.component_raw = {'buffers': 1}
-let g:lightline#bufferline#clickable = 1
 let mapleader = " "
 let g:lsp_cxx_hl_light_bg=1
 let c_no_curly_error=1
@@ -44,8 +42,12 @@ let g:lightline = {
       \ },
       \ 'component_type': {
       \   'buffers': 'tabsel'
+      \ },
+      \ 'component_raw' : {
+      \   'buffers': 1
       \ }
       \ }
+let g:lightline#bufferline#clickable = 1
 
 set hls is scs
 set backspace=indent,eol,start
@@ -63,7 +65,7 @@ au FileType cpp setlocal commentstring=//\ %s
 
 nmap <C-B> :w <bar> AsyncRun c %<CR>
 " nmap <F10> :AsyncRun t<CR>
-nnoremap gA :%y+<CR>
+nnoremap C :%y+<CR>
 nn j gj
 nn k gk
 nn n nzz
@@ -74,15 +76,16 @@ nn <C-k> <C-w>k
 nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
 nn <C-n> :NERDTreeToggle<CR>
-nmap <C-T> :enew<cr>
-nmap tk :bnext<CR>
-nmap tj :bprevious<CR>
-nmap <C-W> :bp <bar> bd #<CR>
+nn <C-T> :enew<cr>
+nn <C-W> :bp <bar> bd #<CR>
+nn <A-j> :bprevious<CR>
+nn <A-k> :bnext<CR>
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
 " nn <Leader>fm :Autoformat <bar> w<CR>
-nn <silent> <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":cclose\<CR>"
-nn <silent> <Leader><CR> :noh<CR>
+nn <silent> \ :noh<CR>
+nn <silent> <CR> :cclose<CR>
+
 vn < <gv
 vn > >gv
 
