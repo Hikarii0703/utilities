@@ -1,14 +1,20 @@
 /*
-        Và em là ai?
-        Là một đóa hoa đang nở
-        Cùng mùi hương, cùng tình thương
-        Của người yêu em...
+        Chỉ để lần cuối đi bên nhau,
+        Cay đắng nhưng không đau.
+        Nếu ai cũng mang tội thì
+        Người mong đợi gì nơi tôi?
+        Tiễn em tới đây thôi,
+        Phố mưa cũng đang tạnh rồi...
 
-        Và em là ai?
-        Là một tiếng ca trong lòng cùng ai đó
-        Cứ chạy theo dòng đời, chạy theo cuộc chơi
-        Về nhau.
+        Cho dù chẳng biết sẽ đi đâu,
+        Cũng giống như lần đầu,
+        Nhưng nếu em có đoái hoài cũng đừng
+        Ngoái lại nhìn sang tôi.
+        Em cứ đi tiếp thôi.
+        Lần cuối ấy cũng qua mất rồi,
+        Y như một giấc mơ trôi...
 */
+
 // control panel ======================================================
 #define MULTICASE 0
 #define FILEIO 0

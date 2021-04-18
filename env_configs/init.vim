@@ -14,6 +14,7 @@ Plug 'psliwka/vim-smoothie'
 " Plug 'ayu-theme/ayu-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'junegunn/limelight.vim'
 call plug#end()
 
 set tgc t_Co=256 bg=light
@@ -59,13 +60,9 @@ set nobk nowb noswf nowrap scl=no mouse=a ruler cul hid
 set synmaxcol=2048 cmdheight=2
 set clipboard=unnamedplus
 
-au BufNewFile,BufRead * setlocal formatoptions-=cro
-au VimLeave *call system("xsel -ib", getreg('+'))
-au FileType cpp setlocal commentstring=//\ %s
-
 nmap <C-B> :w <bar> AsyncRun c %<CR>
 " nmap <F10> :AsyncRun t<CR>
-nnoremap C :%y+<CR>
+nn C :%y+<CR>
 nn j gj
 nn k gk
 nn n nzz
@@ -75,16 +72,22 @@ nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
-nn <C-n> :NERDTreeToggle<CR>
-nn <C-T> :enew<cr>
-nn <C-W> :bp <bar> bd #<CR>
-nn <A-j> :bprevious<CR>
-nn <A-k> :bnext<CR>
+nn <silent> <C-n> :NERDTreeToggle<CR>
+nn <silent> <C-T> :enew<cr>
+nn <silent> <C-W> :bp <bar> bd #<CR>
+" nn <silent> <A-j> :bprevious<CR>
+" nn <silent> <A-k> :bnext<CR>
+nn <silent> <A-1> :b1<CR>
+nn <silent> <A-2> :b2<CR>
+nn <silent> <A-3> :b3<CR>
+nn <silent> <A-4> :b4<CR>
+nn <silent> <A-5> :b5<CR>
+nn <silent> <A-6> :b6<CR>
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
-" nn <Leader>fm :Autoformat <bar> w<CR>
 nn <silent> \ :noh<CR>
 nn <silent> <CR> :cclose<CR>
+" nn <Leader>fm :Autoformat <bar> w<CR>
 
 vn < <gv
 vn > >gv
@@ -106,9 +109,10 @@ augroup OnColorScheme
     au!
     au ColorScheme,BufEnter,BufWinEnter * call s:CustomizeColors()
 augroup END
-
-" au BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" au BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+au BufNewFile,BufRead * setlocal formatoptions-=cro
+au VimLeave *call system("xsel -ib", getreg('+'))
+au FileType cpp setlocal commentstring=//\ %s
+autocmd VimEnter * Limelight
 
 let g:tmuxline_preset = {
       \'b'    : '#H',
