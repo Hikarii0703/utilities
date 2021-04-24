@@ -15,6 +15,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 set tgc t_Co=256 bg=light
@@ -60,6 +61,14 @@ set nobk nowb noswf nowrap scl=no mouse=a ruler cul hid
 set synmaxcol=2048 cmdheight=2
 set clipboard=unnamedplus
 
+function! Bye()
+     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+         :q
+     else
+         :bp | bd #
+    endif
+endfunction
+
 nmap <C-B> :w <bar> AsyncRun c %<CR>
 " nmap <F10> :AsyncRun t<CR>
 nn C :%y+<CR>
@@ -74,15 +83,10 @@ nn <C-l> <C-w>l
 let g:AutoPairsShortcutFastWrap='<C-e>'
 nn <silent> <C-n> :NERDTreeToggle<CR>
 nn <silent> <C-T> :enew<cr>
-nn <silent> <C-W> :bp <bar> bd #<CR>
-" nn <silent> <A-j> :bprevious<CR>
-" nn <silent> <A-k> :bnext<CR>
-nn <silent> <A-1> :b1<CR>
-nn <silent> <A-2> :b2<CR>
-nn <silent> <A-3> :b3<CR>
-nn <silent> <A-4> :b4<CR>
-nn <silent> <A-5> :b5<CR>
-nn <silent> <A-6> :b6<CR>
+" nn <silent> <C-W> :bp <bar> bd #<CR>
+nn <silent> <C-W> :call Bye()<CR>
+nn <silent> <A-j> :bprevious<CR>
+nn <silent> <A-k> :bnext<CR>
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
 nn <silent> \ :noh<CR>
@@ -112,7 +116,7 @@ augroup END
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au VimLeave *call system("xsel -ib", getreg('+'))
 au FileType cpp setlocal commentstring=//\ %s
-autocmd VimEnter * Limelight
+
 
 let g:tmuxline_preset = {
       \'b'    : '#H',
