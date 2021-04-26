@@ -80,8 +80,8 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define rbb(_x_) rbegin(_x_), rbegin(_x_)
 #define fi first
 #define se second
-#define CAT(x, y) CAT_(x, y)
-#define CAT_(x, y) x ## y
+#define CAT(_x_, _y_) CAT_(_x_, _y_)
+#define CAT_(_x_, _y_) _x_ ## _y_
 
 // variadic for-loops
 
@@ -121,7 +121,7 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define rfur(...) NumArgs(__VA_ARGS__, rfurS, rfurU, rfurN) (__VA_ARGS__)
 #define furj(...) NumArgsE(__VA_ARGS__, furj4, furj3, furj2, furj1) (__VA_ARGS__)
 #define rep(_x_) fur(CAT(_rep_, __LINE__), _x_)
-#define furdich for (;;)
+#define furd for (;;) // fur dich
 
 // bit stuff
 #define popcnt(x) __builtin_popcountll(x)
@@ -167,6 +167,10 @@ template <typename I> struct __ { I &v_; explicit __(I &v) : v_{v} {} typename I
 template <typename I> __<I> rev(I &v) { return __<I>(v); }
 template <class I> inline I maxelem(I f, I l) { return std::max_element(f, l); }
 template <class I> inline I minelem(I f, I l) { return std::min_element(f, l); }
+#if __cplusplus < 201703L
+inline long long gcd(long long a, long long b) { while (b) { a %= b; std::swap(a, b); } return a; }
+inline long long lcm(long long a, long long b) { return a / gcd(a, b) * b; }
+#endif
 
 // debugger
 #ifdef LOCAL_DEFINE
