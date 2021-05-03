@@ -1,18 +1,14 @@
 /*
-        Chỉ để lần cuối đi bên nhau,
-        Cay đắng nhưng không đau.
-        Nếu ai cũng mang tội thì
-        Người mong đợi gì nơi tôi?
-        Tiễn em tới đây thôi,
-        Phố mưa cũng đang tạnh rồi...
-
-        Cho dù chẳng biết sẽ đi đâu,
-        Cũng giống như lần đầu,
-        Nhưng nếu em có đoái hoài cũng đừng
-        Ngoái lại nhìn sang tôi.
-        Em cứ đi tiếp thôi.
-        Lần cuối ấy cũng qua mất rồi,
-        Y như một giấc mơ trôi...
+        近づきたいよ
+        my destiny
+        oh oh oh
+        もうトキメ
+        止まらない
+        ずっと
+        あきれるほどに
+        I sing for you
+        伝えたい
+        この夏が終わる前に
 */
 
 // control panel ======================================================
@@ -28,6 +24,12 @@
 
 // template ===========================================================
 // {{{
+
+#ifndef LOCAL_DEFINE
+#pragma GCC optimize ("Ofast")
+#pragma GCC optimize ("unroll-loops")
+#pragma GCC target ("avx,avx2")
+#endif
 
 // shorthands
 
@@ -109,7 +111,7 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 #define furj1(_a_, _x_) for (auto &_a_ : _x_)
 #define furj2(_a_, _b_, _x_) for (auto &[_a_, _b_] : _x_)
 #define furj3(_a_, _b_, _c_, _x_) for (auto &[_a_, _b_, _c_] : _x_)
-#define furj4(_a_, _b_, _c_, _d, _x_) for (auto &[_a_, _b_, _c_, _d_] : _x_)
+#define furj4(_a_, _b_, _c_, _d_, _x_) for (auto &[_a_, _b_, _c_, _d_] : _x_)
 
 #define NumArgsT(_1, _2, _3, _4, _5, furtFunc, ...) furtFunc
 #define NumArgs(_1, _2, _3, _4, furFunc, ...) furFunc
@@ -162,7 +164,7 @@ TEMPL_ELEM(empty) TEMPL_ELEM(data)
 template <class A, class B> inline bool chmin(A &t, const B &f) { if (t > f) { t = f; return true; } return false; }
 template <class A, class B> inline bool chmax(A &t, const B &f) { if (t < f) { t = f; return true; } return false; }
 template <class C> inline void remdup(C &x) { sort(x.begin(), x.end()); x.erase(unique(x.begin(), x.end()), x.end()); }
-template <class C> inline i64 isz(const C &x) { return static_cast<i64>(x.size()); }
+template <class C> inline int isz(const C &x) { return static_cast<int>(x.size()); }
 template <typename I> struct __ { I &v_; explicit __(I &v) : v_{v} {} typename I::reverse_iterator begin() const { return v_.rbegin(); } typename I::reverse_iterator end() const { return v_.rend(); } };
 template <typename I> __<I> rev(I &v) { return __<I>(v); }
 template <class I> inline I maxelem(I f, I l) { return std::max_element(f, l); }
