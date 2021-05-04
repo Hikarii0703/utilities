@@ -57,8 +57,8 @@ int main(int argc, char **argv) {
         printf("%s[COMPILING IN %sC++%d%s]%s\n", BOLDMAGENTA, BOLDYELLOW, ver, BOLDMAGENTA, RESET);
         int exitcode =
             system(std::string(
-                       "g++ -o " + taskName + ".exe " + taskName + ".cpp -O2 -std=c++17 " +
-                       "-Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op "
+                       "g++ -o " + taskName + ".exe " + taskName + ".cpp -O2 -std=c++" + std::to_string(ver) + " "
+                       " -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wlogical-op "
                        "-Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align "
                        "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 "
                        "-fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fstack-protector "

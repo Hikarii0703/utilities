@@ -285,8 +285,13 @@ signed main() {
     int nTC; (std::cin >> nTC).ignore();
     for (int iTC = 0; iTC < nTC; iTC++) {
 #endif
-        // std::make_unique<Solver>()->solve();
-        Solver solver; solver.solve();
+
+#if __cplusplus < 201402L
+        Solver solver{}; solver.solve();
+#else
+        std::make_unique<Solver>()->solve();
+#endif
+
 #if MULTICASE
     }
 #endif

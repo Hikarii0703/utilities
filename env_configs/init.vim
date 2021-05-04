@@ -16,9 +16,11 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 set tgc t_Co=256 bg=light
+let g:solarized_termcolors=256
 " let ayucolor="light"
 colo PaperColor
 
