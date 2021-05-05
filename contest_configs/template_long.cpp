@@ -1,14 +1,13 @@
 /*
-        近づきたいよ
-        my destiny
-        oh oh oh
-        もうトキメ
-        止まらない
-        ずっと
-        あきれるほどに
-        I sing for you
-        伝えたい
-        この夏が終わる前に
+        Ôi sáng nay sao tôi thấy tồi tệ
+        Ôi sáng nay sao tôi dậy muộn thế
+        Ôi sáng nay sao, làm sao làm sao
+        Tôi thấy ai treo đầu tôi lên cao
+        Tôi phóng ra xe, hôm nay đi học
+        Nếu tôi còn bé thì tôi sẽ khóc
+        Nhưng đã hai mươi, hai mươi, hai mươi
+        Lên xe đi học, để ngồi lên ghế
+        Không làm gì
 */
 
 // control panel ======================================================
@@ -88,12 +87,12 @@ template <class T> using minheap = std::priority_queue<T, std::vector<T>, std::g
 // variadic for-loops
 
 // for with type
-#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ <= CAT(_j_, __LINE__); _i_ += (_c_))
+#define furtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_i_, __LINE__) = (_b_); _i_ <= CAT(_i_, __LINE__); _i_ += (_c_))
 #define furtU(T, _i_, _a_, _b_) furtS(T, _i_, _a_, _b_, 1)
 #define furtN(T, _i_, _n_) furtS(T, _i_, 0, _n_ - 1, 1)
 
 // reversed for with type
-#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_j_, __LINE__) = (_b_); _i_ >= CAT(_j_, __LINE__); _i_ -= (_c_))
+#define rfurtS(T, _i_, _a_, _b_, _c_) for (T _i_ = (_a_), CAT(_i_, __LINE__) = (_b_); _i_ >= CAT(_i_, __LINE__); _i_ -= (_c_))
 #define rfurtU(T, _i_, _a_, _b_) rfurtS(T, _i_, _a_, _b_, 1)
 #define rfurtN(T, _i_, _n_) rfurtS(T, _i_, _n_ - 1, 0, 1)
 
@@ -137,7 +136,7 @@ template <class T> void flipBit(T &mask, int b) { mask ^= (T(1) << b); }
 // read
 template <class A, class B> std::istream &operator>>(std::istream &is, std::pair<A, B> &p) { return is >> p.first >> p.second; }
 template <class T> std::istream &operator>>(std::istream &is, std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz; i++) { is >> v[i]; } return is; } 
-class Reader { private: bool _M_ok_ = true; public: explicit operator bool() { return _M_ok_; } template <typename T> Reader &operator, (T &_t_) { _M_ok_ &= !!(std::cin >> _t_); return *this; } };
+class Reader { private: bool _M_ok_ = true; public: explicit operator bool() { return _M_ok_; } template <class T> Reader &operator, (T &_t_) { _M_ok_ &= !!(std::cin >> _t_); return *this; } };
 template <class T> T reNxt() { T _x_; std::cin >> _x_; return _x_; }
 #define re Reader(),
 #define ri reNxt<int>()
@@ -145,7 +144,7 @@ template <class T> T reNxt() { T _x_; std::cin >> _x_; return _x_; }
 // write
 template <class A, class B> std::ostream &operator<<(std::ostream &os, const std::pair<A, B> &p) { return os << p.first << ' ' << p.second; }
 template <class T> std::ostream &operator<<(std::ostream &os, const std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz - 1; i++) { os << v[i] << ' '; } return os << v[sz - 1];} 
-template <char _sep_, char _end_> class Writer { private: bool _M_ok_ = true; bool _space_; void wrCh(char _c_) { if (_c_) std::cout << _c_; } public: Writer() : _space_(false) {} ~Writer() { wrCh(_end_); } explicit operator bool() { return _M_ok_; } template <typename T> Writer &operator, (const T &_t_) { (_space_) ? (wrCh(_sep_)) : (void(_space_ = true)); _M_ok_ &= !!(std::cout << _t_); return *this; } };
+template <char _sep_, char _end_> class Writer { private: bool _M_ok_ = true; bool _space_; void wrCh(char _c_) { if (_c_) std::cout << _c_; } public: Writer() : _space_(false) {} ~Writer() { wrCh(_end_); } explicit operator bool() { return _M_ok_; } template <class T> Writer &operator, (const T &_t_) { (_space_) ? (wrCh(_sep_)) : (void(_space_ = true)); _M_ok_ &= !!(std::cout << _t_); return *this; } };
 #define pr Writer<'\0', '\0'>(),
 #define	prln Writer<'\0', '\n'>(),
 #define wr Writer<' ', ' '>(),
