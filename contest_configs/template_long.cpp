@@ -146,9 +146,9 @@ template <class A, class B> std::ostream &operator<<(std::ostream &os, const std
 template <class T> std::ostream &operator<<(std::ostream &os, const std::vector<T> &v) { int sz = v.size(); for (int i = 0; i < sz - 1; i++) { os << v[i] << ' '; } return os << v[sz - 1];} 
 template <char _sep_, char _end_> class Writer { private: bool _M_ok_ = true; bool _space_; void wrCh(char _c_) { if (_c_) std::cout << _c_; } public: Writer() : _space_(false) {} ~Writer() { wrCh(_end_); } explicit operator bool() { return _M_ok_; } template <class T> Writer &operator, (const T &_t_) { (_space_) ? (wrCh(_sep_)) : (void(_space_ = true)); _M_ok_ &= !!(std::cout << _t_); return *this; } };
 #define pr Writer<'\0', '\0'>(),
-#define	prln Writer<'\0', '\n'>(),
+#define prln Writer<'\0', '\n'>(),
 #define wr Writer<' ', ' '>(),
-#define	wrln Writer<' ', '\n'>(),
+#define wrln Writer<' ', '\n'>(),
 
 // container access
 template <class C> inline void clear(C& c) { c.clear(); }
@@ -215,10 +215,6 @@ template <class K, class V> using hashmap = std::unordered_map<K, V, splitmix64_
 template <class K> using hashset = std::unordered_set<K, splitmix64_hash>;
 #endif // PB_DS_ASSOC_CNTNR_HPP
 
-// multidimensional vector
-template <class T, int D> struct dvec : public std::vector<dvec<T, D - 1>> { static_assert(D >= 1, "Vector dimension must be greater than zero!"); template <class... Args> dvec(int n, Args... args) : std::vector<dvec<T, D - 1>>(n, dvec<T, D - 1>(args...)) {} };
-template <class T> struct dvec<T, 1> : public std::vector<T> { dvec(int n, const T &val = T()) : std::vector<T>(n, val) {} };
-
 // modulo
 #if ATCODER_MATH_HPP
 // using imod = atcoder::modint998244353;
@@ -252,7 +248,7 @@ public:
 
 
 // initial run ========================================================
-// will run ONCE only before solve(), regardless of MULTICASE
+// will run ONCE only before Solver.solve(), regardless of MULTICASE
 void initialRun() {
 
 }

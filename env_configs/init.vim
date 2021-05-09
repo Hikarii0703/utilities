@@ -1,5 +1,13 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'psliwka/vim-smoothie'
+Plug 'edkolev/tmuxline.vim'
+Plug 'ayu-theme/ayu-vim'
+
 " Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim'
@@ -7,21 +15,18 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 " Plug 'Chiel92/vim-autoformat'
-Plug 'edkolev/tmuxline.vim'
 " Plug 'cormacrelf/vim-colors-github'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'psliwka/vim-smoothie'
-" Plug 'ayu-theme/ayu-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'mengelbrecht/lightline-bufferline'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set tgc t_Co=256 bg=light
 let g:solarized_termcolors=256
-" let ayucolor="light"
+let ayucolor="light"
 colo PaperColor
 
 let g:AutoPairsFlyMode = 0
@@ -52,6 +57,11 @@ let g:lightline = {
       \ }
       \ }
 let g:lightline#bufferline#clickable = 1
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
+" command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
 
 set hls is scs
 set backspace=indent,eol,start
@@ -71,6 +81,15 @@ function! Bye()
     endif
 endfunction
 
+function! FoldingEnter()
+  if &buftype ==# 'quickfix'
+    execute "normal! \<CR>"
+  else
+    execute "cclose"
+  endif
+endfunction
+
+
 nmap <C-B> :w <bar> AsyncRun c %<CR>
 " nmap <F10> :AsyncRun t<CR>
 nn C :%y+<CR>
@@ -82,18 +101,21 @@ nn <C-h> <C-w>h
 nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 nn <C-l> <C-w>l
+nn <C-F> :Files<CR>
 let g:AutoPairsShortcutFastWrap='<C-e>'
 nn <silent> <C-n> :NERDTreeToggle<CR>
 nn <silent> <C-T> :enew<cr>
-" nn <silent> <C-W> :bp <bar> bd #<CR>
 nn <silent> <C-W> :call Bye()<CR>
-nn <silent> <A-j> :bprevious<CR>
-nn <silent> <A-k> :bnext<CR>
+" nn <silent> <A-j> :bprevious<CR>
+" nn <silent> <A-k> :bnext<CR>
+nn <silent> <S-F> :Buffers<CR>
 nn <Leader>ve :e $MYVIMRC<CR>
 nn <Leader>vr :source $MYVIMRC<CR>
 nn <silent> \ :noh<CR>
-nn <silent> <CR> :cclose<CR>
+nnoremap <silent> <CR> :call FoldingEnter()<CR>
 " nn <Leader>fm :Autoformat <bar> w<CR>
+cnoreabbrev W execute "w"
+cnoreabbrev Q execute "q"
 
 vn < <gv
 vn > >gv

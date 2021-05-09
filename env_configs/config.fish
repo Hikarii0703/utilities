@@ -18,6 +18,8 @@ alias gv "NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim-gtk"
 alias p "download_prob.py samples"
 alias t "cf test"
 alias e "nvr -s"
+alias bat batcat
+alias ff "fzf --preview 'bat --color=always --style=numbers --theme=ansi-dark --line-range=:500 {}'"
 
 function fish_user_key_bindings
     for mode in insert default visual
